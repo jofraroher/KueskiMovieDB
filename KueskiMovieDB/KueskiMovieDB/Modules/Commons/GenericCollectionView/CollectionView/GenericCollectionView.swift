@@ -13,7 +13,7 @@ final class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataS
     private var genericDataSource: GenericCollectionViewDataSource<Item>?
     private var genericDelegate: GenericCollectionViewDelegate<Item>?
     
-    var fetchRemoteData: () -> ()
+    private let fetchRemoteData: () -> ()
     var isFetching: Bool = false
     
     // MARK: - Initializers

@@ -14,9 +14,11 @@ enum MoviesFactory {
         let presenter = MoviesPresenter(interactor: interactor)
         let view = MoviesViewController(
             presenter: presenter,
-            listLayoutProvider: ListLayoutProvider(),
-            gridLayoutProvider: GridLayoutProvider(),
-            cellConfigurator: MovieCellConfigurator()
+            layoutManager: LayoutManager(
+                listLayoutProvider: ListLayoutProvider(),
+                gridLayoutProvider: GridLayoutProvider()
+            ),
+            collectionViewFactory: CollectionViewFactory(cellConfigurator: MovieCellConfigurator())
         )
         presenter.view = view
         return factory(view)
