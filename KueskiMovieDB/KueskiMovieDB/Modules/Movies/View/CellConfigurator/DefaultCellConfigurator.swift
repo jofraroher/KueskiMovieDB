@@ -10,7 +10,7 @@ import UIKit
 final class DefaultCellConfigurator: CellConfigurator {
     func configureCell(_ cell: UICollectionViewCell, with item: Movie) {
         if let gridCell = cell as? MovieGridCollectionViewCell {
-            // Configura gridCell
+            gridCell.configureCell(model: item)
         } else if let listCell = cell as? MovieListCollectionViewCell {
             listCell.configureCell(model: item)
         }

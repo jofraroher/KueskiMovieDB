@@ -19,9 +19,16 @@ extension MovieGridCollectionViewCell {
         return view
     }
     
-    static func makeLabel(text: String, textAlignment: NSTextAlignment, numberOfLines: Int = 1) -> UILabel {
+    static func makePosterImage() -> UIImageView {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }
+    
+    static func makeLabel(textAlignment: NSTextAlignment, numberOfLines: Int = 1, font: UIFont) -> UILabel {
         let label = UILabel()
-        label.text = text
+        label.font = font
         label.textAlignment = textAlignment
         label.numberOfLines = numberOfLines
         label.translatesAutoresizingMaskIntoConstraints = false
