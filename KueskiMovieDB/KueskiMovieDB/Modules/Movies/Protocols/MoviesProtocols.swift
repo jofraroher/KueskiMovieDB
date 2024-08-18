@@ -15,6 +15,7 @@ protocol MoviesPresenterProtocol: AnyObject {
     var items: [Movie] { get }
     
     func updateMovieList()
+    func updateMovieListBySort(sortBy: SortByType)
 }
 
 protocol MoviesInteractorProtocol: AnyObject {

@@ -13,8 +13,8 @@ final class MoviesPresenter {
     internal var items: [Movie] = []
     
     init(interactor: MoviesInteractorProtocol) {
-        self.paginationService = PaginationService { page in
-            let queryParams = MoviesQueryParams(nowPlayingMovies: page)
+        self.paginationService = PaginationService { page, sortBy in
+            let queryParams = MoviesQueryParams(nowPlayingMovies: page, sortBy: sortBy)
             return try await interactor.getMovieList(queryParams: queryParams)
         }
     }
@@ -25,9 +25,23 @@ extension MoviesPresenter: MoviesPresenterProtocol {
     func updateMovieList() {
         Task {
             do {
-                let newItems = try await paginationService.fetchNextPage()                
+                let newItems = try await paginationService.fetchNextPage()
                 await MainActor.run {
                     self.items.append(contentsOf: newItems)
+                    self.view?.reloadData(items: self.items)
+                }
+            } catch {
+                print("Error fetching movies: \(error)")
+            }
+        }
+    }
+    
+    func updateMovieListBySort(sortBy: SortByType) {
+        Task {
+            do {
+                let newItems = try await paginationService.fetchBySort(sortBy: sortBy)
+                await MainActor.run {
+                    self.items = newItems
                     self.view?.reloadData(items: self.items)
                 }
             } catch {
