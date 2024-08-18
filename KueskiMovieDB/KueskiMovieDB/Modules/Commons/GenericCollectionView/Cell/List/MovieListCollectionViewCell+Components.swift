@@ -28,6 +28,13 @@ extension MovieListCollectionViewCell {
         return label
     }
     
+    static func makePosterImage() -> UIImageView {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }
+    
     static func makeFavoritesButton() -> UIButton {
         let button = UIButton()
         let image = UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate)

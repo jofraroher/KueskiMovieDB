@@ -19,6 +19,9 @@ extension MovieListCollectionViewCell {
             popularityImage,
             popularityRateLabel
         ].forEach(mainContainerView.addSubview)
+        
+        imageContainerView.addSubview(posterImageView)
+        
         [
             generalMovieInfoLabel,
             movieGenresLabel,
@@ -39,6 +42,12 @@ extension MovieListCollectionViewCell {
             imageContainerView.topAnchor.constraint(equalTo: mainContainerView.topAnchor, constant: 10),
             imageContainerView.bottomAnchor.constraint(equalTo: mainContainerView.bottomAnchor, constant: -10),
             imageContainerView.widthAnchor.constraint(equalToConstant: 90),
+            
+            // Poster image
+            posterImageView.leadingAnchor.constraint(equalTo: imageContainerView.leadingAnchor),
+            posterImageView.trailingAnchor.constraint(equalTo: imageContainerView.trailingAnchor),
+            posterImageView.topAnchor.constraint(equalTo: imageContainerView.topAnchor),
+            posterImageView.bottomAnchor.constraint(equalTo: imageContainerView.bottomAnchor),
             
             // Movie Title Label
             movieTitleLabel.leadingAnchor.constraint(equalTo: imageContainerView.trailingAnchor, constant: 10),
