@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class MovieGridCollectionViewCell: UICollectionViewCell {
     
@@ -18,27 +19,29 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
         cornerRadius: 15,
         backgroundColor: .red
     )
+    let posterImageView = MovieListCollectionViewCell.makePosterImage()
     
     let movieDetailsContainerStackView = MovieGridCollectionViewCell.makeStackView(
         axis: .vertical,
         spacing: 2
     )
     let movieTitleLabel = MovieGridCollectionViewCell.makeLabel(
-        text: "MOVIE TITLE",
-        textAlignment: .center
+        textAlignment: .center,
+        font: UIFont.preferredFont(forTextStyle: .body, weight: .bold)
     )
     let generalMovieInfoLabel = MovieGridCollectionViewCell.makeLabel(
-        text: "DATE • LANGUAGE",
-        textAlignment: .left
+        textAlignment: .left,
+        font: UIFont.preferredFont(forTextStyle: .caption1, weight: .light)
     )
     let movieGenresLabel = MovieGridCollectionViewCell.makeLabel(
-        text: "GENRES",
         textAlignment: .left,
-        numberOfLines: 2
+        numberOfLines: 2,
+        font: UIFont.preferredFont(forTextStyle: .caption1, weight: .light)
     )
     let movieOverviewLabel = MovieGridCollectionViewCell.makeLabel(
-        text: "OVERVIEW",
-        textAlignment: .justified
+        textAlignment: .justified,
+        numberOfLines: 3,
+        font: UIFont.preferredFont(forTextStyle: .callout, weight: .regular, size: 12)
     )
     
     let popularityImage = MovieGridCollectionViewCell.makeImageView(
@@ -46,8 +49,8 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
         tintColor: .black
     )
     let popularityRateLabel = MovieGridCollectionViewCell.makeLabel(
-        text: "POPULARITY",
-        textAlignment: .right
+        textAlignment: .right,
+        font: UIFont.preferredFont(forTextStyle: .caption1, weight: .light)
     )
     let favoritesButton = MovieGridCollectionViewCell.makeFavoritesButton()
     
@@ -67,5 +70,17 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
         backgroundColor = .clear
         addSubViews()
         setupConstraints()
+    }
+    
+    func configureCell(model: Movie) {
+        movieTitleLabel.text = model.title
+        generalMovieInfoLabel.text = "\(model.releaseDate) • \(model.originalLanguage.uppercased())"
+        movieGenresLabel.text = model.genreIds.toGenreString()
+        movieOverviewLabel.text = model.overview
+        popularityRateLabel.text = model.voteCount.formatted
+        if let pathUrl = GetMovieImageEndpoint(urlParams: ImageQueryParams(imagePath: model.posterPath)).url {
+            posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            posterImageView.sd_setImage(with: pathUrl)
+        }
     }
 }
