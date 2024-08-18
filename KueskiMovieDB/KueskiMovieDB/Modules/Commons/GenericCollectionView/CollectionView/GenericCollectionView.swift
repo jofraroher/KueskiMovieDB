@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class GenericCollectionView<Item, Cell: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
-
+final class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
+    
     // MARK: - Properties
     private var items: [Item]
-    private var configureCell: (Item, Cell) -> ()
+    private var configureCell: (Item, UICollectionViewCell) -> ()
     private var didSelectItem: (Item) -> ()
     
     // MARK: - Initializers
@@ -19,7 +19,7 @@ final class GenericCollectionView<Item, Cell: UICollectionViewCell>: UICollectio
         frame: CGRect = .zero,
         layout: UICollectionViewLayout = UICollectionViewFlowLayout(),
         items: [Item],
-        configureCell: @escaping (Item, Cell) -> (),
+        configureCell: @escaping (Item, UICollectionViewCell) -> (),
         didSelectItem: @escaping (Item) -> ()
     ) {
         self.items = items
@@ -34,22 +34,27 @@ final class GenericCollectionView<Item, Cell: UICollectionViewCell>: UICollectio
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - UICollectionViewDataSource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: Cell.self), for: indexPath) as? Cell else {
-            fatalError("Could not dequeue cell with identifier: \(String(describing: Cell.self))")
+    func setLayoutWithAnimation(layout: UICollectionViewLayout) {        
+        self.setCollectionViewLayout(layout, animated: false)
+        
+        UIView.performWithoutAnimation {
+            self.performBatchUpdates({
+                self.reloadData()
+            }) { [weak self] _ in
+                guard let self = self else { return }
+                
+                let visibleCells = self.visibleCells
+                visibleCells.forEach { cell in
+                    cell.alpha = 0.0
+                }
+                
+                UIView.animate(withDuration: 0.3) {
+                    visibleCells.forEach { cell in
+                        cell.alpha = 1.0
+                    }
+                }
+            }
         }
-        configureCell(items[indexPath.row], cell)
-        return cell
-    }
-    
-    // MARK: - UICollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSelectItem(items[indexPath.row])
     }
     
     // MARK: - Private Methods
@@ -58,16 +63,28 @@ final class GenericCollectionView<Item, Cell: UICollectionViewCell>: UICollectio
         delegate = self
         dataSource = self
         translatesAutoresizingMaskIntoConstraints = false
-        registerCells()
+        register(MovieGridCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MovieGridCollectionViewCell.self))
+        register(MovieListCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MovieListCollectionViewCell.self))
     }
     
-    private func registerCells() {
-        self.register(Cell.self, forCellWithReuseIdentifier: String(describing: Cell.self))
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
     }
-}
-
-extension GenericCollectionView {
-    func setLayout(layout: UICollectionViewLayout) {
-        setCollectionViewLayout(layout, animated: true)
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellType: UICollectionViewCell.Type
+        if collectionView.collectionViewLayout is ListCollectionViewLayout {
+            cellType = MovieListCollectionViewCell.self
+        } else {
+            cellType = MovieGridCollectionViewCell.self
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: cellType), for: indexPath)
+        configureCell(items[indexPath.row], cell)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        didSelectItem(items[indexPath.row])
     }
 }

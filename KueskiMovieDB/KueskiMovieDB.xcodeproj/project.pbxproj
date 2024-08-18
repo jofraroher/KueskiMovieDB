@@ -23,8 +23,14 @@
 		0B0F8AA12C7169A0004440B7 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AA02C7169A0004440B7 /* TabBarRouter.swift */; };
 		0B0F8AA42C7169C7004440B7 /* TabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AA32C7169C7004440B7 /* TabBarFactory.swift */; };
 		0B0F8AA92C716BD8004440B7 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AA82C716BD8004440B7 /* GenericCollectionView.swift */; };
-		0B0F8AAC2C716EDA004440B7 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AAB2C716EDA004440B7 /* MovieCollectionViewCell.swift */; };
-		0B0F8AAF2C717787004440B7 /* LayoutOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AAE2C717787004440B7 /* LayoutOptions.swift */; };
+		0B0F8AAC2C716EDA004440B7 /* MovieListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AAB2C716EDA004440B7 /* MovieListCollectionViewCell.swift */; };
+		0B0F8AB22C719001004440B7 /* MovieListCollectionViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AB12C719001004440B7 /* MovieListCollectionViewCell+Layout.swift */; };
+		0B0F8AB42C71ACF7004440B7 /* MovieListCollectionViewCell+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AB32C71ACF7004440B7 /* MovieListCollectionViewCell+Components.swift */; };
+		0B0F8AB72C71AE8B004440B7 /* MovieGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AB62C71AE8B004440B7 /* MovieGridCollectionViewCell.swift */; };
+		0B0F8AB92C71AEE0004440B7 /* MovieGridCollectionViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AB82C71AEE0004440B7 /* MovieGridCollectionViewCell+Layout.swift */; };
+		0B0F8ABB2C71AF0F004440B7 /* MovieGridCollectionViewCell+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8ABA2C71AF0F004440B7 /* MovieGridCollectionViewCell+Components.swift */; };
+		0B0F8ABD2C71B697004440B7 /* ListCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8ABC2C71B697004440B7 /* ListCollectionViewLayout.swift */; };
+		0B0F8ABF2C71B6BB004440B7 /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8ABE2C71B6BB004440B7 /* GridCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +71,14 @@
 		0B0F8AA02C7169A0004440B7 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
 		0B0F8AA32C7169C7004440B7 /* TabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFactory.swift; sourceTree = "<group>"; };
 		0B0F8AA82C716BD8004440B7 /* GenericCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionView.swift; sourceTree = "<group>"; };
-		0B0F8AAB2C716EDA004440B7 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
-		0B0F8AAE2C717787004440B7 /* LayoutOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutOptions.swift; sourceTree = "<group>"; };
+		0B0F8AAB2C716EDA004440B7 /* MovieListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B0F8AB12C719001004440B7 /* MovieListCollectionViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieListCollectionViewCell+Layout.swift"; sourceTree = "<group>"; };
+		0B0F8AB32C71ACF7004440B7 /* MovieListCollectionViewCell+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieListCollectionViewCell+Components.swift"; sourceTree = "<group>"; };
+		0B0F8AB62C71AE8B004440B7 /* MovieGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGridCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B0F8AB82C71AEE0004440B7 /* MovieGridCollectionViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieGridCollectionViewCell+Layout.swift"; sourceTree = "<group>"; };
+		0B0F8ABA2C71AF0F004440B7 /* MovieGridCollectionViewCell+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieGridCollectionViewCell+Components.swift"; sourceTree = "<group>"; };
+		0B0F8ABC2C71B697004440B7 /* ListCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewLayout.swift; sourceTree = "<group>"; };
+		0B0F8ABE2C71B6BB004440B7 /* GridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,7 +281,8 @@
 		0B0F8AAA2C716EBA004440B7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0B0F8AAB2C716EDA004440B7 /* MovieCollectionViewCell.swift */,
+				0B0F8AB52C71AE72004440B7 /* Grid */,
+				0B0F8AB02C718FE3004440B7 /* List */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -277,9 +290,30 @@
 		0B0F8AAD2C717762004440B7 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				0B0F8AAE2C717787004440B7 /* LayoutOptions.swift */,
+				0B0F8ABC2C71B697004440B7 /* ListCollectionViewLayout.swift */,
+				0B0F8ABE2C71B6BB004440B7 /* GridCollectionViewLayout.swift */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		0B0F8AB02C718FE3004440B7 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8AAB2C716EDA004440B7 /* MovieListCollectionViewCell.swift */,
+				0B0F8AB12C719001004440B7 /* MovieListCollectionViewCell+Layout.swift */,
+				0B0F8AB32C71ACF7004440B7 /* MovieListCollectionViewCell+Components.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		0B0F8AB52C71AE72004440B7 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8AB62C71AE8B004440B7 /* MovieGridCollectionViewCell.swift */,
+				0B0F8AB82C71AEE0004440B7 /* MovieGridCollectionViewCell+Layout.swift */,
+				0B0F8ABA2C71AF0F004440B7 /* MovieGridCollectionViewCell+Components.swift */,
+			);
+			path = Grid;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,18 +447,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B0F8AAF2C717787004440B7 /* LayoutOptions.swift in Sources */,
 				0B0F8A642C715BB3004440B7 /* KueskiMovieDB.xcdatamodeld in Sources */,
 				0B0F8A972C7168B1004440B7 /* MoviesViewController.swift in Sources */,
 				0B0F8AA12C7169A0004440B7 /* TabBarRouter.swift in Sources */,
+				0B0F8AB22C719001004440B7 /* MovieListCollectionViewCell+Layout.swift in Sources */,
+				0B0F8AB42C71ACF7004440B7 /* MovieListCollectionViewCell+Components.swift in Sources */,
+				0B0F8ABB2C71AF0F004440B7 /* MovieGridCollectionViewCell+Components.swift in Sources */,
 				0B0F8A5A2C715BB3004440B7 /* AppDelegate.swift in Sources */,
 				0B0F8A912C7167F2004440B7 /* NavigationFactory.swift in Sources */,
 				0B0F8A5C2C715BB3004440B7 /* SceneDelegate.swift in Sources */,
+				0B0F8AB92C71AEE0004440B7 /* MovieGridCollectionViewCell+Layout.swift in Sources */,
 				0B0F8A9A2C7168E6004440B7 /* MoviesFactory.swift in Sources */,
+				0B0F8ABD2C71B697004440B7 /* ListCollectionViewLayout.swift in Sources */,
+				0B0F8ABF2C71B6BB004440B7 /* GridCollectionViewLayout.swift in Sources */,
 				0B0F8AA42C7169C7004440B7 /* TabBarFactory.swift in Sources */,
-				0B0F8AAC2C716EDA004440B7 /* MovieCollectionViewCell.swift in Sources */,
+				0B0F8AAC2C716EDA004440B7 /* MovieListCollectionViewCell.swift in Sources */,
 				0B0F8AA92C716BD8004440B7 /* GenericCollectionView.swift in Sources */,
 				0B0F8A9E2C716971004440B7 /* MovieTabBarView.swift in Sources */,
+				0B0F8AB72C71AE8B004440B7 /* MovieGridCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
