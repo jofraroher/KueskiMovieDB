@@ -80,6 +80,8 @@
 		0B0F8B5B2C71E9FB004440B7 /* MoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B5A2C71E9FB004440B7 /* MoviesPresenter.swift */; };
 		0B0F8B5D2C71F3FD004440B7 /* FloatingPoint+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B5C2C71F3FD004440B7 /* FloatingPoint+Ext.swift */; };
 		0B0F8B5F2C71F683004440B7 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B5E2C71F683004440B7 /* UIFont+Ext.swift */; };
+		0B0F8B652C71FA3B004440B7 /* GetMovieImageEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B642C71FA3B004440B7 /* GetMovieImageEndpoint.swift */; };
+		0B0F8B702C7200BC004440B7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0B0F8B6F2C7200BC004440B7 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +179,7 @@
 		0B0F8B5A2C71E9FB004440B7 /* MoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenter.swift; sourceTree = "<group>"; };
 		0B0F8B5C2C71F3FD004440B7 /* FloatingPoint+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Ext.swift"; sourceTree = "<group>"; };
 		0B0F8B5E2C71F683004440B7 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
+		0B0F8B642C71FA3B004440B7 /* GetMovieImageEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieImageEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B0F8B702C7200BC004440B7 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +582,7 @@
 		0B0F8AEE2C71C9B2004440B7 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F8B632C71FA2C004440B7 /* MovieImageRouter */,
 				0B0F8B062C71CBBD004440B7 /* NowPlayingMoviesRouter */,
 				0B0F8AEF2C71C9BC004440B7 /* QueryParams */,
 			);
@@ -791,6 +796,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		0B0F8B632C71FA2C004440B7 /* MovieImageRouter */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B642C71FA3B004440B7 /* GetMovieImageEndpoint.swift */,
+			);
+			path = MovieImageRouter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -807,6 +820,9 @@
 			dependencies = (
 			);
 			name = KueskiMovieDB;
+			packageProductDependencies = (
+				0B0F8B6F2C7200BC004440B7 /* SDWebImage */,
+			);
 			productName = KueskiMovieDB;
 			productReference = 0B0F8A562C715BB3004440B7 /* KueskiMovieDB.app */;
 			productType = "com.apple.product-type.application";
@@ -879,6 +895,9 @@
 				Base,
 			);
 			mainGroup = 0B0F8A4D2C715BB3004440B7;
+			packageReferences = (
+				0B0F8B6E2C7200BC004440B7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 0B0F8A572C715BB3004440B7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -930,6 +949,7 @@
 				0B0F8AC82C71C666004440B7 /* APIRequest.swift in Sources */,
 				0B0F8A972C7168B1004440B7 /* MoviesViewController.swift in Sources */,
 				0B0F8AF62C71CA10004440B7 /* LanguageType.swift in Sources */,
+				0B0F8B652C71FA3B004440B7 /* GetMovieImageEndpoint.swift in Sources */,
 				0B0F8AF42C71C9FF004440B7 /* ReleaseType.swift in Sources */,
 				0B0F8AA12C7169A0004440B7 /* TabBarRouter.swift in Sources */,
 				0B0F8AD62C71C764004440B7 /* APIClientAuthorizationType.swift in Sources */,
@@ -1345,6 +1365,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B0F8B6E2C7200BC004440B7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.19.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B0F8B6F2C7200BC004440B7 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B0F8B6E2C7200BC004440B7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0B0F8A622C715BB3004440B7 /* KueskiMovieDB.xcdatamodeld */ = {

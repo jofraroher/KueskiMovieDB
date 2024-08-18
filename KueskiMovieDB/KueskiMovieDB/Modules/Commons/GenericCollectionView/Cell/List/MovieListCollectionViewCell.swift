@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class MovieListCollectionViewCell: UICollectionViewCell {
 
@@ -15,10 +16,8 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
         cornerRadius: 15,
         backgroundColor: .systemGray6
     )
-    let imageContainerView = MovieListCollectionViewCell.makeContainerView(
-        cornerRadius: 15,
-        backgroundColor: .red
-    )
+    let imageContainerView = MovieListCollectionViewCell.makeContainerView(cornerRadius: 15, backgroundColor: .clear)
+    let posterImageView = MovieListCollectionViewCell.makePosterImage()
     
     let movieTitleLabel = MovieListCollectionViewCell.makeLabel(
         textAlignment: .left, 
@@ -66,7 +65,10 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
         movieGenresLabel.text = model.genreIds.toGenreString()
         movieOverviewLabel.text = model.overview
         popularityRateLabel.text = model.voteCount.formatted
-        
+        if let pathUrl = GetMovieImageEndpoint(urlParams: ImageQueryParams(imagePath: model.posterPath)).url {
+            posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            posterImageView.sd_setImage(with: pathUrl)
+        }
     }
     
     @available(*, unavailable)
