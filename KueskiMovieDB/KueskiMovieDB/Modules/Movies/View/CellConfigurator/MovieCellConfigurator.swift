@@ -1,5 +1,5 @@
 //
-//  DefaultCellConfigurator.swift
+//  MovieCellConfigurator.swift
 //  KueskiMovieDB
 //
 //  Created by Francisco Rosales on 18/08/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DefaultCellConfigurator: CellConfigurator {
+final class MovieCellConfigurator: CellConfigurator {
     func configureCell(_ cell: UICollectionViewCell, with item: Movie) {
         if let gridCell = cell as? MovieGridCollectionViewCell {
             gridCell.configureCell(model: item)
