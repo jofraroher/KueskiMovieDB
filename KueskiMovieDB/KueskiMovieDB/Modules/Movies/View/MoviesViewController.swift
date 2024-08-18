@@ -68,6 +68,9 @@ final class MoviesViewController: UIViewController {
             configureCell: adaptConfigureCell,
             didSelectItem: { item in
                 print("Item selected: \(item)")
+            }, fetchRemoteData: { [weak self] in
+                self?.reusableCollectionView.isFetching = true
+                self?.presenter.updateMovieList()
             }
         )
         view.addSubview(reusableCollectionView)
@@ -91,6 +94,7 @@ final class MoviesViewController: UIViewController {
 extension MoviesViewController: MoviesViewProtocol {
     
     func reloadData(items: [Movie]) {
+        reusableCollectionView.isFetching = false
         reusableCollectionView.updateItems(with: items)
     }
 }

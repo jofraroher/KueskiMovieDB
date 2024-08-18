@@ -7,11 +7,14 @@
 
 import UIKit
 
-final class GenericCollectionView<Item>: UICollectionView {
+final class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataSourcePrefetching {
     // MARK: - Properties
     private var items: [Item] = []
     private var genericDataSource: GenericCollectionViewDataSource<Item>?
     private var genericDelegate: GenericCollectionViewDelegate<Item>?
+    
+    var fetchRemoteData: () -> ()
+    var isFetching: Bool = false
     
     // MARK: - Initializers
     init(
@@ -19,9 +22,11 @@ final class GenericCollectionView<Item>: UICollectionView {
         layout: UICollectionViewLayout = UICollectionViewFlowLayout(),
         items: [Item],
         configureCell: @escaping (Item, UICollectionViewCell) -> (),
-        didSelectItem: @escaping (Item) -> ()
+        didSelectItem: @escaping (Item) -> (),
+        fetchRemoteData: @escaping () -> ()
     ) {
         self.items = items
+        self.fetchRemoteData = fetchRemoteData
         super.init(frame: frame, collectionViewLayout: layout)
         setupUI(configureCell: configureCell, didSelectItem: didSelectItem)
     }
@@ -32,13 +37,34 @@ final class GenericCollectionView<Item>: UICollectionView {
     }
     
     func setLayoutWithAnimation(layout: UICollectionViewLayout) {
-        CollectionViewLayoutAnimator.animateLayoutChange(for: self, with: layout)
+        let oldLayout = collectionViewLayout
+        collectionViewLayout = layout
+
+        performBatchUpdates({
+            oldLayout.invalidateLayout()
+            collectionViewLayout.invalidateLayout()
+        }, completion: { _ in
+            self.dataSource = self.genericDataSource
+            self.delegate = self.genericDelegate
+            self.prefetchDataSource = self
+            self.reloadData()
+        })
     }
     
     func updateItems(with newItems: [Item]) {
-        self.items = newItems
+        let oldCount = items.count
+        items = newItems
         genericDataSource?.updateItems(with: newItems)
-        reloadData()
+        
+        guard oldCount != newItems.count else {
+            reloadData()
+            return
+        }
+
+        performBatchUpdates({
+            let indexSet = IndexSet(integer: 0)
+            reloadSections(indexSet)
+        }, completion: nil)
     }
     
     // MARK: - Private Methods
@@ -48,8 +74,37 @@ final class GenericCollectionView<Item>: UICollectionView {
         backgroundColor = .white
         delegate = genericDelegate
         dataSource = genericDataSource
+        prefetchDataSource = self
         translatesAutoresizingMaskIntoConstraints = false
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(loadMoreItems(_:)), for: .valueChanged)
         register(MovieGridCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MovieGridCollectionViewCell.self))
         register(MovieListCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MovieListCollectionViewCell.self))
+    }
+    
+    @objc func loadMoreItems(_ sender: Any) {
+        if !isFetching {
+            fetchRemoteData()
+            isFetching = true
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if indexPath.row >= items.count {
+                print("Index out of range: \(indexPath.row) >= \(items.count)")
+            }
+            if indexPath.row >= items.count - 3 && !isFetching {
+                fetchRemoteData()
+                refreshControl?.beginRefreshing()
+                break
+            }
+        }
+    }
+    
+    func handleDataLoadCompletion(with newItems: [Item]) {
+        isFetching = false
+        refreshControl?.endRefreshing()
+        updateItems(with: newItems)
     }
 }
