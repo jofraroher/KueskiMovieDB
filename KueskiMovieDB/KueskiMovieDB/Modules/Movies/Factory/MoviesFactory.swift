@@ -11,8 +11,8 @@ enum MoviesFactory {
 
     static func build(usingNavigationFactory factory: NavigationFactory) -> UIViewController {
         let view = MoviesViewController(
-            currentLayoutProvider: ListLayoutProvider(),
-            otherLayoutProvider: GridLayoutProvider(),
+            listLayoutProvider: ListLayoutProvider(),
+            gridLayoutProvider: GridLayoutProvider(),
             cellConfigurator: DefaultCellConfigurator()
         )
         return factory(view)
