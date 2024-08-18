@@ -50,7 +50,7 @@ final class MoviesViewController: UIViewController {
     }
     
     private func setupMoviesCollectionView(with frame: CGRect) {
-        let initialLayout = currentLayoutProvider.createLayout()
+        let initialLayout = listLayoutProvider.createLayout()
         
         let adaptConfigureCell: (String, UICollectionViewCell) -> () = { [weak cellConfigurator] item, cell in
             cellConfigurator?.configureCell(cell, with: item)
@@ -77,7 +77,7 @@ final class MoviesViewController: UIViewController {
     
     @objc func toggleLayout() {
         flag.toggle()
-        let newLayoutProvider = flag ? currentLayoutProvider : otherLayoutProvider
+        let newLayoutProvider = flag ? listLayoutProvider : gridLayoutProvider
         let newLayout = newLayoutProvider.createLayout()
         reusableCollectionView.setLayoutWithAnimation(layout: newLayout)
     }
