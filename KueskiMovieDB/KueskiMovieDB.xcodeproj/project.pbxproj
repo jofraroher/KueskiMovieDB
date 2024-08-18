@@ -41,6 +41,11 @@
 		0B0F8AD62C71C764004440B7 /* APIClientAuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AD52C71C764004440B7 /* APIClientAuthorizationType.swift */; };
 		0B0F8AD92C71C78F004440B7 /* APIResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AD82C71C78F004440B7 /* APIResponseDecoder.swift */; };
 		0B0F8ADC2C71C7C2004440B7 /* MappeableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8ADB2C71C7C2004440B7 /* MappeableType.swift */; };
+		0B0F8AE12C71C840004440B7 /* DefaultAsyncRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AE02C71C840004440B7 /* DefaultAsyncRepository.swift */; };
+		0B0F8AE32C71C859004440B7 /* AsyncRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AE22C71C859004440B7 /* AsyncRepository.swift */; };
+		0B0F8AE62C71C893004440B7 /* AuthorizationTokenProvder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AE52C71C893004440B7 /* AuthorizationTokenProvder.swift */; };
+		0B0F8AE92C71C8C2004440B7 /* APIResponseErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AE82C71C8C2004440B7 /* APIResponseErrorMapper.swift */; };
+		0B0F8AEC2C71C8F5004440B7 /* DefaultAPIClientErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AEB2C71C8F5004440B7 /* DefaultAPIClientErrorMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +104,11 @@
 		0B0F8AD52C71C764004440B7 /* APIClientAuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientAuthorizationType.swift; sourceTree = "<group>"; };
 		0B0F8AD82C71C78F004440B7 /* APIResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseDecoder.swift; sourceTree = "<group>"; };
 		0B0F8ADB2C71C7C2004440B7 /* MappeableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappeableType.swift; sourceTree = "<group>"; };
+		0B0F8AE02C71C840004440B7 /* DefaultAsyncRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAsyncRepository.swift; sourceTree = "<group>"; };
+		0B0F8AE22C71C859004440B7 /* AsyncRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncRepository.swift; sourceTree = "<group>"; };
+		0B0F8AE52C71C893004440B7 /* AuthorizationTokenProvder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationTokenProvder.swift; sourceTree = "<group>"; };
+		0B0F8AE82C71C8C2004440B7 /* APIResponseErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseErrorMapper.swift; sourceTree = "<group>"; };
+		0B0F8AEB2C71C8F5004440B7 /* DefaultAPIClientErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAPIClientErrorMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +159,7 @@
 		0B0F8A582C715BB3004440B7 /* KueskiMovieDB */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F8ADD2C71C817004440B7 /* Core */,
 				0B0F8AC02C71C5FA004440B7 /* Network */,
 				0B0F8A922C71680F004440B7 /* Modules */,
 				0B0F8A8C2C71673C004440B7 /* Resources */,
@@ -418,6 +429,58 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		0B0F8ADD2C71C817004440B7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8AEA2C71C8E6004440B7 /* Error */,
+				0B0F8ADE2C71C829004440B7 /* APIClient */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0B0F8ADE2C71C829004440B7 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8AE72C71C8B5004440B7 /* ErrorMapper */,
+				0B0F8AE42C71C887004440B7 /* AuthorizationTokenProvider */,
+				0B0F8ADF2C71C833004440B7 /* AsyncRepository */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		0B0F8ADF2C71C833004440B7 /* AsyncRepository */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8AE02C71C840004440B7 /* DefaultAsyncRepository.swift */,
+				0B0F8AE22C71C859004440B7 /* AsyncRepository.swift */,
+			);
+			path = AsyncRepository;
+			sourceTree = "<group>";
+		};
+		0B0F8AE42C71C887004440B7 /* AuthorizationTokenProvider */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8AE52C71C893004440B7 /* AuthorizationTokenProvder.swift */,
+			);
+			path = AuthorizationTokenProvider;
+			sourceTree = "<group>";
+		};
+		0B0F8AE72C71C8B5004440B7 /* ErrorMapper */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8AE82C71C8C2004440B7 /* APIResponseErrorMapper.swift */,
+			);
+			path = ErrorMapper;
+			sourceTree = "<group>";
+		};
+		0B0F8AEA2C71C8E6004440B7 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8AEB2C71C8F5004440B7 /* DefaultAPIClientErrorMapper.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -564,15 +627,20 @@
 				0B0F8A912C7167F2004440B7 /* NavigationFactory.swift in Sources */,
 				0B0F8AD12C71C6EB004440B7 /* APIClient.swift in Sources */,
 				0B0F8AC32C71C616004440B7 /* APIClientErrorWrapper.swift in Sources */,
+				0B0F8AE92C71C8C2004440B7 /* APIResponseErrorMapper.swift in Sources */,
 				0B0F8A5C2C715BB3004440B7 /* SceneDelegate.swift in Sources */,
+				0B0F8AE32C71C859004440B7 /* AsyncRepository.swift in Sources */,
 				0B0F8AB92C71AEE0004440B7 /* MovieGridCollectionViewCell+Layout.swift in Sources */,
 				0B0F8AD92C71C78F004440B7 /* APIResponseDecoder.swift in Sources */,
+				0B0F8AE12C71C840004440B7 /* DefaultAsyncRepository.swift in Sources */,
+				0B0F8AE62C71C893004440B7 /* AuthorizationTokenProvder.swift in Sources */,
 				0B0F8A9A2C7168E6004440B7 /* MoviesFactory.swift in Sources */,
 				0B0F8ABD2C71B697004440B7 /* ListCollectionViewLayout.swift in Sources */,
 				0B0F8ABF2C71B6BB004440B7 /* GridCollectionViewLayout.swift in Sources */,
 				0B0F8AA42C7169C7004440B7 /* TabBarFactory.swift in Sources */,
 				0B0F8AAC2C716EDA004440B7 /* MovieListCollectionViewCell.swift in Sources */,
 				0B0F8ACB2C71C690004440B7 /* HTTPRequestMethod.swift in Sources */,
+				0B0F8AEC2C71C8F5004440B7 /* DefaultAPIClientErrorMapper.swift in Sources */,
 				0B0F8AA92C716BD8004440B7 /* GenericCollectionView.swift in Sources */,
 				0B0F8A9E2C716971004440B7 /* MovieTabBarView.swift in Sources */,
 				0B0F8AB72C71AE8B004440B7 /* MovieGridCollectionViewCell.swift in Sources */,
