@@ -6,7 +6,7 @@
 //
 
 enum StringTable: String {
-    case KueskiMovieDBConfiguration
+    case KueskiMovieDB
 }
 
 enum ResourceType: String {

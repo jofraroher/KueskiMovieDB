@@ -62,6 +62,12 @@
 		0B0F8B152C71CDB0004440B7 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B142C71CDAF004440B7 /* GlobalFunctions.swift */; };
 		0B0F8B182C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B172C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift */; };
 		0B0F8B1C2C71CE5C004440B7 /* Decodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B1B2C71CE5C004440B7 /* Decodable+Ext.swift */; };
+		0B0F8B202C71D015004440B7 /* NowPlayingMoviesListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B1F2C71D015004440B7 /* NowPlayingMoviesListUseCase.swift */; };
+		0B0F8B232C71D05E004440B7 /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B222C71D05E004440B7 /* MovieResponse.swift */; };
+		0B0F8B252C71D075004440B7 /* GenreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B242C71D075004440B7 /* GenreType.swift */; };
+		0B0F8B282C71D4CA004440B7 /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B272C71D4CA004440B7 /* Encodable+Ext.swift */; };
+		0B0F8B2B2C71D53E004440B7 /* MovieDBTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B2A2C71D53E004440B7 /* MovieDBTokenProvider.swift */; };
+		0B0F8B2D2C71D566004440B7 /* AuthorizationTokenProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B2C2C71D566004440B7 /* AuthorizationTokenProviderManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +147,12 @@
 		0B0F8B142C71CDAF004440B7 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		0B0F8B172C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidableAPIResponseDecoder.swift; sourceTree = "<group>"; };
 		0B0F8B1B2C71CE5C004440B7 /* Decodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+Ext.swift"; sourceTree = "<group>"; };
+		0B0F8B1F2C71D015004440B7 /* NowPlayingMoviesListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingMoviesListUseCase.swift; sourceTree = "<group>"; };
+		0B0F8B222C71D05E004440B7 /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
+		0B0F8B242C71D075004440B7 /* GenreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreType.swift; sourceTree = "<group>"; };
+		0B0F8B272C71D4CA004440B7 /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
+		0B0F8B2A2C71D53E004440B7 /* MovieDBTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBTokenProvider.swift; sourceTree = "<group>"; };
+		0B0F8B2C2C71D566004440B7 /* AuthorizationTokenProviderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationTokenProviderManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -498,6 +510,8 @@
 			isa = PBXGroup;
 			children = (
 				0B0F8AE52C71C893004440B7 /* AuthorizationTokenProvder.swift */,
+				0B0F8B2A2C71D53E004440B7 /* MovieDBTokenProvider.swift */,
+				0B0F8B2C2C71D566004440B7 /* AuthorizationTokenProviderManager.swift */,
 			);
 			path = AuthorizationTokenProvider;
 			sourceTree = "<group>";
@@ -521,6 +535,8 @@
 		0B0F8AED2C71C99B004440B7 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F8B212C71D04C004440B7 /* Models */,
+				0B0F8B1D2C71CFFF004440B7 /* Repository */,
 				0B0F8AEE2C71C9B2004440B7 /* Router */,
 			);
 			path = API;
@@ -584,10 +600,7 @@
 		0B0F8AFC2C71CAA5004440B7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0B0F8AFD2C71CACC004440B7 /* Date+Ext.swift */,
-				0B0F8AFF2C71CB05004440B7 /* Array+Ext.swift */,
-				0B0F8B092C71CC2A004440B7 /* String+Ext.swift */,
-				0B0F8B1B2C71CE5C004440B7 /* Decodable+Ext.swift */,
+				0B0F8B262C71D4B0004440B7 /* Extensions */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -631,6 +644,43 @@
 				0B0F8B172C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift */,
 			);
 			path = APIResponseDecoder;
+			sourceTree = "<group>";
+		};
+		0B0F8B1D2C71CFFF004440B7 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B1E2C71D007004440B7 /* NowPlayingMovies */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		0B0F8B1E2C71D007004440B7 /* NowPlayingMovies */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B1F2C71D015004440B7 /* NowPlayingMoviesListUseCase.swift */,
+			);
+			path = NowPlayingMovies;
+			sourceTree = "<group>";
+		};
+		0B0F8B212C71D04C004440B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B222C71D05E004440B7 /* MovieResponse.swift */,
+				0B0F8B242C71D075004440B7 /* GenreType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0B0F8B262C71D4B0004440B7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8AFD2C71CACC004440B7 /* Date+Ext.swift */,
+				0B0F8AFF2C71CB05004440B7 /* Array+Ext.swift */,
+				0B0F8B092C71CC2A004440B7 /* String+Ext.swift */,
+				0B0F8B1B2C71CE5C004440B7 /* Decodable+Ext.swift */,
+				0B0F8B272C71D4CA004440B7 /* Encodable+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -778,8 +828,10 @@
 				0B0F8AB22C719001004440B7 /* MovieListCollectionViewCell+Layout.swift in Sources */,
 				0B0F8B0D2C71CC5C004440B7 /* Configuration.swift in Sources */,
 				0B0F8B002C71CB05004440B7 /* Array+Ext.swift in Sources */,
+				0B0F8B202C71D015004440B7 /* NowPlayingMoviesListUseCase.swift in Sources */,
 				0B0F8AFE2C71CACC004440B7 /* Date+Ext.swift in Sources */,
 				0B0F8AD32C71C701004440B7 /* URLSessionAPIClient.swift in Sources */,
+				0B0F8B2D2C71D566004440B7 /* AuthorizationTokenProviderManager.swift in Sources */,
 				0B0F8AB42C71ACF7004440B7 /* MovieListCollectionViewCell+Components.swift in Sources */,
 				0B0F8ACE2C71C6B0004440B7 /* HTTPParametersEncoding.swift in Sources */,
 				0B0F8ABB2C71AF0F004440B7 /* MovieGridCollectionViewCell+Components.swift in Sources */,
@@ -787,11 +839,13 @@
 				0B0F8AC52C71C63F004440B7 /* KueskiMovieDBError.swift in Sources */,
 				0B0F8A912C7167F2004440B7 /* NavigationFactory.swift in Sources */,
 				0B0F8AD12C71C6EB004440B7 /* APIClient.swift in Sources */,
+				0B0F8B282C71D4CA004440B7 /* Encodable+Ext.swift in Sources */,
 				0B0F8AC32C71C616004440B7 /* APIClientErrorWrapper.swift in Sources */,
 				0B0F8AE92C71C8C2004440B7 /* APIResponseErrorMapper.swift in Sources */,
 				0B0F8A5C2C715BB3004440B7 /* SceneDelegate.swift in Sources */,
 				0B0F8AE32C71C859004440B7 /* AsyncRepository.swift in Sources */,
 				0B0F8AB92C71AEE0004440B7 /* MovieGridCollectionViewCell+Layout.swift in Sources */,
+				0B0F8B252C71D075004440B7 /* GenreType.swift in Sources */,
 				0B0F8AD92C71C78F004440B7 /* APIResponseDecoder.swift in Sources */,
 				0B0F8B052C71CB6E004440B7 /* ImageQueryParams.swift in Sources */,
 				0B0F8B1C2C71CE5C004440B7 /* Decodable+Ext.swift in Sources */,
@@ -802,9 +856,11 @@
 				0B0F8B182C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift in Sources */,
 				0B0F8ABF2C71B6BB004440B7 /* GridCollectionViewLayout.swift in Sources */,
 				0B0F8AA42C7169C7004440B7 /* TabBarFactory.swift in Sources */,
+				0B0F8B2B2C71D53E004440B7 /* MovieDBTokenProvider.swift in Sources */,
 				0B0F8AFA2C71CA3B004440B7 /* MoviesQueryParams.swift in Sources */,
 				0B0F8AAC2C716EDA004440B7 /* MovieListCollectionViewCell.swift in Sources */,
 				0B0F8ACB2C71C690004440B7 /* HTTPRequestMethod.swift in Sources */,
+				0B0F8B232C71D05E004440B7 /* MovieResponse.swift in Sources */,
 				0B0F8B152C71CDB0004440B7 /* GlobalFunctions.swift in Sources */,
 				0B0F8B0A2C71CC2A004440B7 /* String+Ext.swift in Sources */,
 				0B0F8AEC2C71C8F5004440B7 /* DefaultAPIClientErrorMapper.swift in Sources */,

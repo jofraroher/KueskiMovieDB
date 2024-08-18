@@ -12,7 +12,7 @@ struct GetNowPlayingMoviesEndpoint: APIRequest {
     var url: URL? {
         var urlComponents = URLComponents(string: String.getConfigurationValue(
             key: MoviesBaseConfiguration.baseMovieDBPath,
-            bundle: .MovieDB
+            bundle: .KueskiMovieDB
         ))
         urlComponents?.queryItems = queryParams.map { key, value in
             URLQueryItem(name: key, value: "\(value)")
