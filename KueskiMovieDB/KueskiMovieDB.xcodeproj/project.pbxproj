@@ -76,6 +76,10 @@
 		0B0F8B502C71E5C7004440B7 /* DefaultCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B4F2C71E5C7004440B7 /* DefaultCellConfigurator.swift */; };
 		0B0F8B532C71E5FB004440B7 /* ListLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B522C71E5FB004440B7 /* ListLayoutProvider.swift */; };
 		0B0F8B552C71E613004440B7 /* GridLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B542C71E613004440B7 /* GridLayoutProvider.swift */; };
+		0B0F8B582C71E89C004440B7 /* MoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B572C71E89C004440B7 /* MoviesInteractor.swift */; };
+		0B0F8B5B2C71E9FB004440B7 /* MoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B5A2C71E9FB004440B7 /* MoviesPresenter.swift */; };
+		0B0F8B5D2C71F3FD004440B7 /* FloatingPoint+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B5C2C71F3FD004440B7 /* FloatingPoint+Ext.swift */; };
+		0B0F8B5F2C71F683004440B7 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B5E2C71F683004440B7 /* UIFont+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +173,10 @@
 		0B0F8B4F2C71E5C7004440B7 /* DefaultCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCellConfigurator.swift; sourceTree = "<group>"; };
 		0B0F8B522C71E5FB004440B7 /* ListLayoutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLayoutProvider.swift; sourceTree = "<group>"; };
 		0B0F8B542C71E613004440B7 /* GridLayoutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayoutProvider.swift; sourceTree = "<group>"; };
+		0B0F8B572C71E89C004440B7 /* MoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesInteractor.swift; sourceTree = "<group>"; };
+		0B0F8B5A2C71E9FB004440B7 /* MoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenter.swift; sourceTree = "<group>"; };
+		0B0F8B5C2C71F3FD004440B7 /* FloatingPoint+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Ext.swift"; sourceTree = "<group>"; };
+		0B0F8B5E2C71F683004440B7 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +297,8 @@
 		0B0F8A942C716879004440B7 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F8B592C71E9E1004440B7 /* Presenter */,
+				0B0F8B562C71E87E004440B7 /* Interactor */,
 				0B0F8B4B2C71E57C004440B7 /* Protocols */,
 				0B0F8A982C7168CB004440B7 /* Factory */,
 				0B0F8A952C716887004440B7 /* View */,
@@ -702,6 +712,8 @@
 				0B0F8B092C71CC2A004440B7 /* String+Ext.swift */,
 				0B0F8B1B2C71CE5C004440B7 /* Decodable+Ext.swift */,
 				0B0F8B272C71D4CA004440B7 /* Encodable+Ext.swift */,
+				0B0F8B5C2C71F3FD004440B7 /* FloatingPoint+Ext.swift */,
+				0B0F8B5E2C71F683004440B7 /* UIFont+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -761,6 +773,22 @@
 				0B0F8B542C71E613004440B7 /* GridLayoutProvider.swift */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		0B0F8B562C71E87E004440B7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B572C71E89C004440B7 /* MoviesInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		0B0F8B592C71E9E1004440B7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B5A2C71E9FB004440B7 /* MoviesPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -905,6 +933,7 @@
 				0B0F8AF42C71C9FF004440B7 /* ReleaseType.swift in Sources */,
 				0B0F8AA12C7169A0004440B7 /* TabBarRouter.swift in Sources */,
 				0B0F8AD62C71C764004440B7 /* APIClientAuthorizationType.swift in Sources */,
+				0B0F8B582C71E89C004440B7 /* MoviesInteractor.swift in Sources */,
 				0B0F8AB22C719001004440B7 /* MovieListCollectionViewCell+Layout.swift in Sources */,
 				0B0F8B0D2C71CC5C004440B7 /* Configuration.swift in Sources */,
 				0B0F8B552C71E613004440B7 /* GridLayoutProvider.swift in Sources */,
@@ -918,9 +947,11 @@
 				0B0F8AB42C71ACF7004440B7 /* MovieListCollectionViewCell+Components.swift in Sources */,
 				0B0F8ACE2C71C6B0004440B7 /* HTTPParametersEncoding.swift in Sources */,
 				0B0F8ABB2C71AF0F004440B7 /* MovieGridCollectionViewCell+Components.swift in Sources */,
+				0B0F8B5F2C71F683004440B7 /* UIFont+Ext.swift in Sources */,
 				0B0F8A5A2C715BB3004440B7 /* AppDelegate.swift in Sources */,
 				0B0F8AC52C71C63F004440B7 /* KueskiMovieDBError.swift in Sources */,
 				0B0F8B502C71E5C7004440B7 /* DefaultCellConfigurator.swift in Sources */,
+				0B0F8B5B2C71E9FB004440B7 /* MoviesPresenter.swift in Sources */,
 				0B0F8A912C7167F2004440B7 /* NavigationFactory.swift in Sources */,
 				0B0F8B472C71E3F6004440B7 /* CollectionViewLayoutAnimator.swift in Sources */,
 				0B0F8AD12C71C6EB004440B7 /* APIClient.swift in Sources */,
@@ -947,6 +978,7 @@
 				0B0F8B2B2C71D53E004440B7 /* MovieDBTokenProvider.swift in Sources */,
 				0B0F8AFA2C71CA3B004440B7 /* MoviesQueryParams.swift in Sources */,
 				0B0F8AAC2C716EDA004440B7 /* MovieListCollectionViewCell.swift in Sources */,
+				0B0F8B5D2C71F3FD004440B7 /* FloatingPoint+Ext.swift in Sources */,
 				0B0F8ACB2C71C690004440B7 /* HTTPRequestMethod.swift in Sources */,
 				0B0F8B232C71D05E004440B7 /* MovieResponse.swift in Sources */,
 				0B0F8B152C71CDB0004440B7 /* GlobalFunctions.swift in Sources */,

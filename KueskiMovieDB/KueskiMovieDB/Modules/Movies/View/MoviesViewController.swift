@@ -9,8 +9,10 @@ import UIKit
 
 final class MoviesViewController: UIViewController {
     
+    private let presenter: MoviesPresenterProtocol
+    
     private let movieItems = Array(repeating: "TEST", count: 5)
-    private var reusableCollectionView: GenericCollectionView<String>!
+    private var reusableCollectionView: GenericCollectionView<Movie>!
     private var listLayoutProvider: LayoutProvider
     private var gridLayoutProvider: LayoutProvider
     private let cellConfigurator: CellConfigurator
@@ -18,10 +20,12 @@ final class MoviesViewController: UIViewController {
     
     // Dependency Injection via Initializer
     init(
+        presenter: MoviesPresenterProtocol,
         listLayoutProvider: LayoutProvider,
         gridLayoutProvider: LayoutProvider,
         cellConfigurator: CellConfigurator
     ) {
+        self.presenter = presenter
         self.listLayoutProvider = listLayoutProvider
         self.gridLayoutProvider = gridLayoutProvider
         self.cellConfigurator = cellConfigurator
@@ -42,6 +46,7 @@ final class MoviesViewController: UIViewController {
             target: self,
             action: #selector(toggleLayout)
         )
+        presenter.updateMovieList()
     }
     
     private func setupUI() {
@@ -52,14 +57,14 @@ final class MoviesViewController: UIViewController {
     private func setupMoviesCollectionView(with frame: CGRect) {
         let initialLayout = listLayoutProvider.createLayout()
         
-        let adaptConfigureCell: (String, UICollectionViewCell) -> () = { [weak cellConfigurator] item, cell in
+        let adaptConfigureCell: (Movie, UICollectionViewCell) -> () = { [weak cellConfigurator] item, cell in
             cellConfigurator?.configureCell(cell, with: item)
         }
         
         reusableCollectionView = GenericCollectionView(
             frame: frame,
             layout: initialLayout,
-            items: movieItems,
+            items: presenter.items,
             configureCell: adaptConfigureCell,
             didSelectItem: { item in
                 print("Item selected: \(item)")
@@ -80,5 +85,12 @@ final class MoviesViewController: UIViewController {
         let newLayoutProvider = flag ? listLayoutProvider : gridLayoutProvider
         let newLayout = newLayoutProvider.createLayout()
         reusableCollectionView.setLayoutWithAnimation(layout: newLayout)
+    }
+}
+
+extension MoviesViewController: MoviesViewProtocol {
+    
+    func reloadData(items: [Movie]) {
+        reusableCollectionView.updateItems(with: items)
     }
 }

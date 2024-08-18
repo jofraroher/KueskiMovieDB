@@ -12,3 +12,9 @@ extension Array where Element == ReleaseType {
         return map { "\($0.rawValue)" }.joined(separator: "|")
     }
 }
+
+extension Array where Element == GenreType {
+    func toGenreString() -> String {
+        return self.map { $0.genreName }.joined(separator: ", ")
+    }
+}
