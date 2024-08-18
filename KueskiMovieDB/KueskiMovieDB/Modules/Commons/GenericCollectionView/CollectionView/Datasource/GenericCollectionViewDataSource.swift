@@ -9,11 +9,15 @@ import UIKit
 
 final class GenericCollectionViewDataSource<Item>: NSObject, UICollectionViewDataSource {
     private var items: [Item]
-    private var configureCell: (Item, UICollectionViewCell) -> ()
+    private let configureCell: (Item, UICollectionViewCell) -> ()
     
     init(items: [Item], configureCell: @escaping (Item, UICollectionViewCell) -> ()) {
         self.items = items
         self.configureCell = configureCell
+    }
+    
+    func updateItems(with newItems: [Item]) {
+        self.items = newItems
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

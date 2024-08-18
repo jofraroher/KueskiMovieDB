@@ -11,7 +11,7 @@ struct MovieResponse: Codable, Equatable {
 
 struct Movie {
     
-    let adult: String
+    let adult: Bool
     let backdropPath: String
     let genreIds: [GenreType]
     let id: Int
@@ -22,7 +22,7 @@ struct Movie {
     let posterPath: String
     let releaseDate: String
     let title: String
-    let video: String
+    let video: Bool
     let voteAverage: Double
     let voteCount: Double
 }
@@ -48,7 +48,7 @@ extension Movie: Codable, Equatable {
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        adult = try container.decodeIfPresent(String.self, forKey: .adult) ?? String()
+        adult = try container.decodeIfPresent(Bool.self, forKey: .adult) ?? Bool()
         backdropPath = try container.decodeIfPresent(String.self, forKey: .backdropPath) ?? String()
         let responseGenreIds = try container.decodeIfPresent([Int].self, forKey: .genreIds) ?? []
         genreIds = responseGenreIds.map { GenreType(rawValue: $0) ?? .notFound }
@@ -60,7 +60,7 @@ extension Movie: Codable, Equatable {
         posterPath = try container.decodeIfPresent(String.self, forKey: .posterPath) ?? String()
         releaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate) ?? String()
         title = try container.decodeIfPresent(String.self, forKey: .title) ?? String()
-        video = try container.decodeIfPresent(String.self, forKey: .video) ?? String()
+        video = try container.decodeIfPresent(Bool.self, forKey: .video) ?? Bool()
         voteAverage = try container.decodeIfPresent(Double.self, forKey: .voteAverage) ?? Double()
         voteCount = try container.decodeIfPresent(Double.self, forKey: .voteCount) ?? Double()
     }

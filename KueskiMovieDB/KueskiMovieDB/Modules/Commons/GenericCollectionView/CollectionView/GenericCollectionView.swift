@@ -9,6 +9,7 @@ import UIKit
 
 final class GenericCollectionView<Item>: UICollectionView {
     // MARK: - Properties
+    private var items: [Item] = []
     private var genericDataSource: GenericCollectionViewDataSource<Item>?
     private var genericDelegate: GenericCollectionViewDelegate<Item>?
     
@@ -20,8 +21,9 @@ final class GenericCollectionView<Item>: UICollectionView {
         configureCell: @escaping (Item, UICollectionViewCell) -> (),
         didSelectItem: @escaping (Item) -> ()
     ) {
+        self.items = items
         super.init(frame: frame, collectionViewLayout: layout)
-        setupUI(items: items, configureCell: configureCell, didSelectItem: didSelectItem)
+        setupUI(configureCell: configureCell, didSelectItem: didSelectItem)
     }
     
     @available(*, unavailable)
@@ -33,8 +35,14 @@ final class GenericCollectionView<Item>: UICollectionView {
         CollectionViewLayoutAnimator.animateLayoutChange(for: self, with: layout)
     }
     
+    func updateItems(with newItems: [Item]) {
+        self.items = newItems
+        genericDataSource?.updateItems(with: newItems)
+        reloadData()
+    }
+    
     // MARK: - Private Methods
-    private func setupUI(items: [Item], configureCell: @escaping (Item, UICollectionViewCell) -> (), didSelectItem: @escaping (Item) -> ()) {
+    private func setupUI(configureCell: @escaping (Item, UICollectionViewCell) -> (), didSelectItem: @escaping (Item) -> ()) {
         genericDataSource = GenericCollectionViewDataSource(items: items, configureCell: configureCell)
         genericDelegate = GenericCollectionViewDelegate(items: items, didSelectItem: didSelectItem)
         backgroundColor = .white

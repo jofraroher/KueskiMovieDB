@@ -21,8 +21,8 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
     )
     
     let movieTitleLabel = MovieListCollectionViewCell.makeLabel(
-        text: "MOVIE TITLE",
-        textAlignment: .left
+        textAlignment: .left, 
+        font: UIFont.preferredFont(forTextStyle: .body, weight: .bold)
     )
     let favoritesButton = MovieListCollectionViewCell.makeFavoritesButton()
     
@@ -31,17 +31,18 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
         spacing: 2
     )
     let generalMovieInfoLabel = MovieListCollectionViewCell.makeLabel(
-        text: "DATE • LANGUAGE",
-        textAlignment: .left
+        textAlignment: .left,
+        font: UIFont.preferredFont(forTextStyle: .caption1, weight: .light)
     )
     let movieGenresLabel = MovieListCollectionViewCell.makeLabel(
-        text: "GENRES",
         textAlignment: .left,
-        numberOfLines: 2
+        numberOfLines: 2, 
+        font: UIFont.preferredFont(forTextStyle: .caption1, weight: .light)
     )
     let movieOverviewLabel = MovieListCollectionViewCell.makeLabel(
-        text: "OVERVIEW",
-        textAlignment: .justified
+        textAlignment: .justified,
+        numberOfLines: 3,
+        font: UIFont.preferredFont(forTextStyle: .callout, weight: .regular, size: 12)
     )
     
     let popularityImage = MovieListCollectionViewCell.makeImageView(
@@ -49,14 +50,23 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
         tintColor: .black
     )
     let popularityRateLabel = MovieListCollectionViewCell.makeLabel(
-        text: "POPULARITY",
-        textAlignment: .right
+        textAlignment: .right,
+        font: UIFont.preferredFont(forTextStyle: .caption1, weight: .light)
     )
     
     // MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupUI()
+    }
+    
+    func configureCell(model: Movie) {
+        movieTitleLabel.text = model.title
+        generalMovieInfoLabel.text = "\(model.releaseDate) • \(model.originalLanguage.uppercased())"
+        movieGenresLabel.text = model.genreIds.toGenreString()
+        movieOverviewLabel.text = model.overview
+        popularityRateLabel.text = model.voteCount.formatted
+        
     }
     
     @available(*, unavailable)
