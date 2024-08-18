@@ -16,7 +16,7 @@ enum MoviesFactory {
             presenter: presenter,
             listLayoutProvider: ListLayoutProvider(),
             gridLayoutProvider: GridLayoutProvider(),
-            cellConfigurator: DefaultCellConfigurator()
+            cellConfigurator: MovieCellConfigurator()
         )
         presenter.view = view
         return factory(view)

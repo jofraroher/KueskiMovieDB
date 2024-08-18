@@ -6,35 +6,33 @@
 //
 
 final class MoviesPresenter {
-    
+
     weak var view: MoviesViewProtocol?
-    private let interactor: MoviesInteractorProtocol
-    
-    private var currentPage = 1
+    private let paginationService: PaginationService<Movie>
     
     internal var items: [Movie] = []
     
     init(interactor: MoviesInteractorProtocol) {
-        self.interactor = interactor
+        self.paginationService = PaginationService { page in
+            let queryParams = MoviesQueryParams(nowPlayingMovies: page)
+            return try await interactor.getMovieList(queryParams: queryParams)
+        }
     }
 }
 
 extension MoviesPresenter: MoviesPresenterProtocol {
     
     func updateMovieList() {
-        Task { await fetchMovies() }
-    }
-}
-
-extension MoviesPresenter {
-    private func fetchMovies() async {
-        do {
-            let response = try await interactor.getMovieList(queryParams: MoviesQueryParams(nowPlayingMovies: currentPage))
-            items.append(contentsOf: response)
-            currentPage += 1
-            await view?.reloadData(items: items)
-        } catch {
-            print(error)
+        Task {
+            do {
+                let newItems = try await paginationService.fetchNextPage()                
+                await MainActor.run {
+                    self.items.append(contentsOf: newItems)
+                    self.view?.reloadData(items: self.items)
+                }
+            } catch {
+                print("Error fetching movies: \(error)")
+            }
         }
     }
 }
