@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MoviesViewController: UIViewController {
+final class MoviesViewController: UIViewController {
 
     private let movieItems = Array(repeating: "TEST", count: 5)
     private var reusableCollectionView: GenericCollectionView<String, MovieCollectionViewCell>?
@@ -23,8 +23,18 @@ class MoviesViewController: UIViewController {
     @objc private func switchLayout() {
         isGridView.toggle()
         let layout = isGridView ? LayoutOptions.createGridLayout() : LayoutOptions.createListLayout()
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.reusableCollectionView?.visibleCells.forEach { cell in
+                cell.alpha = 0.0
+            }
+        }) { [weak self] _ in
             self?.reusableCollectionView?.setLayout(layout: layout)
+            self?.reusableCollectionView?.reloadData()
+            UIView.animate(withDuration: 0.3) {
+                self?.reusableCollectionView?.visibleCells.forEach { cell in
+                    cell.alpha = 1.0
+                }
+            }
         }
     }
     
