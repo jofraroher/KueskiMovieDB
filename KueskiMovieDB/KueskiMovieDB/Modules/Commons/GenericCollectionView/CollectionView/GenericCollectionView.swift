@@ -65,3 +65,9 @@ final class GenericCollectionView<Item, Cell: UICollectionViewCell>: UICollectio
         self.register(Cell.self, forCellWithReuseIdentifier: String(describing: Cell.self))
     }
 }
+
+extension GenericCollectionView {
+    func setLayout(layout: UICollectionViewLayout) {
+        setCollectionViewLayout(layout, animated: true)
+    }
+}

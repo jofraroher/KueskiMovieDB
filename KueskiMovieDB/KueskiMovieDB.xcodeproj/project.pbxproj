@@ -24,6 +24,7 @@
 		0B0F8AA42C7169C7004440B7 /* TabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AA32C7169C7004440B7 /* TabBarFactory.swift */; };
 		0B0F8AA92C716BD8004440B7 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AA82C716BD8004440B7 /* GenericCollectionView.swift */; };
 		0B0F8AAC2C716EDA004440B7 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AAB2C716EDA004440B7 /* MovieCollectionViewCell.swift */; };
+		0B0F8AAF2C717787004440B7 /* LayoutOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AAE2C717787004440B7 /* LayoutOptions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		0B0F8AA32C7169C7004440B7 /* TabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFactory.swift; sourceTree = "<group>"; };
 		0B0F8AA82C716BD8004440B7 /* GenericCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionView.swift; sourceTree = "<group>"; };
 		0B0F8AAB2C716EDA004440B7 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B0F8AAE2C717787004440B7 /* LayoutOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutOptions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 		0B0F8AA62C716BA7004440B7 /* GenericCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F8AAD2C717762004440B7 /* Layout */,
 				0B0F8AAA2C716EBA004440B7 /* Cell */,
 				0B0F8AA72C716BBF004440B7 /* CollectionView */,
 			);
@@ -269,6 +272,14 @@
 				0B0F8AAB2C716EDA004440B7 /* MovieCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		0B0F8AAD2C717762004440B7 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8AAE2C717787004440B7 /* LayoutOptions.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B0F8AAF2C717787004440B7 /* LayoutOptions.swift in Sources */,
 				0B0F8A642C715BB3004440B7 /* KueskiMovieDB.xcdatamodeld in Sources */,
 				0B0F8A972C7168B1004440B7 /* MoviesViewController.swift in Sources */,
 				0B0F8AA12C7169A0004440B7 /* TabBarRouter.swift in Sources */,
