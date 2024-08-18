@@ -10,7 +10,11 @@ import UIKit
 enum MoviesFactory {
 
     static func build(usingNavigationFactory factory: NavigationFactory) -> UIViewController {
-        let view = MoviesViewController()
+        let view = MoviesViewController(
+            currentLayoutProvider: ListLayoutProvider(),
+            otherLayoutProvider: GridLayoutProvider(),
+            cellConfigurator: DefaultCellConfigurator()
+        )
         return factory(view)
     }
 }
