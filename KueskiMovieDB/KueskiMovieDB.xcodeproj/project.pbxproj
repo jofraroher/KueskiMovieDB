@@ -54,6 +54,14 @@
 		0B0F8B002C71CB05004440B7 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AFF2C71CB05004440B7 /* Array+Ext.swift */; };
 		0B0F8B032C71CB58004440B7 /* ImageSizeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B022C71CB58004440B7 /* ImageSizeType.swift */; };
 		0B0F8B052C71CB6E004440B7 /* ImageQueryParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B042C71CB6E004440B7 /* ImageQueryParams.swift */; };
+		0B0F8B082C71CBCE004440B7 /* GetNowPlayingMoviesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B072C71CBCE004440B7 /* GetNowPlayingMoviesEndpoint.swift */; };
+		0B0F8B0A2C71CC2A004440B7 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B092C71CC2A004440B7 /* String+Ext.swift */; };
+		0B0F8B0D2C71CC5C004440B7 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B0C2C71CC5C004440B7 /* Configuration.swift */; };
+		0B0F8B102C71CC8E004440B7 /* ConfigurationConstantsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B0F2C71CC8E004440B7 /* ConfigurationConstantsKey.swift */; };
+		0B0F8B122C71CCD7004440B7 /* KueskiMovieDBConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B0F8B112C71CCD7004440B7 /* KueskiMovieDBConfiguration.plist */; };
+		0B0F8B152C71CDB0004440B7 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B142C71CDAF004440B7 /* GlobalFunctions.swift */; };
+		0B0F8B182C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B172C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift */; };
+		0B0F8B1C2C71CE5C004440B7 /* Decodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B1B2C71CE5C004440B7 /* Decodable+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +133,14 @@
 		0B0F8AFF2C71CB05004440B7 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		0B0F8B022C71CB58004440B7 /* ImageSizeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeType.swift; sourceTree = "<group>"; };
 		0B0F8B042C71CB6E004440B7 /* ImageQueryParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageQueryParams.swift; sourceTree = "<group>"; };
+		0B0F8B072C71CBCE004440B7 /* GetNowPlayingMoviesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNowPlayingMoviesEndpoint.swift; sourceTree = "<group>"; };
+		0B0F8B092C71CC2A004440B7 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		0B0F8B0C2C71CC5C004440B7 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		0B0F8B0F2C71CC8E004440B7 /* ConfigurationConstantsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationConstantsKey.swift; sourceTree = "<group>"; };
+		0B0F8B112C71CCD7004440B7 /* KueskiMovieDBConfiguration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KueskiMovieDBConfiguration.plist; sourceTree = "<group>"; };
+		0B0F8B142C71CDAF004440B7 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		0B0F8B172C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidableAPIResponseDecoder.swift; sourceTree = "<group>"; };
+		0B0F8B1B2C71CE5C004440B7 /* Decodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				0B0F8A652C715BB6004440B7 /* Assets.xcassets */,
+				0B0F8B112C71CCD7004440B7 /* KueskiMovieDBConfiguration.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -448,6 +465,7 @@
 		0B0F8ADD2C71C817004440B7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F8B0B2C71CC3F004440B7 /* Configuration */,
 				0B0F8AFB2C71CA72004440B7 /* Common */,
 				0B0F8AED2C71C99B004440B7 /* API */,
 				0B0F8AEA2C71C8E6004440B7 /* Error */,
@@ -459,6 +477,7 @@
 		0B0F8ADE2C71C829004440B7 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F8B162C71CDF0004440B7 /* APIResponseDecoder */,
 				0B0F8AE72C71C8B5004440B7 /* ErrorMapper */,
 				0B0F8AE42C71C887004440B7 /* AuthorizationTokenProvider */,
 				0B0F8ADF2C71C833004440B7 /* AsyncRepository */,
@@ -510,6 +529,7 @@
 		0B0F8AEE2C71C9B2004440B7 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				0B0F8B062C71CBBD004440B7 /* NowPlayingMoviesRouter */,
 				0B0F8AEF2C71C9BC004440B7 /* QueryParams */,
 			);
 			path = Router;
@@ -556,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				0B0F8AFC2C71CAA5004440B7 /* Utils */,
+				0B0F8B142C71CDAF004440B7 /* GlobalFunctions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -565,6 +586,8 @@
 			children = (
 				0B0F8AFD2C71CACC004440B7 /* Date+Ext.swift */,
 				0B0F8AFF2C71CB05004440B7 /* Array+Ext.swift */,
+				0B0F8B092C71CC2A004440B7 /* String+Ext.swift */,
+				0B0F8B1B2C71CE5C004440B7 /* Decodable+Ext.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -575,6 +598,39 @@
 				0B0F8B022C71CB58004440B7 /* ImageSizeType.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		0B0F8B062C71CBBD004440B7 /* NowPlayingMoviesRouter */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B072C71CBCE004440B7 /* GetNowPlayingMoviesEndpoint.swift */,
+			);
+			path = NowPlayingMoviesRouter;
+			sourceTree = "<group>";
+		};
+		0B0F8B0B2C71CC3F004440B7 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B0E2C71CC81004440B7 /* ConfigurationKeys */,
+				0B0F8B0C2C71CC5C004440B7 /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		0B0F8B0E2C71CC81004440B7 /* ConfigurationKeys */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B0F2C71CC8E004440B7 /* ConfigurationConstantsKey.swift */,
+			);
+			path = ConfigurationKeys;
+			sourceTree = "<group>";
+		};
+		0B0F8B162C71CDF0004440B7 /* APIResponseDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B172C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift */,
+			);
+			path = APIResponseDecoder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -681,6 +737,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B0F8B122C71CCD7004440B7 /* KueskiMovieDBConfiguration.plist in Resources */,
 				0B0F8A662C715BB6004440B7 /* Assets.xcassets in Resources */,
 				0B0F8A692C715BB6004440B7 /* Base in Resources */,
 				0B0F8A612C715BB3004440B7 /* Base in Resources */,
@@ -710,6 +767,8 @@
 			files = (
 				0B0F8AF82C71CA20004440B7 /* SortByType.swift in Sources */,
 				0B0F8A642C715BB3004440B7 /* KueskiMovieDB.xcdatamodeld in Sources */,
+				0B0F8B102C71CC8E004440B7 /* ConfigurationConstantsKey.swift in Sources */,
+				0B0F8B082C71CBCE004440B7 /* GetNowPlayingMoviesEndpoint.swift in Sources */,
 				0B0F8AC82C71C666004440B7 /* APIRequest.swift in Sources */,
 				0B0F8A972C7168B1004440B7 /* MoviesViewController.swift in Sources */,
 				0B0F8AF62C71CA10004440B7 /* LanguageType.swift in Sources */,
@@ -717,6 +776,7 @@
 				0B0F8AA12C7169A0004440B7 /* TabBarRouter.swift in Sources */,
 				0B0F8AD62C71C764004440B7 /* APIClientAuthorizationType.swift in Sources */,
 				0B0F8AB22C719001004440B7 /* MovieListCollectionViewCell+Layout.swift in Sources */,
+				0B0F8B0D2C71CC5C004440B7 /* Configuration.swift in Sources */,
 				0B0F8B002C71CB05004440B7 /* Array+Ext.swift in Sources */,
 				0B0F8AFE2C71CACC004440B7 /* Date+Ext.swift in Sources */,
 				0B0F8AD32C71C701004440B7 /* URLSessionAPIClient.swift in Sources */,
@@ -734,15 +794,19 @@
 				0B0F8AB92C71AEE0004440B7 /* MovieGridCollectionViewCell+Layout.swift in Sources */,
 				0B0F8AD92C71C78F004440B7 /* APIResponseDecoder.swift in Sources */,
 				0B0F8B052C71CB6E004440B7 /* ImageQueryParams.swift in Sources */,
+				0B0F8B1C2C71CE5C004440B7 /* Decodable+Ext.swift in Sources */,
 				0B0F8AE12C71C840004440B7 /* DefaultAsyncRepository.swift in Sources */,
 				0B0F8AE62C71C893004440B7 /* AuthorizationTokenProvder.swift in Sources */,
 				0B0F8A9A2C7168E6004440B7 /* MoviesFactory.swift in Sources */,
 				0B0F8ABD2C71B697004440B7 /* ListCollectionViewLayout.swift in Sources */,
+				0B0F8B182C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift in Sources */,
 				0B0F8ABF2C71B6BB004440B7 /* GridCollectionViewLayout.swift in Sources */,
 				0B0F8AA42C7169C7004440B7 /* TabBarFactory.swift in Sources */,
 				0B0F8AFA2C71CA3B004440B7 /* MoviesQueryParams.swift in Sources */,
 				0B0F8AAC2C716EDA004440B7 /* MovieListCollectionViewCell.swift in Sources */,
 				0B0F8ACB2C71C690004440B7 /* HTTPRequestMethod.swift in Sources */,
+				0B0F8B152C71CDB0004440B7 /* GlobalFunctions.swift in Sources */,
+				0B0F8B0A2C71CC2A004440B7 /* String+Ext.swift in Sources */,
 				0B0F8AEC2C71C8F5004440B7 /* DefaultAPIClientErrorMapper.swift in Sources */,
 				0B0F8AA92C716BD8004440B7 /* GenericCollectionView.swift in Sources */,
 				0B0F8A9E2C716971004440B7 /* MovieTabBarView.swift in Sources */,

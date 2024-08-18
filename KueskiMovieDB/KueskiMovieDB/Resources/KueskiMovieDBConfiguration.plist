@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BASE_KUESKI_MOVIEDB_PATH</key>
+	<string>https://api.themoviedb.org/3/discover/movie</string>
+	<key>BASE_MOVIE_IMAGE_PATH</key>
+	<string>https://image.tmdb.org/t/p/</string>
+</dict>
+</plist>
