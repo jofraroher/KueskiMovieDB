@@ -76,13 +76,16 @@ final class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataS
         dataSource = genericDataSource
         prefetchDataSource = self
         translatesAutoresizingMaskIntoConstraints = false
+        
+        // Configuración del UIRefreshControl
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(loadMoreItems(_:)), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        
         register(MovieGridCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MovieGridCollectionViewCell.self))
         register(MovieListCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: MovieListCollectionViewCell.self))
     }
     
-    @objc func loadMoreItems(_ sender: Any) {
+    @objc func refreshData(_ sender: Any) {
         if !isFetching {
             fetchRemoteData()
             isFetching = true

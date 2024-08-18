@@ -94,7 +94,6 @@ final class MoviesViewController: UIViewController {
 extension MoviesViewController: MoviesViewProtocol {
     
     func reloadData(items: [Movie]) {
-        reusableCollectionView.isFetching = false
-        reusableCollectionView.updateItems(with: items)
+        reusableCollectionView.handleDataLoadCompletion(with: items)
     }
 }
