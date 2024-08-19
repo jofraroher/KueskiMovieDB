@@ -40,7 +40,8 @@ extension MoviesPresenter: MoviesPresenterProtocol {
                 let updatedItems = try await syncService.syncWithSavedMovies(newItems: newItems, storageService: movieStorageService)
                 await updateUI(with: updatedItems, append: true)
             } catch {
-                handleError(error)
+                await updateUI(with: items, append: false)
+                await handleError(error)
             }
         }
     }
@@ -55,7 +56,8 @@ extension MoviesPresenter: MoviesPresenterProtocol {
                 let updatedItems = try await syncService.syncWithSavedMovies(newItems: newItems, storageService: movieStorageService)
                 await updateUI(with: updatedItems, append: false)
             } catch {
-                handleError(error)
+                await updateUI(with: items, append: false)
+                await handleError(error)
             }
         }
     }
@@ -71,7 +73,8 @@ extension MoviesPresenter: MoviesPresenterProtocol {
                     await updateMovieStatus(with: model.id, isFavorite: true)
                 }
             } catch {
-                handleError(error)
+                await updateUI(with: items, append: false)
+                await handleError(error)
             }
         }
     }
@@ -103,8 +106,8 @@ private extension MoviesPresenter {
         }
     }
 
+    @MainActor
     func handleError(_ error: Error) {
-        print("Error: \(error.localizedDescription)")
-        // Manejo de errores específico si es necesario
+        view?.showAlert()
     }
 }

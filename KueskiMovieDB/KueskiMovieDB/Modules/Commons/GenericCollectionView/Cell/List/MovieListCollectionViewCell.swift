@@ -110,6 +110,12 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
             return
         }
         posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        posterImageView.sd_setImage(with: pathUrl)
+        posterImageView.sd_setImage(with: pathUrl) { [weak self] image, error, _, _ in
+            if error != nil {
+                self?.posterImageView.image = UIImage(named: "noImageAvailable")
+            } else {
+                self?.posterImageView.image = image
+            }
+        }
     }
 }

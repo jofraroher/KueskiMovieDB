@@ -73,15 +73,34 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(model: Movie) {
-        favoritesButton.setImage(model.isFavorite ? UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate) : UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        configureFavoritesButton(isFavorite: model.isFavorite)
+        configureLabels(with: model)
+        configurePosterImageView(path: model.posterPath)
+    }
+
+    private func configureFavoritesButton(isFavorite: Bool) {
+        let imageName = isFavorite ? "heart.fill" : "heart"
+        let image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate)
+        favoritesButton.setImage(image, for: .normal)
+    }
+
+    private func configureLabels(with model: Movie) {
         movieTitleLabel.text = model.title
         generalMovieInfoLabel.text = "\(model.releaseDate) • \(model.originalLanguage.uppercased())"
         movieGenresLabel.text = model.genreIds.toGenreString()
         movieOverviewLabel.text = model.overview
         popularityRateLabel.text = model.voteCount.formatted
-        if let pathUrl = GetMovieImageEndpoint(urlParams: ImageQueryParams(imagePath: model.posterPath)).url {
-            posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            posterImageView.sd_setImage(with: pathUrl)
+    }
+
+    private func configurePosterImageView(path: String?) {
+        guard let path = path, let pathUrl = GetMovieImageEndpoint(urlParams: ImageQueryParams(imagePath: path)).url else { return }
+        posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        posterImageView.sd_setImage(with: pathUrl) { [weak self] image, error, _, _ in
+            if error != nil {
+                self?.posterImageView.image = UIImage(named: "noImageAvailable")
+            } else {
+                self?.posterImageView.image = image
+            }
         }
     }
 }

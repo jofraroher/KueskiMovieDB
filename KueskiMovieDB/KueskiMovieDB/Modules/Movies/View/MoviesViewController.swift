@@ -115,6 +115,18 @@ extension MoviesViewController: MoviesViewProtocol {
     func reloadData(items: [Movie]) {
         reusableCollectionView.handleDataLoadCompletion(with: items)
     }
+    
+    func showAlert() {
+        let alertController = UIAlertController(
+            title: "Oops!",
+            message: "Something went wrong. Please try again later.\n", preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in }
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension MoviesViewController: GenericCollectionViewCellDelegate {
