@@ -67,7 +67,7 @@ final class CoreDataService: DatabaseServiceProtocol {
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
-            let result = try await context.perform {
+            let _ = try await context.perform {
                 try context.execute(batchDeleteRequest) as? NSBatchDeleteResult
             }
         } catch {

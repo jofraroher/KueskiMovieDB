@@ -16,4 +16,9 @@ final class MockNavigationController: UINavigationController {
         pushedViewController = viewController
         super.pushViewController(viewController, animated: animated)
     }
+    
+    func call(_ viewController: UIViewController) -> UIViewController {
+        pushViewControllerCalled = true
+        return pushedViewController ?? viewController
+    }
 }
