@@ -55,6 +55,7 @@ final class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataS
         let oldCount = items.count
         items = newItems
         genericDataSource?.updateItems(with: newItems)
+        genericDelegate?.updateItems(with: newItems)
         
         guard oldCount != newItems.count else {
             reloadData()
@@ -96,6 +97,7 @@ final class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataS
         for indexPath in indexPaths {
             if indexPath.row >= items.count {
                 print("Index out of range: \(indexPath.row) >= \(items.count)")
+                continue
             }
             if indexPath.row >= items.count - 3 && !isFetching {
                 fetchRemoteData()
