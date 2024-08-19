@@ -1,12 +1,12 @@
 //
-//  NowPlayingMoviesListUseCase.swift
+//  PopularMoviesListUseCase.swift
 //  KueskiMovieDB
 //
-//  Created by Francisco Rosales on 18/08/24.
+//  Created by Francisco Rosales on 19/08/24.
 //
 
-final class NowPlayingMoviesListUseCase: MoviesUseCaseProtocol {
-    
+final class PopularMoviesListUseCase: MoviesUseCaseProtocol {
+
     private let apiClient: AsyncRepository
     
     init(apiClient: AsyncRepository = DefaultAsyncRepository(tokenProvider: AuthorizationTokenProviderManager.getTokenAuthorization()) ) {
@@ -14,7 +14,7 @@ final class NowPlayingMoviesListUseCase: MoviesUseCaseProtocol {
     }
     
     func execute(queryParams: MoviesQueryParams) async throws -> [Movie] {
-        let endPoint = GetNowPlayingMoviesEndpoint(queryParams: queryParams.dictionary)
+        let endPoint = GetPopularMoviesEndpoint(queryParams: queryParams.dictionary)
         let response = try await apiClient.request(
             request: endPoint,
             responseType: MovieResponse.self,

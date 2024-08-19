@@ -17,7 +17,7 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
     )
     let imageContainerView = MovieGridCollectionViewCell.makeContainerView(
         cornerRadius: 15,
-        backgroundColor: .red
+        backgroundColor: .clear
     )
     let posterImageView = MovieListCollectionViewCell.makePosterImage()
     
@@ -73,6 +73,7 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(model: Movie) {
+        favoritesButton.setImage(model.isFavorite ? UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate) : UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
         movieTitleLabel.text = model.title
         generalMovieInfoLabel.text = "\(model.releaseDate) • \(model.originalLanguage.uppercased())"
         movieGenresLabel.text = model.genreIds.toGenreString()

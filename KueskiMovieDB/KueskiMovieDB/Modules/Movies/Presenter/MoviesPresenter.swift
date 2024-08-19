@@ -8,6 +8,7 @@
 final class MoviesPresenter {
 
     weak var view: MoviesViewProtocol?
+    var router: MoviesRouterProtocol?
     private let movieStorageService: MovieStorageServiceProtocol
     private let syncService: MovieSyncServiceProtocol
     private let paginationService: any PaginationServiceProtocol
@@ -73,6 +74,10 @@ extension MoviesPresenter: MoviesPresenterProtocol {
                 handleError(error)
             }
         }
+    }
+    
+    func navigateToMovieDetail() {
+        router?.navigateToMovieDetail()
     }
 }
 
