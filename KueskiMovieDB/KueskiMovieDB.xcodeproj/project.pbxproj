@@ -133,6 +133,11 @@
 		0BB7FAE22C73968C001D14C1 /* MockMovieSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAE12C73968C001D14C1 /* MockMovieSyncService.swift */; };
 		0BB7FAE42C7396B8001D14C1 /* MockPaginationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAE32C7396B8001D14C1 /* MockPaginationService.swift */; };
 		0BB7FAE72C739701001D14C1 /* MoviesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAE62C739701001D14C1 /* MoviesPresenterTests.swift */; };
+		0BB7FAED2C73A6D2001D14C1 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAEC2C73A6D2001D14C1 /* MockAPIClient.swift */; };
+		0BB7FAEF2C73A80C001D14C1 /* MockAuthorizationTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAEE2C73A80C001D14C1 /* MockAuthorizationTokenProvider.swift */; };
+		0BB7FAF12C73A827001D14C1 /* MockAPIResponseErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAF02C73A827001D14C1 /* MockAPIResponseErrorMapper.swift */; };
+		0BB7FAF32C73A874001D14C1 /* DefaultAsyncRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAF22C73A874001D14C1 /* DefaultAsyncRepositoryTests.swift */; };
+		0BB7FAF62C73A8F2001D14C1 /* APIRequestStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAF52C73A8F2001D14C1 /* APIRequestStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,6 +288,11 @@
 		0BB7FAE12C73968C001D14C1 /* MockMovieSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieSyncService.swift; sourceTree = "<group>"; };
 		0BB7FAE32C7396B8001D14C1 /* MockPaginationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaginationService.swift; sourceTree = "<group>"; };
 		0BB7FAE62C739701001D14C1 /* MoviesPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenterTests.swift; sourceTree = "<group>"; };
+		0BB7FAEC2C73A6D2001D14C1 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
+		0BB7FAEE2C73A80C001D14C1 /* MockAuthorizationTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthorizationTokenProvider.swift; sourceTree = "<group>"; };
+		0BB7FAF02C73A827001D14C1 /* MockAPIResponseErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIResponseErrorMapper.swift; sourceTree = "<group>"; };
+		0BB7FAF22C73A874001D14C1 /* DefaultAsyncRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAsyncRepositoryTests.swift; sourceTree = "<group>"; };
+		0BB7FAF52C73A8F2001D14C1 /* APIRequestStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +363,7 @@
 		0B0F8A722C715BB7004440B7 /* KueskiMovieDBTests */ = {
 			isa = PBXGroup;
 			children = (
+				0BB7FAF42C73A8CC001D14C1 /* CommonStubs */,
 				0BB7FAB52C737917001D14C1 /* Modules */,
 				0BB7FAAC2C73725F001D14C1 /* CommonMocks */,
 				0BB7FAA32C736C0E001D14C1 /* Core */,
@@ -1123,6 +1134,7 @@
 		0BB7FAA32C736C0E001D14C1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0BB7FAE92C73A672001D14C1 /* APIClient */,
 				0BB7FAAB2C7371E9001D14C1 /* Repository */,
 				0BB7FAA42C736C20001D14C1 /* Models */,
 			);
@@ -1269,6 +1281,41 @@
 				0BB7FAE62C739701001D14C1 /* MoviesPresenterTests.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0BB7FAE92C73A672001D14C1 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FAEA2C73A680001D14C1 /* AsyncRepository */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		0BB7FAEA2C73A680001D14C1 /* AsyncRepository */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FAEB2C73A6BB001D14C1 /* Mocks */,
+				0BB7FAF22C73A874001D14C1 /* DefaultAsyncRepositoryTests.swift */,
+			);
+			path = AsyncRepository;
+			sourceTree = "<group>";
+		};
+		0BB7FAEB2C73A6BB001D14C1 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FAEC2C73A6D2001D14C1 /* MockAPIClient.swift */,
+				0BB7FAEE2C73A80C001D14C1 /* MockAuthorizationTokenProvider.swift */,
+				0BB7FAF02C73A827001D14C1 /* MockAPIResponseErrorMapper.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		0BB7FAF42C73A8CC001D14C1 /* CommonStubs */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FAF52C73A8F2001D14C1 /* APIRequestStub.swift */,
+			);
+			path = CommonStubs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1535,6 +1582,11 @@
 				0BB7FAE72C739701001D14C1 /* MoviesPresenterTests.swift in Sources */,
 				0BB7FAD02C738544001D14C1 /* MockDatabaseManager.swift in Sources */,
 				0BB7FAB42C737457001D14C1 /* PopularMoviesListUseCaseTests.swift in Sources */,
+				0BB7FAEF2C73A80C001D14C1 /* MockAuthorizationTokenProvider.swift in Sources */,
+				0BB7FAF62C73A8F2001D14C1 /* APIRequestStub.swift in Sources */,
+				0BB7FAF12C73A827001D14C1 /* MockAPIResponseErrorMapper.swift in Sources */,
+				0BB7FAF32C73A874001D14C1 /* DefaultAsyncRepositoryTests.swift in Sources */,
+				0BB7FAED2C73A6D2001D14C1 /* MockAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
