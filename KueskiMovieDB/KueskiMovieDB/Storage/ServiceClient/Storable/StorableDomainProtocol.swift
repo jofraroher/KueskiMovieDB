@@ -7,7 +7,11 @@
 
 import CoreData
 
-protocol StorableDomainProtocol {
-    associatedtype EntityType: DomainObjectConvertible
+protocol IdentifiableEntity {
+    var idDomain: String { get }
+}
+
+protocol StorableDomainProtocol: IdentifiableEntity {
+    associatedtype EntityType: NSManagedObject
     func toEntity(context: NSManagedObjectContext) -> EntityType
 }

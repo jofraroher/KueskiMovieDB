@@ -6,9 +6,8 @@
 //
 
 protocol PaginationServiceProtocol {
-    associatedtype Item
-    func fetchNextPage() async throws -> [Item]
-    func fetchBySort(sortBy: SortByType) async throws -> [Item]
+    func fetchNextPage() async throws -> [Any]
+    func fetchBySort(sortBy: SortByType) async throws -> [Any]
     func reset()
 }
 
@@ -22,13 +21,13 @@ final class PaginationService<Item>: PaginationServiceProtocol {
         self.fetchPage = fetchPage
     }
     
-    func fetchNextPage() async throws -> [Item] {
+    func fetchNextPage() async throws -> [Any] {
         let items = try await fetchPage(currentPage, currentSort)
         currentPage += 1
         return items
     }
     
-    func fetchBySort(sortBy: SortByType) async throws -> [Item] {
+    func fetchBySort(sortBy: SortByType) async throws -> [Any] {
         currentSort = sortBy
         currentPage = 1
         return try await fetchNextPage()

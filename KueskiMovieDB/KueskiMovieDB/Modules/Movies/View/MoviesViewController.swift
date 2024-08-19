@@ -117,6 +117,6 @@ extension MoviesViewController: MoviesViewProtocol {
 
 extension MoviesViewController: GenericCollectionViewCellDelegate {
     func didTapButton(withModel model: Movie) {
-        print("here")
+        presenter.saveMovie(model: model)
     }
 }

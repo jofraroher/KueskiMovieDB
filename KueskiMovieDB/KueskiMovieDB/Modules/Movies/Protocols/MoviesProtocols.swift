@@ -16,10 +16,14 @@ protocol MoviesPresenterProtocol: AnyObject {
     
     func updateMovieList()
     func updateMovieListBySort(sortBy: SortByType)
+    func saveMovie(model: Movie)
 }
 
 protocol MoviesInteractorProtocol: AnyObject {
-    func getMovieList(queryParams: MoviesQueryParams) async throws -> [Movie] 
+    func getMovieList(queryParams: MoviesQueryParams) async throws -> [Movie]
+    func saveMovie(model: Movie) async throws
+    func getSavedMovies() async throws -> [Movie]
+    func deleteMovie(model: Movie) async throws
 }
 
 protocol CellConfigurator: AnyObject {
