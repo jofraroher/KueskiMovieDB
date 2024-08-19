@@ -2,33 +2,26 @@
 //  MovieStorageService.swift
 //  KueskiMovieDB
 //
-//  Created by Francisco Rosales on 18/08/24.
+//  Created by Francisco Rosales on 19/08/24.
 //
 
 protocol MovieStorageServiceProtocol: AnyObject {
-    func saveMovie(model: Movie) async throws
-    func getSavedMovies() async throws -> [Movie]
     func deleteMovie(model: Movie) async throws
+    func saveMovie(model: Movie) async throws
 }
 
 final class MovieStorageService: MovieStorageServiceProtocol {
-    private let interactor: MoviesDatabaseProtocol
+    private let storageInteractor: MoviesDatabaseProtocol
     
-    init(interactor: MoviesDatabaseProtocol) {
-        self.interactor = interactor
-    }
-    
-    func saveMovie(model: Movie) async throws {
-        if !model.isFavorite {
-            try await interactor.saveMovie(model: model)
-        }
-    }
-    
-    func getSavedMovies() async throws -> [Movie] {
-        try await interactor.getSavedMovies()
+    init(storageInteractor: MoviesDatabaseProtocol ) {
+        self.storageInteractor = storageInteractor
     }
     
     func deleteMovie(model: Movie) async throws {
-        try await interactor.deleteMovie(model: model)
+        try await storageInteractor.deleteMovie(model: model)
+    }
+    
+    func saveMovie(model: Movie) async throws {
+        try await storageInteractor.saveMovie(model: model)
     }
 }

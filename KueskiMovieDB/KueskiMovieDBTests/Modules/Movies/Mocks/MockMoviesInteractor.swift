@@ -7,18 +7,11 @@
 
 @testable import KueskiMovieDB
 
-final class MockMoviesInteractor: MoviesNetworkProtocol, MoviesDatabaseProtocol {
+final class MockMoviesInteractor: MoviesNetworkProtocol, MoviesFetchingProtocol {
     
     var queryParamsPassed: MoviesQueryParams?
     var savedMovies: [Movie] = []
     var errorToThrow: Error?
-    
-    func saveMovie(model: Movie) async throws {
-        if let error = errorToThrow {
-            throw error
-        }
-        savedMovies.append(model)
-    }
     
     func getSavedMovies() async throws -> [Movie] {
         if let error = errorToThrow {
@@ -27,14 +20,7 @@ final class MockMoviesInteractor: MoviesNetworkProtocol, MoviesDatabaseProtocol 
         return savedMovies
     }
     
-    func deleteMovie(model: Movie) async throws {
-        if let error = errorToThrow {
-            throw error
-        }
-        savedMovies.removeAll { $0.id == model.id }
-    }
-    
-    func getMovieList(queryParams: KueskiMovieDB.MoviesQueryParams) async throws -> [Movie] {
+    func getMovieList(queryParams: MoviesQueryParams) async throws -> [Movie] {
         queryParamsPassed = queryParams
         if let error = errorToThrow {
             throw error

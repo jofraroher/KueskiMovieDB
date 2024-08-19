@@ -52,7 +52,10 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
         textAlignment: .right,
         font: UIFont.preferredFont(forTextStyle: .caption1, weight: .light)
     )
-    let favoritesButton = MovieGridCollectionViewCell.makeFavoritesButton()
+    let favoritesImage = MovieGridCollectionViewCell.makeImageView(
+        systemImageName: "heart",
+        tintColor: .red
+    )
     
     // MARK: - Initializer
     override init(frame: CGRect) {
@@ -81,7 +84,8 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
     private func configureFavoritesButton(isFavorite: Bool) {
         let imageName = isFavorite ? "heart.fill" : "heart"
         let image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate)
-        favoritesButton.setImage(image, for: .normal)
+        favoritesImage.image = image
+        favoritesImage.tintColor = .red
     }
 
     private func configureLabels(with model: Movie) {

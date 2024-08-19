@@ -14,7 +14,7 @@ extension MovieListCollectionViewCell {
         [
             imageContainerView,
             movieTitleLabel,
-            favoritesButton,
+            favoritesImage,
             movieDetailsContainerStackView,
             popularityImage,
             popularityRateLabel
@@ -51,23 +51,23 @@ extension MovieListCollectionViewCell {
             
             // Movie Title Label
             movieTitleLabel.leadingAnchor.constraint(equalTo: imageContainerView.trailingAnchor, constant: 10),
-            movieTitleLabel.trailingAnchor.constraint(equalTo: favoritesButton.leadingAnchor, constant: -5),
-            movieTitleLabel.centerYAnchor.constraint(equalTo: favoritesButton.centerYAnchor),
+            movieTitleLabel.trailingAnchor.constraint(equalTo: favoritesImage.leadingAnchor, constant: -5),
+            movieTitleLabel.centerYAnchor.constraint(equalTo: favoritesImage.centerYAnchor),
             
-            // Favorites Button
-            favoritesButton.trailingAnchor.constraint(equalTo: mainContainerView.trailingAnchor, constant: -10),
-            favoritesButton.topAnchor.constraint(equalTo: imageContainerView.topAnchor),
-            favoritesButton.widthAnchor.constraint(equalToConstant: 30),
-            favoritesButton.heightAnchor.constraint(equalToConstant: 30),
+            // Favorites Image
+            favoritesImage.trailingAnchor.constraint(equalTo: mainContainerView.trailingAnchor, constant: -10),
+            favoritesImage.topAnchor.constraint(equalTo: imageContainerView.topAnchor),
+            favoritesImage.widthAnchor.constraint(equalToConstant: 30),
+            favoritesImage.heightAnchor.constraint(equalToConstant: 30),
             
             // Movie Details Container StackView
             movieDetailsContainerStackView.leadingAnchor.constraint(equalTo: movieTitleLabel.leadingAnchor),
-            movieDetailsContainerStackView.trailingAnchor.constraint(equalTo: favoritesButton.trailingAnchor),
-            movieDetailsContainerStackView.topAnchor.constraint(equalTo: favoritesButton.bottomAnchor, constant: 2),
+            movieDetailsContainerStackView.trailingAnchor.constraint(equalTo: favoritesImage.trailingAnchor),
+            movieDetailsContainerStackView.topAnchor.constraint(equalTo: favoritesImage.bottomAnchor, constant: 2),
             movieDetailsContainerStackView.bottomAnchor.constraint(equalTo: popularityImage.topAnchor, constant: -2),
             
             // Popularity Image
-            popularityImage.trailingAnchor.constraint(equalTo: favoritesButton.trailingAnchor),
+            popularityImage.trailingAnchor.constraint(equalTo: favoritesImage.trailingAnchor),
             popularityImage.bottomAnchor.constraint(equalTo: imageContainerView.bottomAnchor),
             popularityImage.heightAnchor.constraint(equalToConstant: 18),
             popularityImage.widthAnchor.constraint(equalToConstant: 18),

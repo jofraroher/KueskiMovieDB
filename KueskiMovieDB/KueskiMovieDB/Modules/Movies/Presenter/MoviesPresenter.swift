@@ -9,18 +9,18 @@ final class MoviesPresenter {
 
     weak var view: MoviesViewProtocol?
     var router: MoviesRouterProtocol?
-    internal let movieStorageService: MovieStorageServiceProtocol
+    internal let movieFetchingService: MovieFetchingServiceProtocol
     internal let syncService: MovieSyncServiceProtocol
     internal let paginationService: any PaginationServiceProtocol
     internal var items: [Movie] = []
 
     init(
         interactor: MoviesNetworkProtocol,
-        movieStorageService: MovieStorageServiceProtocol,
+        movieFetchingService: MovieFetchingServiceProtocol,
         paginationServiceFactory: PaginationServiceFactoryProtocol,
         syncService: MovieSyncServiceProtocol
     ) {
-        self.movieStorageService = movieStorageService
+        self.movieFetchingService = movieFetchingService
         self.syncService = syncService
         self.paginationService = paginationServiceFactory.makePaginationService(interactor: interactor)
     }
@@ -37,7 +37,7 @@ extension MoviesPresenter: MoviesPresenterProtocol {
                 guard let newItems = newItems as? [Movie] else {
                     throw KueskiMovieRequestError.invalidResponse
                 }
-                let updatedItems = try await syncService.syncWithSavedMovies(newItems: newItems, storageService: movieStorageService)
+                let updatedItems = try await syncService.syncWithSavedMovies(newItems: newItems, fetchingService: movieFetchingService)
                 await updateUI(with: updatedItems, append: true)
             } catch {
                 await updateUI(with: items, append: false)
@@ -53,25 +53,8 @@ extension MoviesPresenter: MoviesPresenterProtocol {
                 guard let newItems = newItems as? [Movie] else {
                     throw KueskiMovieRequestError.invalidResponse
                 }
-                let updatedItems = try await syncService.syncWithSavedMovies(newItems: newItems, storageService: movieStorageService)
+                let updatedItems = try await syncService.syncWithSavedMovies(newItems: newItems, fetchingService: movieFetchingService)
                 await updateUI(with: updatedItems, append: false)
-            } catch {
-                await updateUI(with: items, append: false)
-                await handleError(error)
-            }
-        }
-    }
-
-    func saveMovie(model: Movie) {
-        Task {
-            do {
-                if model.isFavorite {
-                    try await movieStorageService.deleteMovie(model: model)
-                    await updateMovieStatus(with: model.id, isFavorite: false)
-                } else {
-                    try await movieStorageService.saveMovie(model: model)
-                    await updateMovieStatus(with: model.id, isFavorite: true)
-                }
             } catch {
                 await updateUI(with: items, append: false)
                 await handleError(error)
@@ -82,7 +65,7 @@ extension MoviesPresenter: MoviesPresenterProtocol {
     func refreshStatu() {
         Task {
             do {
-                let refreshItems = try await syncService.syncWithSavedMovies(newItems: items, storageService: movieStorageService)
+                let refreshItems = try await syncService.syncWithSavedMovies(newItems: items, fetchingService: movieFetchingService)
                 await updateUI(with: refreshItems, append: false)
             } catch {
                 await handleError(error)

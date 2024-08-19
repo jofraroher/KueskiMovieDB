@@ -97,8 +97,7 @@
 		0BB7FA762C72B144001D14C1 /* DomainObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA752C72B144001D14C1 /* DomainObjectConvertible.swift */; };
 		0BB7FA7F2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA7D2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift */; };
 		0BB7FA802C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA7E2C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift */; };
-		0BB7FA842C72E491001D14C1 /* GenericCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA832C72E490001D14C1 /* GenericCollectionViewCellDelegate.swift */; };
-		0BB7FA862C730572001D14C1 /* MovieStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA852C730572001D14C1 /* MovieStorageService.swift */; };
+		0BB7FA862C730572001D14C1 /* MovieFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA852C730572001D14C1 /* MovieFetchingService.swift */; };
 		0BB7FA882C730E22001D14C1 /* MovieSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA872C730E22001D14C1 /* MovieSyncService.swift */; };
 		0BB7FA8B2C7311AF001D14C1 /* PaginationServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA8A2C7311AF001D14C1 /* PaginationServiceFactory.swift */; };
 		0BB7FA932C734975001D14C1 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA922C734975001D14C1 /* MovieDetailView.swift */; };
@@ -117,7 +116,7 @@
 		0BB7FABB2C7379C8001D14C1 /* MoviesRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FABA2C7379C8001D14C1 /* MoviesRouterTests.swift */; };
 		0BB7FABD2C737A7C001D14C1 /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FABC2C737A7C001D14C1 /* MockViewController.swift */; };
 		0BB7FAC12C737B69001D14C1 /* MockMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAC02C737B69001D14C1 /* MockMoviesInteractor.swift */; };
-		0BB7FAC32C737BDD001D14C1 /* MovieStorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAC22C737BDD001D14C1 /* MovieStorageServiceTests.swift */; };
+		0BB7FAC32C737BDD001D14C1 /* MovieFetchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAC22C737BDD001D14C1 /* MovieFetchServiceTests.swift */; };
 		0BB7FAC62C737C3B001D14C1 /* StubMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAC52C737C3B001D14C1 /* StubMovie.swift */; };
 		0BB7FAC92C737F19001D14C1 /* PaginationServiceFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FAC82C737F19001D14C1 /* PaginationServiceFactoryTests.swift */; };
 		0BB7FACB2C738243001D14C1 /* PaginationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FACA2C738243001D14C1 /* PaginationServiceTests.swift */; };
@@ -149,6 +148,7 @@
 		0BB7FB102C73F644001D14C1 /* MovieOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB0F2C73F644001D14C1 /* MovieOverviewView.swift */; };
 		0BB7FB122C73F659001D14C1 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB112C73F659001D14C1 /* SaveButton.swift */; };
 		0BB7FB172C73F951001D14C1 /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB162C73F951001D14C1 /* MovieDetailPresenter.swift */; };
+		0BB7FB192C740164001D14C1 /* MovieStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB182C740164001D14C1 /* MovieStorageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,8 +262,7 @@
 		0BB7FA752C72B144001D14C1 /* DomainObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainObjectConvertible.swift; sourceTree = "<group>"; };
 		0BB7FA7D2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0BB7FA7E2C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		0BB7FA832C72E490001D14C1 /* GenericCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
-		0BB7FA852C730572001D14C1 /* MovieStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStorageService.swift; sourceTree = "<group>"; };
+		0BB7FA852C730572001D14C1 /* MovieFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFetchingService.swift; sourceTree = "<group>"; };
 		0BB7FA872C730E22001D14C1 /* MovieSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSyncService.swift; sourceTree = "<group>"; };
 		0BB7FA8A2C7311AF001D14C1 /* PaginationServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationServiceFactory.swift; sourceTree = "<group>"; };
 		0BB7FA922C734975001D14C1 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
@@ -282,7 +281,7 @@
 		0BB7FABA2C7379C8001D14C1 /* MoviesRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRouterTests.swift; sourceTree = "<group>"; };
 		0BB7FABC2C737A7C001D14C1 /* MockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewController.swift; sourceTree = "<group>"; };
 		0BB7FAC02C737B69001D14C1 /* MockMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMoviesInteractor.swift; sourceTree = "<group>"; };
-		0BB7FAC22C737BDD001D14C1 /* MovieStorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStorageServiceTests.swift; sourceTree = "<group>"; };
+		0BB7FAC22C737BDD001D14C1 /* MovieFetchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFetchServiceTests.swift; sourceTree = "<group>"; };
 		0BB7FAC52C737C3B001D14C1 /* StubMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMovie.swift; sourceTree = "<group>"; };
 		0BB7FAC82C737F19001D14C1 /* PaginationServiceFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationServiceFactoryTests.swift; sourceTree = "<group>"; };
 		0BB7FACA2C738243001D14C1 /* PaginationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationServiceTests.swift; sourceTree = "<group>"; };
@@ -315,6 +314,7 @@
 		0BB7FB0F2C73F644001D14C1 /* MovieOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOverviewView.swift; sourceTree = "<group>"; };
 		0BB7FB112C73F659001D14C1 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		0BB7FB162C73F951001D14C1 /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenter.swift; sourceTree = "<group>"; };
+		0BB7FB182C740164001D14C1 /* MovieStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStorageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,7 +518,6 @@
 		0B0F8AA62C716BA7004440B7 /* GenericCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				0BB7FA822C72E476001D14C1 /* Delegate */,
 				0B0F8AAD2C717762004440B7 /* Layout */,
 				0B0F8AAA2C716EBA004440B7 /* Cell */,
 				0B0F8AA72C716BBF004440B7 /* CollectionView */,
@@ -958,8 +957,9 @@
 			isa = PBXGroup;
 			children = (
 				0BB7FA892C731191001D14C1 /* PaginationService */,
-				0BB7FA852C730572001D14C1 /* MovieStorageService.swift */,
+				0BB7FA852C730572001D14C1 /* MovieFetchingService.swift */,
 				0BB7FA872C730E22001D14C1 /* MovieSyncService.swift */,
+				0BB7FB182C740164001D14C1 /* MovieStorageService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1077,14 +1077,6 @@
 				0BB7FA752C72B144001D14C1 /* DomainObjectConvertible.swift */,
 			);
 			path = DomainConvertible;
-			sourceTree = "<group>";
-		};
-		0BB7FA822C72E476001D14C1 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				0BB7FA832C72E490001D14C1 /* GenericCollectionViewCellDelegate.swift */,
-			);
-			path = Delegate;
 			sourceTree = "<group>";
 		};
 		0BB7FA892C731191001D14C1 /* PaginationService */ = {
@@ -1253,7 +1245,7 @@
 			isa = PBXGroup;
 			children = (
 				0BB7FAC72C737EDE001D14C1 /* PaginationService */,
-				0BB7FAC22C737BDD001D14C1 /* MovieStorageServiceTests.swift */,
+				0BB7FAC22C737BDD001D14C1 /* MovieFetchServiceTests.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1533,7 +1525,6 @@
 				0BB7FB172C73F951001D14C1 /* MovieDetailPresenter.swift in Sources */,
 				0B0F8AC82C71C666004440B7 /* APIRequest.swift in Sources */,
 				0B0F8A972C7168B1004440B7 /* MoviesViewController.swift in Sources */,
-				0BB7FA842C72E491001D14C1 /* GenericCollectionViewCellDelegate.swift in Sources */,
 				0BB7FAA22C73535B001D14C1 /* MoviesUseCaseProtocol.swift in Sources */,
 				0BB7FB0E2C73F62F001D14C1 /* MovieLikesView.swift in Sources */,
 				0B0F8AF62C71CA10004440B7 /* LanguageType.swift in Sources */,
@@ -1562,8 +1553,9 @@
 				0BB7FA962C734B17001D14C1 /* MovieDetailFactory.swift in Sources */,
 				0B0F8B2D2C71D566004440B7 /* AuthorizationTokenProviderManager.swift in Sources */,
 				0BB7FA882C730E22001D14C1 /* MovieSyncService.swift in Sources */,
-				0BB7FA862C730572001D14C1 /* MovieStorageService.swift in Sources */,
+				0BB7FA862C730572001D14C1 /* MovieFetchingService.swift in Sources */,
 				0B0F8AB42C71ACF7004440B7 /* MovieListCollectionViewCell+Components.swift in Sources */,
+				0BB7FB192C740164001D14C1 /* MovieStorageService.swift in Sources */,
 				0B0F8ACE2C71C6B0004440B7 /* HTTPParametersEncoding.swift in Sources */,
 				0B0F8ABB2C71AF0F004440B7 /* MovieGridCollectionViewCell+Components.swift in Sources */,
 				0B0F8B5F2C71F683004440B7 /* UIFont+Ext.swift in Sources */,
@@ -1633,7 +1625,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BB7FAD72C738729001D14C1 /* MockPaginationServiceFactory.swift in Sources */,
-				0BB7FAC32C737BDD001D14C1 /* MovieStorageServiceTests.swift in Sources */,
+				0BB7FAC32C737BDD001D14C1 /* MovieFetchServiceTests.swift in Sources */,
 				0BB7FACB2C738243001D14C1 /* PaginationServiceTests.swift in Sources */,
 				0BB7FABD2C737A7C001D14C1 /* MockViewController.swift in Sources */,
 				0BB7FAC12C737B69001D14C1 /* MockMoviesInteractor.swift in Sources */,

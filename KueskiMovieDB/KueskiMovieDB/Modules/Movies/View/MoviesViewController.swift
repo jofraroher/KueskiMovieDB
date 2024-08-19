@@ -71,8 +71,7 @@ final class MoviesViewController: UIViewController {
                 self?.presenter.updateMovieList()
             }, didSelectItem: { [weak self] item in
                 self?.presenter.navigateToMovieDetail(model: item)
-            },
-            cellDelegate: self
+            }
         )
         view.addSubview(reusableCollectionView)
     }
@@ -131,11 +130,5 @@ extension MoviesViewController: MoviesViewProtocol {
         alertController.addAction(okAction)
         
         self.present(alertController, animated: true, completion: nil)
-    }
-}
-
-extension MoviesViewController: GenericCollectionViewCellDelegate {
-    func didTapButton(withModel model: Movie) {
-        presenter.saveMovie(model: model)
     }
 }

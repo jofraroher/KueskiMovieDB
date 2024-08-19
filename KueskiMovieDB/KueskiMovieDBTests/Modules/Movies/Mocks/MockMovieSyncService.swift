@@ -14,7 +14,7 @@ final class MockMovieSyncService: MovieSyncServiceProtocol {
 
     var expectation: XCTestExpectation?
     
-    func syncWithSavedMovies(newItems: [Movie], storageService: MovieStorageServiceProtocol) async throws -> [Movie] {
+    func syncWithSavedMovies(newItems: [Movie], fetchingService: MovieFetchingServiceProtocol) async throws -> [Movie] {
         syncWithSavedMoviesCalled = true
         expectation?.fulfill()
         return syncWithSavedMoviesResult

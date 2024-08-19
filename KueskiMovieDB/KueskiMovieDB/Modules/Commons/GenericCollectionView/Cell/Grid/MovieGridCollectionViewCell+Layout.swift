@@ -16,7 +16,7 @@ extension MovieGridCollectionViewCell {
             movieDetailsContainerStackView,
             popularityImage,
             popularityRateLabel,
-            favoritesButton
+            favoritesImage
         ].forEach(mainContainerView.addSubview)
         
         imageContainerView.addSubview(posterImageView)
@@ -66,10 +66,10 @@ extension MovieGridCollectionViewCell {
             popularityRateLabel.centerYAnchor.constraint(equalTo: popularityImage.centerYAnchor),
             
             // Favorites Button
-            favoritesButton.leadingAnchor.constraint(equalTo: movieDetailsContainerStackView.leadingAnchor),
-            favoritesButton.centerYAnchor.constraint(equalTo: popularityImage.centerYAnchor),
-            favoritesButton.widthAnchor.constraint(equalToConstant: 30),
-            favoritesButton.heightAnchor.constraint(equalToConstant: 30)
+            favoritesImage.leadingAnchor.constraint(equalTo: movieDetailsContainerStackView.leadingAnchor),
+            favoritesImage.centerYAnchor.constraint(equalTo: popularityImage.centerYAnchor),
+            favoritesImage.widthAnchor.constraint(equalToConstant: 30),
+            favoritesImage.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
 }
