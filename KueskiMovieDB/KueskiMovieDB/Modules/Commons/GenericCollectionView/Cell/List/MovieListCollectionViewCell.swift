@@ -9,7 +9,11 @@ import UIKit
 import SDWebImage
 
 final class MovieListCollectionViewCell: UICollectionViewCell {
-
+    
+    // MARK: - Properties
+    weak var delegate: GenericCollectionViewCellDelegate?
+    private var model: Movie?
+    
     // MARK: - UI Components
         
     let mainContainerView = MovieListCollectionViewCell.makeContainerView(
@@ -69,6 +73,13 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
         backgroundColor = .clear
         addSubViews()
         setupConstraints()
+        favoritesButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func buttonTapped() {
+        if let movie = self.model {
+            delegate?.didTapButton(withModel: movie)
+        }
     }
     
     func configureCell(model: Movie) {
@@ -81,5 +92,6 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
             posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
             posterImageView.sd_setImage(with: pathUrl)
         }
+        self.model = model
     }
 }
