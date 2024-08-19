@@ -30,7 +30,7 @@ final class URLSessionAPIClient: APIClient {
     private func processRequest(request: APIRequest) async -> Result<Data, APIClientErrorWrapper> {
         guard let url = request.url else {
             return .failure(APIClientErrorWrapper(
-                error: KueskiMovieDBError.invalidURL,
+                error: KueskiMovieRequestError.invalidURL,
                 responseData: nil
             ))
         }
@@ -52,7 +52,7 @@ final class URLSessionAPIClient: APIClient {
                     continuation.resume(returning: .success(data))
                 } else {
                     continuation.resume(returning: .failure(APIClientErrorWrapper(
-                        error: KueskiMovieDBError.invalidResponse,
+                        error: KueskiMovieRequestError.invalidResponse,
                         responseData: data
                     )))
                 }

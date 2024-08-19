@@ -5,7 +5,7 @@
 //  Created by Francisco Rosales on 18/08/24.
 //
 
-enum GenreType: Int, Encodable {
+public enum GenreType: Int, Encodable {
     case action = 28
     case adventure = 12
     case animation = 16
