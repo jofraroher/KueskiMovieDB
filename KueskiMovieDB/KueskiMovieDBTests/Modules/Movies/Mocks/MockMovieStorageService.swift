@@ -9,27 +9,10 @@ import XCTest
 
 @testable import KueskiMovieDB
 
-final class MockMovieStorageService: MovieStorageServiceProtocol {
-    var saveMovieCalled = false
-    var deleteMovieCalled = false
+final class MockMovieFetchService: MovieFetchingServiceProtocol {
     var fetchSavedMoviesCalled = false
-    var saveMovieResult: Result<Void, Error>?
-    var deleteMovieResult: Result<Void, Error>?
     var fetchSavedMoviesResult: [Movie] = []
-
-    var saveMovieExpectation: XCTestExpectation?
     
-    func saveMovie(model: Movie) async throws {
-        saveMovieCalled = true
-        saveMovieExpectation?.fulfill()
-        try saveMovieResult?.get()
-    }
-
-    func deleteMovie(model: Movie) async throws {
-        deleteMovieCalled = true
-        try deleteMovieResult?.get()
-    }
-
     func getSavedMovies() async throws -> [Movie] {
         fetchSavedMoviesCalled = true
         return fetchSavedMoviesResult

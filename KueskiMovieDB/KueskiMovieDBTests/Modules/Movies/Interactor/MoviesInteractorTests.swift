@@ -44,17 +44,6 @@ final class MoviesInteractorTests: XCTestCase {
         XCTAssertEqual(movies, expectedMovies)
     }
     
-    func testSaveMovie_callsDatabaseManager() async throws {
-        // Arrange
-        let movie = StubMovie.getStubMovie()
-        
-        // Act
-        try await interactor.saveMovie(model: movie)
-        
-        // Assert
-        XCTAssertTrue(mockDatabaseManager.saveDataCalled)
-    }
-    
     func testGetSavedMovies_callsDatabaseManager() async throws {
         // Arrange
         let expectedMovies = [StubMovie.getStubMovie()]
@@ -65,16 +54,5 @@ final class MoviesInteractorTests: XCTestCase {
         
         // Assert
         XCTAssertEqual(movies, expectedMovies)
-    }
-    
-    func testDeleteMovie_callsDatabaseManager() async throws {
-        // Arrange
-        let movie = StubMovie.getStubMovie()
-        
-        // Act
-        try await interactor.deleteMovie(model: movie)
-        
-        // Assert
-        XCTAssertTrue(mockDatabaseManager.deleteDataCalled)
     }
 }

@@ -21,8 +21,8 @@ enum MoviesFactory {
         )
         let presenter = MoviesPresenter(
             interactor: interactor,
-            movieStorageService: MovieStorageService(interactor: interactor),
-            paginationServiceFactory: paginationServiceFactory, 
+            movieFetchingService: MovieFetchingService(fetchingInteractor: interactor),
+            paginationServiceFactory: paginationServiceFactory,
             syncService: MovieSyncService()
         )
         let view = MoviesViewController(

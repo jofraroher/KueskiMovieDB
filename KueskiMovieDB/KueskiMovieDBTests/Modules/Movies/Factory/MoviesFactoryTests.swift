@@ -57,7 +57,7 @@ final class MoviesFactoryTests: XCTestCase {
         // Verificar que el Presenter, Router, etc., se han configurado
         let presenter = moviesViewController.presenter as? MoviesPresenter
         XCTAssertNotNil(presenter)
-        XCTAssertNotNil(presenter?.movieStorageService)
+        XCTAssertNotNil(presenter?.movieFetchingService)
         XCTAssertNotNil(presenter?.paginationService)
         XCTAssertNotNil(presenter?.syncService)
         XCTAssertNotNil(presenter?.router)

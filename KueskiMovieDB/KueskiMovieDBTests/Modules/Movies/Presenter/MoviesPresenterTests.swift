@@ -12,7 +12,7 @@ final class MoviesPresenterTests: XCTestCase {
     private var presenter: MoviesPresenter!
     private var mockView: MockMoviesView!
     private var mockRouter: MockMoviesRouter!
-    private var mockMovieStorageService: MockMovieStorageService!
+    private var movieFetchingService: MockMovieFetchService!
     private var mockSyncService: MockMovieSyncService!
     private var mockPaginationServiceFactory: MockPaginationServiceFactory!
     private var mockPaginationService: MockPaginationService!
@@ -23,7 +23,7 @@ final class MoviesPresenterTests: XCTestCase {
 
         mockView = MockMoviesView()
         mockRouter = MockMoviesRouter()
-        mockMovieStorageService = MockMovieStorageService()
+        movieFetchingService = MockMovieFetchService()
         mockSyncService = MockMovieSyncService()
         mockPaginationServiceFactory = MockPaginationServiceFactory()
         mockPaginationService = MockPaginationService()
@@ -33,7 +33,7 @@ final class MoviesPresenterTests: XCTestCase {
 
         presenter = MoviesPresenter(
             interactor: mockInteractor,
-            movieStorageService: mockMovieStorageService,
+            movieFetchingService: movieFetchingService,
             paginationServiceFactory: mockPaginationServiceFactory,
             syncService: mockSyncService
         )
@@ -45,7 +45,7 @@ final class MoviesPresenterTests: XCTestCase {
         presenter = nil
         mockView = nil
         mockRouter = nil
-        mockMovieStorageService = nil
+        movieFetchingService = nil
         mockSyncService = nil
         mockPaginationServiceFactory = nil
         mockPaginationService = nil
@@ -120,40 +120,6 @@ final class MoviesPresenterTests: XCTestCase {
         XCTAssertTrue(mockView.showAlertCalled)
         XCTAssertTrue(mockView.reloadDataCalled)
         XCTAssertTrue(presenter.items.isEmpty)
-    }
-
-    func testSaveMovie_success() {
-        // Arrange
-        let reloadDataExpectation = XCTestExpectation(description: "Reload data expectation")
-        let saveMovieExpectation = XCTestExpectation(description: "Save movie expectation")
-        let movie = StubMovie.getStubMovie()
-        mockMovieStorageService.saveMovieResult = .success(())
-        mockView.reloadDataExpectation = reloadDataExpectation
-        mockMovieStorageService.saveMovieExpectation = saveMovieExpectation
-
-        // Act
-        presenter.items = [movie]
-        presenter.saveMovie(model: movie)
-
-        // Assert
-        wait(for: [saveMovieExpectation, reloadDataExpectation], timeout: 1)
-        XCTAssertTrue(mockMovieStorageService.saveMovieCalled)
-        XCTAssertTrue(mockView.reloadDataCalled)
-    }
-
-    func testSaveMovie_failure() {
-        // Arrange
-        let showAlertExpectation = XCTestExpectation(description: "Show alert expectation")
-        let movie = StubMovie.getStubMovie()
-        mockMovieStorageService.saveMovieResult = .failure(NSError(domain: "", code: 0, userInfo: nil))
-        mockView.showAlertExpectation = showAlertExpectation
-        // Act
-        presenter.saveMovie(model: movie)
-
-        // Assert
-        wait(for: [showAlertExpectation], timeout: 1)
-        XCTAssertTrue(mockMovieStorageService.saveMovieCalled)
-        XCTAssertTrue(mockView.showAlertCalled)
     }
 
     func testNavigateToMovieDetail() {

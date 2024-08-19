@@ -53,13 +53,4 @@ extension MovieGridCollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }
-    
-    static func makeFavoritesButton() -> UIButton {
-        let button = UIButton()
-        let image = UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate)
-        button.setImage(image, for: .normal)
-        button.tintColor = .red
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }
 }

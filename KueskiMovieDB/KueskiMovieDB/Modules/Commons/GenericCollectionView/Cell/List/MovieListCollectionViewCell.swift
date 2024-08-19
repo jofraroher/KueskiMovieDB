@@ -11,7 +11,6 @@ import SDWebImage
 final class MovieListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-    weak var delegate: GenericCollectionViewCellDelegate?
     private var model: Movie?
     
     // MARK: - UI Components
@@ -27,7 +26,10 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
         textAlignment: .left,
         font: UIFont.preferredFont(forTextStyle: .body, weight: .bold)
     )
-    let favoritesButton = MovieListCollectionViewCell.makeFavoritesButton()
+    let favoritesImage = MovieListCollectionViewCell.makeImageView(
+        systemImageName: "heart",
+        tintColor: .red
+    )
     
     let movieDetailsContainerStackView = MovieListCollectionViewCell.makeStackView(
         axis: .vertical,
@@ -73,13 +75,6 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
         backgroundColor = .clear
         addSubViews()
         setupConstraints()
-        favoritesButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-    }
-    
-    @objc private func buttonTapped() {
-        if let movie = self.model {
-            delegate?.didTapButton(withModel: movie)
-        }
     }
     
     func configureCell(model: Movie) {
@@ -92,7 +87,8 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
     private func configureFavoriteButton(isFavorite: Bool) {
         let imageName = isFavorite ? "heart.fill" : "heart"
         let image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate)
-        favoritesButton.setImage(image, for: .normal)
+        favoritesImage.image = image
+        favoritesImage.tintColor = .red
     }
     
     private func configureLabels(with model: Movie) {
