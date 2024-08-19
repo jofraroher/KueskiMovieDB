@@ -109,7 +109,7 @@ final class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataS
     
     func handleDataLoadCompletion(with newItems: [Item]) {
         isFetching = false
-        refreshControl?.endRefreshing()
+        self.refreshControl?.endRefreshing()
         updateItems(with: newItems)
     }
 }

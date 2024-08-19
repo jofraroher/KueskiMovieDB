@@ -13,6 +13,7 @@ protocol MoviesRouterProtocol: AnyObject {
 
 protocol MoviesViewProtocol: UIViewController {
     @MainActor func reloadData(items: [Movie])
+    func showAlert()
 }
 
 protocol MoviesPresenterProtocol: AnyObject {
