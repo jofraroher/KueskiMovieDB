@@ -18,9 +18,8 @@ final class PaginationServiceTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        // Define la función mock para que devuelva un array de TestItem no opcional
         fetchPageMock = { page, sortBy in
-            return [TestItem(id: page)] // Simula una lista de items con el id igual a la página
+            return [TestItem(id: page)]
         }
         paginationService = PaginationService(fetchPage: fetchPageMock)
     }

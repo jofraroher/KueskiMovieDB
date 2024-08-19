@@ -11,12 +11,16 @@ import XCTest
 final class MockMovieSyncService: MovieSyncServiceProtocol {
     var syncWithSavedMoviesCalled = false
     var syncWithSavedMoviesResult: [Movie] = []
-
+    var syncWithSavedMoviesError: Error?
+    
     var expectation: XCTestExpectation?
     
     func syncWithSavedMovies(newItems: [Movie], fetchingService: MovieFetchingServiceProtocol) async throws -> [Movie] {
         syncWithSavedMoviesCalled = true
         expectation?.fulfill()
+        if let error = syncWithSavedMoviesError {
+            throw error
+        }
         return syncWithSavedMoviesResult
     }
 }

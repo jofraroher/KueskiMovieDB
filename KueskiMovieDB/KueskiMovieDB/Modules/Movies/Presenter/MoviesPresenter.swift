@@ -78,9 +78,9 @@ extension MoviesPresenter: MoviesPresenterProtocol {
     }
 }
 
-// MARK: - Private Methods
+// MARK: - Internal Methods
 
-private extension MoviesPresenter {
+internal extension MoviesPresenter {
 
     @MainActor
     func updateUI(with newItems: [Movie], append: Bool) {
