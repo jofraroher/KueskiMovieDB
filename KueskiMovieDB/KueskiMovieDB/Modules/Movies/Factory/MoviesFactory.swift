@@ -10,8 +10,16 @@ import UIKit
 enum MoviesFactory {
 
     static func build(usingNavigationFactory factory: NavigationFactory) -> UIViewController {
-        let interactor = MoviesInteractor(repository: NowPlayingMoviesListUseCase())
-        let presenter = MoviesPresenter(interactor: interactor)
+        let interactor = MoviesInteractor(
+            repository: NowPlayingMoviesListUseCase(),
+            databaseRepository: DatabaseManager(databaseService: DependencyContainer.shared.databaseService)
+        )
+        let presenter = MoviesPresenter(
+            interactor: interactor,
+            movieStorageService: MovieStorageService(interactor: interactor),
+            paginationServiceFactory: PaginationServiceFactory(), 
+            syncService: MovieSyncService()
+        )
         let view = MoviesViewController(
             presenter: presenter,
             layoutManager: LayoutManager(

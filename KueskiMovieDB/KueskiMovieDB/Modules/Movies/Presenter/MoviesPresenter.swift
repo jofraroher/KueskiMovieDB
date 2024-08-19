@@ -8,45 +8,98 @@
 final class MoviesPresenter {
 
     weak var view: MoviesViewProtocol?
-    private let paginationService: PaginationService<Movie>
-    
+    private let movieStorageService: MovieStorageServiceProtocol
+    private let syncService: MovieSyncServiceProtocol
+    private let paginationService: any PaginationServiceProtocol
     internal var items: [Movie] = []
-    
-    init(interactor: MoviesInteractorProtocol) {
-        self.paginationService = PaginationService { page, sortBy in
-            let queryParams = MoviesQueryParams(nowPlayingMovies: page, sortBy: sortBy)
-            return try await interactor.getMovieList(queryParams: queryParams)
-        }
+
+    init(
+        interactor: MoviesInteractorProtocol,
+        movieStorageService: MovieStorageServiceProtocol,
+        paginationServiceFactory: PaginationServiceFactoryProtocol,
+        syncService: MovieSyncServiceProtocol
+    ) {
+        self.movieStorageService = movieStorageService
+        self.syncService = syncService
+        self.paginationService = paginationServiceFactory.makePaginationService(interactor: interactor)
     }
 }
 
+// MARK: - MoviesPresenterProtocol
+
 extension MoviesPresenter: MoviesPresenterProtocol {
-    
+
     func updateMovieList() {
         Task {
             do {
                 let newItems = try await paginationService.fetchNextPage()
-                await MainActor.run {
-                    self.items.append(contentsOf: newItems)
-                    self.view?.reloadData(items: self.items)
+                guard let newItems = newItems as? [Movie] else {
+                    throw KueskiMovieRequestError.invalidResponse
                 }
+                let updatedItems = try await syncService.syncWithSavedMovies(newItems: newItems, storageService: movieStorageService)
+                await updateUI(with: updatedItems, append: true)
             } catch {
-                print("Error fetching movies: \(error)")
+                handleError(error)
             }
         }
     }
-    
+
     func updateMovieListBySort(sortBy: SortByType) {
         Task {
             do {
                 let newItems = try await paginationService.fetchBySort(sortBy: sortBy)
-                await MainActor.run {
-                    self.items = newItems
-                    self.view?.reloadData(items: self.items)
+                guard let newItems = newItems as? [Movie] else {
+                    throw KueskiMovieRequestError.invalidResponse
                 }
+                let updatedItems = try await syncService.syncWithSavedMovies(newItems: newItems, storageService: movieStorageService)
+                await updateUI(with: updatedItems, append: false)
             } catch {
-                print("Error fetching movies: \(error)")
+                handleError(error)
             }
         }
+    }
+
+    func saveMovie(model: Movie) {
+        Task {
+            do {
+                if model.isFavorite {
+                    try await movieStorageService.deleteMovie(model: model)
+                    await updateMovieStatus(with: model.id, isFavorite: false)
+                } else {
+                    try await movieStorageService.saveMovie(model: model)
+                    await updateMovieStatus(with: model.id, isFavorite: true)
+                }
+            } catch {
+                handleError(error)
+            }
+        }
+    }
+}
+
+// MARK: - Private Methods
+
+private extension MoviesPresenter {
+
+    @MainActor
+    func updateUI(with newItems: [Movie], append: Bool) {
+        if append {
+            items.append(contentsOf: newItems)
+        } else {
+            items = newItems
+        }
+        view?.reloadData(items: items)
+    }
+
+    @MainActor
+    func updateMovieStatus(with id: Int, isFavorite: Bool) {
+        if let index = items.firstIndex(where: { $0.id == id }) {
+            items[index].isFavorite = isFavorite
+            view?.reloadData(items: items)
+        }
+    }
+
+    func handleError(_ error: Error) {
+        print("Error: \(error.localizedDescription)")
+        // Manejo de errores específico si es necesario
     }
 }

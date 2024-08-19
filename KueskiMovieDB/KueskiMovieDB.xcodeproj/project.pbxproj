@@ -99,6 +99,9 @@
 		0BB7FA7F2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA7D2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift */; };
 		0BB7FA802C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA7E2C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift */; };
 		0BB7FA842C72E491001D14C1 /* GenericCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA832C72E490001D14C1 /* GenericCollectionViewCellDelegate.swift */; };
+		0BB7FA862C730572001D14C1 /* MovieStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA852C730572001D14C1 /* MovieStorageService.swift */; };
+		0BB7FA882C730E22001D14C1 /* MovieSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA872C730E22001D14C1 /* MovieSyncService.swift */; };
+		0BB7FA8B2C7311AF001D14C1 /* PaginationServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA8A2C7311AF001D14C1 /* PaginationServiceFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +217,9 @@
 		0BB7FA7D2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0BB7FA7E2C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0BB7FA832C72E490001D14C1 /* GenericCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
+		0BB7FA852C730572001D14C1 /* MovieStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStorageService.swift; sourceTree = "<group>"; };
+		0BB7FA872C730E22001D14C1 /* MovieSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSyncService.swift; sourceTree = "<group>"; };
+		0BB7FA8A2C7311AF001D14C1 /* PaginationServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationServiceFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -847,7 +853,9 @@
 		0B0F8B742C721937004440B7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0B0F8B752C721944004440B7 /* PaginationService.swift */,
+				0BB7FA892C731191001D14C1 /* PaginationService */,
+				0BB7FA852C730572001D14C1 /* MovieStorageService.swift */,
+				0BB7FA872C730E22001D14C1 /* MovieSyncService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -973,6 +981,15 @@
 				0BB7FA832C72E490001D14C1 /* GenericCollectionViewCellDelegate.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		0BB7FA892C731191001D14C1 /* PaginationService */ = {
+			isa = PBXGroup;
+			children = (
+				0B0F8B752C721944004440B7 /* PaginationService.swift */,
+				0BB7FA8A2C7311AF001D14C1 /* PaginationServiceFactory.swift */,
+			);
+			path = PaginationService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1119,6 +1136,7 @@
 				0B0F8B102C71CC8E004440B7 /* ConfigurationConstantsKey.swift in Sources */,
 				0BB7FA732C72AD25001D14C1 /* StorableEntityProtocol.swift in Sources */,
 				0BB7FA652C729AD6001D14C1 /* DependencyContainerProtocol.swift in Sources */,
+				0BB7FA8B2C7311AF001D14C1 /* PaginationServiceFactory.swift in Sources */,
 				0B0F8B082C71CBCE004440B7 /* GetNowPlayingMoviesEndpoint.swift in Sources */,
 				0B0F8AC82C71C666004440B7 /* APIRequest.swift in Sources */,
 				0B0F8A972C7168B1004440B7 /* MoviesViewController.swift in Sources */,
@@ -1142,6 +1160,8 @@
 				0B0F8B4A2C71E4C1004440B7 /* GenericCollectionViewProtocols.swift in Sources */,
 				0B0F8AD32C71C701004440B7 /* URLSessionAPIClient.swift in Sources */,
 				0B0F8B2D2C71D566004440B7 /* AuthorizationTokenProviderManager.swift in Sources */,
+				0BB7FA882C730E22001D14C1 /* MovieSyncService.swift in Sources */,
+				0BB7FA862C730572001D14C1 /* MovieStorageService.swift in Sources */,
 				0B0F8AB42C71ACF7004440B7 /* MovieListCollectionViewCell+Components.swift in Sources */,
 				0B0F8ACE2C71C6B0004440B7 /* HTTPParametersEncoding.swift in Sources */,
 				0B0F8ABB2C71AF0F004440B7 /* MovieGridCollectionViewCell+Components.swift in Sources */,

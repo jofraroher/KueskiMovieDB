@@ -27,6 +27,7 @@ struct Movie {
     let video: Bool
     let voteAverage: Double
     let voteCount: Double
+    var isFavorite: Bool = false
 }
 
 extension Movie: Codable, Equatable {
@@ -69,6 +70,10 @@ extension Movie: Codable, Equatable {
 }
 
 extension Movie: StorableDomainProtocol {
+    var idDomain: String {
+        String(self.id)
+    }
+    
     typealias EntityType = MovieEntity
     
     func toEntity(context: NSManagedObjectContext) -> MovieEntity {
