@@ -15,7 +15,7 @@ final class MoviesPresenter {
     internal var items: [Movie] = []
 
     init(
-        interactor: MoviesInteractorProtocol,
+        interactor: MoviesNetworkProtocol,
         movieStorageService: MovieStorageServiceProtocol,
         paginationServiceFactory: PaginationServiceFactoryProtocol,
         syncService: MovieSyncServiceProtocol
@@ -79,8 +79,19 @@ extension MoviesPresenter: MoviesPresenterProtocol {
         }
     }
     
-    func navigateToMovieDetail() {
-        router?.navigateToMovieDetail()
+    func refreshStatu() {
+        Task {
+            do {
+                let refreshItems = try await syncService.syncWithSavedMovies(newItems: items, storageService: movieStorageService)
+                await updateUI(with: refreshItems, append: false)
+            } catch {
+                await handleError(error)
+            }
+        }
+    }
+    
+    func navigateToMovieDetail(model: Movie) {
+        router?.navigateToMovieDetail(model: model)
     }
 }
 

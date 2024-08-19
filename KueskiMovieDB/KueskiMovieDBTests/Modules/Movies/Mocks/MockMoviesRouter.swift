@@ -10,7 +10,7 @@
 final class MockMoviesRouter: MoviesRouterProtocol {
     var navigateToMovieDetailCalled = false
 
-    func navigateToMovieDetail() {
+    func navigateToMovieDetail(model: Movie) {
         navigateToMovieDetailCalled = true
     }
 }

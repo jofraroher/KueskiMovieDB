@@ -18,6 +18,8 @@ final class MovieSyncService: MovieSyncServiceProtocol {
             var updatedMovie = movie
             if savedItemIDs.contains(movie.id) {
                 updatedMovie.isFavorite = true
+            } else {
+                updatedMovie.isFavorite = false
             }
             return updatedMovie
         }

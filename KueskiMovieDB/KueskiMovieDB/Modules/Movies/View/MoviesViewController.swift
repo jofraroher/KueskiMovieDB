@@ -37,6 +37,11 @@ final class MoviesViewController: UIViewController {
         setupNavigationComponents()
         presenter.updateMovieList()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.refreshStatu()
+    }
 
     private func setupUI() {
         view.backgroundColor = .white
@@ -64,8 +69,8 @@ final class MoviesViewController: UIViewController {
             items: presenter.items, 
             fetchRemoteData: { [weak self] in
                 self?.presenter.updateMovieList()
-            }, didSelectItem: { [weak self] _ in
-                self?.presenter.navigateToMovieDetail()
+            }, didSelectItem: { [weak self] item in
+                self?.presenter.navigateToMovieDetail(model: item)
             },
             cellDelegate: self
         )

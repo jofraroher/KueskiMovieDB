@@ -1,31 +1,20 @@
 //
-//  MoviesInteractor.swift
+//  MovieDetailInteractor.swift
 //  KueskiMovieDB
 //
-//  Created by Francisco Rosales on 18/08/24.
+//  Created by Francisco Rosales on 19/08/24.
 //
 
-final class MoviesInteractor {
+final class MovieDetailInteractor {
     
-    private let repository: MoviesUseCaseProtocol
     private let databaseRepository: DatabaseManagerProtocol
     
-    init(
-        repository: MoviesUseCaseProtocol,
-        databaseRepository: DatabaseManagerProtocol
-    ) {
-        self.repository = repository
+    init(databaseRepository: DatabaseManagerProtocol) {
         self.databaseRepository = databaseRepository
     }
 }
 
-extension MoviesInteractor: MoviesNetworkProtocol {
-    func getMovieList(queryParams: MoviesQueryParams) async throws -> [Movie] {
-        try await repository.execute(queryParams: queryParams)
-    }
-}
-
-extension MoviesInteractor: MoviesDatabaseProtocol {
+extension MovieDetailInteractor: MoviesDatabaseProtocol {
     func saveMovie(model: Movie) async throws {
         try await databaseRepository.saveData(model, for: String())
     }

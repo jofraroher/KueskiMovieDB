@@ -19,7 +19,7 @@ final class MoviesRouterTests: XCTestCase {
         router.view = mockViewController
         
         // Act
-        router.navigateToMovieDetail()
+        router.navigateToMovieDetail(model: StubMovie.getStubMovie())
         
         // Assert
         XCTAssertTrue(mockNavigationController.pushViewControllerCalled)

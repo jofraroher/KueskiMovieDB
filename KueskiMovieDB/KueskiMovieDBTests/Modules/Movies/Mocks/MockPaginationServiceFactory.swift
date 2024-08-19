@@ -11,7 +11,7 @@ final class MockPaginationServiceFactory: PaginationServiceFactoryProtocol {
     var paginationServiceToReturn: PaginationServiceProtocol?
     var makePaginationServiceCalled = false
     
-    func makePaginationService(interactor: MoviesInteractorProtocol) -> PaginationServiceProtocol {
+    func makePaginationService(interactor: MoviesNetworkProtocol) -> PaginationServiceProtocol {
         makePaginationServiceCalled = true
         return paginationServiceToReturn!
     }

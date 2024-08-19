@@ -7,7 +7,7 @@
 
 @testable import KueskiMovieDB
 
-final class MockMoviesInteractor: MoviesInteractorProtocol {
+final class MockMoviesInteractor: MoviesNetworkProtocol, MoviesDatabaseProtocol {
     
     var queryParamsPassed: MoviesQueryParams?
     var savedMovies: [Movie] = []

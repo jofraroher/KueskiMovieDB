@@ -158,7 +158,7 @@ final class MoviesPresenterTests: XCTestCase {
 
     func testNavigateToMovieDetail() {
         // Act
-        presenter.navigateToMovieDetail()
+        presenter.navigateToMovieDetail(model: StubMovie.getStubMovie())
 
         // Assert
         XCTAssertTrue(mockRouter.navigateToMovieDetailCalled)
