@@ -23,7 +23,7 @@ protocol MoviesInteractorProtocol: AnyObject {
 }
 
 protocol CellConfigurator: AnyObject {
-    func configureCell(_ cell: UICollectionViewCell, with item: Movie)
+    func configureCell(_ cell: UICollectionViewCell, with item: Movie, and delegate: GenericCollectionViewCellDelegate?)
 }
 
 protocol LayoutProvider {

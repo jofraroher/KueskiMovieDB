@@ -98,6 +98,7 @@
 		0BB7FA762C72B144001D14C1 /* DomainObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA752C72B144001D14C1 /* DomainObjectConvertible.swift */; };
 		0BB7FA7F2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA7D2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift */; };
 		0BB7FA802C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA7E2C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift */; };
+		0BB7FA842C72E491001D14C1 /* GenericCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA832C72E490001D14C1 /* GenericCollectionViewCellDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,7 @@
 		0BB7FA752C72B144001D14C1 /* DomainObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainObjectConvertible.swift; sourceTree = "<group>"; };
 		0BB7FA7D2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0BB7FA7E2C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0BB7FA832C72E490001D14C1 /* GenericCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +411,7 @@
 		0B0F8AA62C716BA7004440B7 /* GenericCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				0BB7FA822C72E476001D14C1 /* Delegate */,
 				0B0F8AAD2C717762004440B7 /* Layout */,
 				0B0F8AAA2C716EBA004440B7 /* Cell */,
 				0B0F8AA72C716BBF004440B7 /* CollectionView */,
@@ -964,6 +967,14 @@
 			path = DomainConvertible;
 			sourceTree = "<group>";
 		};
+		0BB7FA822C72E476001D14C1 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA832C72E490001D14C1 /* GenericCollectionViewCellDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1111,6 +1122,7 @@
 				0B0F8B082C71CBCE004440B7 /* GetNowPlayingMoviesEndpoint.swift in Sources */,
 				0B0F8AC82C71C666004440B7 /* APIRequest.swift in Sources */,
 				0B0F8A972C7168B1004440B7 /* MoviesViewController.swift in Sources */,
+				0BB7FA842C72E491001D14C1 /* GenericCollectionViewCellDelegate.swift in Sources */,
 				0B0F8AF62C71CA10004440B7 /* LanguageType.swift in Sources */,
 				0B0F8B652C71FA3B004440B7 /* GetMovieImageEndpoint.swift in Sources */,
 				0B0F8AF42C71C9FF004440B7 /* ReleaseType.swift in Sources */,

@@ -64,7 +64,8 @@ final class MoviesViewController: UIViewController {
             items: presenter.items, 
             fetchRemoteData: { [weak self] in
                 self?.presenter.updateMovieList()
-            }
+            },
+            cellDelegate: self
         )
         view.addSubview(reusableCollectionView)
     }
@@ -111,5 +112,11 @@ final class MoviesViewController: UIViewController {
 extension MoviesViewController: MoviesViewProtocol {
     func reloadData(items: [Movie]) {
         reusableCollectionView.handleDataLoadCompletion(with: items)
+    }
+}
+
+extension MoviesViewController: GenericCollectionViewCellDelegate {
+    func didTapButton(withModel model: Movie) {
+        print("here")
     }
 }

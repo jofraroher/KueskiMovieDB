@@ -12,7 +12,8 @@ protocol CollectionViewFactoryProtocol {
         with frame: CGRect,
         layout: UICollectionViewLayout,
         items: [Movie],
-        fetchRemoteData: @escaping (() -> ())
+        fetchRemoteData: @escaping (() -> ()),
+        cellDelegate: GenericCollectionViewCellDelegate?
     ) -> GenericCollectionView<Movie>
 }
 
@@ -27,14 +28,15 @@ final class CollectionViewFactory: CollectionViewFactoryProtocol {
         with frame: CGRect,
         layout: UICollectionViewLayout,
         items: [Movie],
-        fetchRemoteData: @escaping (() -> ())
+        fetchRemoteData: @escaping (() -> ()),
+        cellDelegate: GenericCollectionViewCellDelegate?
     ) -> GenericCollectionView<Movie> {
 
         let adaptConfigureCell: (Movie, UICollectionViewCell) -> () = { [weak self] item, cell in
-            self?.cellConfigurator.configureCell(cell, with: item)
+            self?.cellConfigurator.configureCell(cell, with: item, and: cellDelegate)
         }
 
-        return GenericCollectionView(
+        let collectionView = GenericCollectionView(
             frame: frame,
             layout: layout,
             items: items,
@@ -44,5 +46,7 @@ final class CollectionViewFactory: CollectionViewFactoryProtocol {
             },
             fetchRemoteData: fetchRemoteData
         )
+        
+        return collectionView
     }
 }
