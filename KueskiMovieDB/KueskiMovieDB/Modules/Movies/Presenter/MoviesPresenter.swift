@@ -9,9 +9,9 @@ final class MoviesPresenter {
 
     weak var view: MoviesViewProtocol?
     var router: MoviesRouterProtocol?
-    private let movieStorageService: MovieStorageServiceProtocol
-    private let syncService: MovieSyncServiceProtocol
-    private let paginationService: any PaginationServiceProtocol
+    internal let movieStorageService: MovieStorageServiceProtocol
+    internal let syncService: MovieSyncServiceProtocol
+    internal let paginationService: any PaginationServiceProtocol
     internal var items: [Movie] = []
 
     init(

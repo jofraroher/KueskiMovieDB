@@ -9,6 +9,7 @@
 
 final class MockMoviesInteractor: MoviesInteractorProtocol {
     
+    var queryParamsPassed: MoviesQueryParams?
     var savedMovies: [Movie] = []
     var errorToThrow: Error?
     
@@ -34,6 +35,7 @@ final class MockMoviesInteractor: MoviesInteractorProtocol {
     }
     
     func getMovieList(queryParams: KueskiMovieDB.MoviesQueryParams) async throws -> [Movie] {
+        queryParamsPassed = queryParams
         if let error = errorToThrow {
             throw error
         }

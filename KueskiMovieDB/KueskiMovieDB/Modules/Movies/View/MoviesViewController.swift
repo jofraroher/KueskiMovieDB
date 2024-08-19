@@ -9,9 +9,9 @@ import UIKit
 
 final class MoviesViewController: UIViewController {
 
-    private let presenter: MoviesPresenterProtocol
-    private let layoutManager: LayoutManagerProtocol
-    private let collectionViewFactory: CollectionViewFactoryProtocol
+    internal let presenter: MoviesPresenterProtocol
+    internal let layoutManager: LayoutManagerProtocol
+    internal let collectionViewFactory: CollectionViewFactoryProtocol
 
     private var reusableCollectionView: GenericCollectionView<Movie>!
 
