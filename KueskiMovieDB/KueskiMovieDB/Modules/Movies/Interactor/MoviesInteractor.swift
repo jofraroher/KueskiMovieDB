@@ -7,11 +7,11 @@
 
 final class MoviesInteractor {
     
-    private let repository: NowPlayingMoviesListUseCaseProtocol
+    private let repository: MoviesUseCaseProtocol
     private let databaseRepository: DatabaseManagerProtocol
     
     init(
-        repository: NowPlayingMoviesListUseCaseProtocol,
+        repository: MoviesUseCaseProtocol,
         databaseRepository: DatabaseManagerProtocol
     ) {
         self.repository = repository

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol MoviesRouterProtocol: AnyObject {
+    func navigateToMovieDetail()
+}
+
 protocol MoviesViewProtocol: UIViewController {
     @MainActor func reloadData(items: [Movie])
 }
@@ -17,6 +21,7 @@ protocol MoviesPresenterProtocol: AnyObject {
     func updateMovieList()
     func updateMovieListBySort(sortBy: SortByType)
     func saveMovie(model: Movie)
+    func navigateToMovieDetail()
 }
 
 protocol MoviesInteractorProtocol: AnyObject {

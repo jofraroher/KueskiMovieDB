@@ -9,10 +9,19 @@ protocol PaginationServiceFactoryProtocol {
     func makePaginationService(interactor: MoviesInteractorProtocol) -> PaginationServiceProtocol
 }
 
-final class PaginationServiceFactory: PaginationServiceFactoryProtocol {
+final class NowPlayingServiceFactory: PaginationServiceFactoryProtocol {
     func makePaginationService(interactor: MoviesInteractorProtocol) -> PaginationServiceProtocol {
         return PaginationService<Movie> { page, sortBy in
             let queryParams = MoviesQueryParams(nowPlayingMovies: page, sortBy: sortBy)
+            return try await interactor.getMovieList(queryParams: queryParams)
+        }
+    }
+}
+
+final class PopularPaginationServiceFactory: PaginationServiceFactoryProtocol {
+    func makePaginationService(interactor: MoviesInteractorProtocol) -> PaginationServiceProtocol {
+        return PaginationService<Movie> { page, sortBy in
+            let queryParams = MoviesQueryParams(popularMovies: page, sortBy: sortBy)
             return try await interactor.getMovieList(queryParams: queryParams)
         }
     }

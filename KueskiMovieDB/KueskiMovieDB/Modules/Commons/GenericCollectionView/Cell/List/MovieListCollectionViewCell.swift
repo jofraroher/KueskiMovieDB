@@ -15,7 +15,7 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
     private var model: Movie?
     
     // MARK: - UI Components
-        
+    
     let mainContainerView = MovieListCollectionViewCell.makeContainerView(
         cornerRadius: 15,
         backgroundColor: .systemGray6
@@ -24,7 +24,7 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
     let posterImageView = MovieListCollectionViewCell.makePosterImage()
     
     let movieTitleLabel = MovieListCollectionViewCell.makeLabel(
-        textAlignment: .left, 
+        textAlignment: .left,
         font: UIFont.preferredFont(forTextStyle: .body, weight: .bold)
     )
     let favoritesButton = MovieListCollectionViewCell.makeFavoritesButton()
@@ -39,7 +39,7 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
     )
     let movieGenresLabel = MovieListCollectionViewCell.makeLabel(
         textAlignment: .left,
-        numberOfLines: 2, 
+        numberOfLines: 2,
         font: UIFont.preferredFont(forTextStyle: .caption1, weight: .light)
     )
     let movieOverviewLabel = MovieListCollectionViewCell.makeLabel(
@@ -83,16 +83,33 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(model: Movie) {
-        favoritesButton.setImage(model.isFavorite ? UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate) : UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        configureFavoriteButton(isFavorite: model.isFavorite)
+        configureLabels(with: model)
+        loadImage(from: model.posterPath)
+        self.model = model
+    }
+    
+    private func configureFavoriteButton(isFavorite: Bool) {
+        let imageName = isFavorite ? "heart.fill" : "heart"
+        let image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate)
+        favoritesButton.setImage(image, for: .normal)
+    }
+    
+    private func configureLabels(with model: Movie) {
         movieTitleLabel.text = model.title
         generalMovieInfoLabel.text = "\(model.releaseDate) • \(model.originalLanguage.uppercased())"
         movieGenresLabel.text = model.genreIds.toGenreString()
         movieOverviewLabel.text = model.overview
         popularityRateLabel.text = model.voteCount.formatted
-        if let pathUrl = GetMovieImageEndpoint(urlParams: ImageQueryParams(imagePath: model.posterPath)).url {
-            posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            posterImageView.sd_setImage(with: pathUrl)
+    }
+    
+    private func loadImage(from path: String?) {
+        guard let path = path,
+              let pathUrl = GetMovieImageEndpoint(urlParams: ImageQueryParams(imagePath: path)).url else {
+            posterImageView.image = nil
+            return
         }
-        self.model = model
+        posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        posterImageView.sd_setImage(with: pathUrl)
     }
 }

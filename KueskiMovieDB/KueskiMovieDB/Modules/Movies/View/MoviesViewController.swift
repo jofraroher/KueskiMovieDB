@@ -64,6 +64,8 @@ final class MoviesViewController: UIViewController {
             items: presenter.items, 
             fetchRemoteData: { [weak self] in
                 self?.presenter.updateMovieList()
+            }, didSelectItem: { [weak self] _ in
+                self?.presenter.navigateToMovieDetail()
             },
             cellDelegate: self
         )

@@ -8,16 +8,21 @@
 import UIKit
 
 enum MoviesFactory {
-
-    static func build(usingNavigationFactory factory: NavigationFactory) -> UIViewController {
+    
+    static func build(
+        usingNavigationFactory factory: NavigationFactory,
+        repository: MoviesUseCaseProtocol,
+        paginationServiceFactory: PaginationServiceFactoryProtocol
+    ) -> UIViewController {
+        let router = MoviesRouter()
         let interactor = MoviesInteractor(
-            repository: NowPlayingMoviesListUseCase(),
+            repository: repository,
             databaseRepository: DatabaseManager(databaseService: DependencyContainer.shared.databaseService)
         )
         let presenter = MoviesPresenter(
             interactor: interactor,
             movieStorageService: MovieStorageService(interactor: interactor),
-            paginationServiceFactory: PaginationServiceFactory(), 
+            paginationServiceFactory: paginationServiceFactory, 
             syncService: MovieSyncService()
         )
         let view = MoviesViewController(
@@ -29,6 +34,9 @@ enum MoviesFactory {
             collectionViewFactory: CollectionViewFactory(cellConfigurator: MovieCellConfigurator())
         )
         presenter.view = view
+        router.view = view
+        
+        presenter.router = router
         return factory(view)
     }
 }

@@ -16,8 +16,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let submodules = (
-            nowPlaying: MoviesFactory.build(usingNavigationFactory: NavigationBuilder.build),
-            popular: MoviesFactory.build(usingNavigationFactory: NavigationBuilder.build)
+            nowPlaying: MoviesFactory.build(
+                usingNavigationFactory: NavigationBuilder.build,
+                repository: NowPlayingMoviesListUseCase(), 
+                paginationServiceFactory: NowPlayingServiceFactory()
+            ),
+            popular: MoviesFactory.build(
+                usingNavigationFactory: NavigationBuilder.build,
+                repository: PopularMoviesListUseCase(), 
+                paginationServiceFactory: PopularPaginationServiceFactory()
+            )
         )
         let movieTabBarController = TabBarFactory.build(usingSubmodules: submodules)
         window?.rootViewController = movieTabBarController

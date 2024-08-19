@@ -66,7 +66,7 @@ struct MoviesQueryParams {
         nowPlayingMovies page: Int,
         sortBy: SortByType = .popularityDesc,
         withReleaseType: [ReleaseType] = [.theatricalLimited, .theatrical],
-        minDate: Date = Date().subtracting(years: 3),
+        minDate: Date = Date().subtracting(years: 1),
         maxDate: Date = Date()
     ) {
         self.includeAdult = includeAdult.description
