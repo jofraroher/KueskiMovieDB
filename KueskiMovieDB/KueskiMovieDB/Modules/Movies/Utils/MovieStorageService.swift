@@ -12,9 +12,9 @@ protocol MovieStorageServiceProtocol: AnyObject {
 }
 
 final class MovieStorageService: MovieStorageServiceProtocol {
-    private let interactor: MoviesInteractorProtocol
+    private let interactor: MoviesDatabaseProtocol
     
-    init(interactor: MoviesInteractorProtocol) {
+    init(interactor: MoviesDatabaseProtocol) {
         self.interactor = interactor
     }
     

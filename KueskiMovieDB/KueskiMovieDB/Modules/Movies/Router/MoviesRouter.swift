@@ -10,8 +10,8 @@ import UIKit
 final class MoviesRouter: MoviesRouterProtocol {
     var view: UIViewController?
     
-    func navigateToMovieDetail() {
-        let controller = MovieDetailFactory.build()
+    func navigateToMovieDetail(model: Movie) {
+        let controller = MovieDetailFactory.build(model: model)
         view?.navigationController?.pushViewController(controller, animated: true)
     }
 }

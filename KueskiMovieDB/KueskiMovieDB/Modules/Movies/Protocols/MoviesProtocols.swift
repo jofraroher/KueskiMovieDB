@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MoviesRouterProtocol: AnyObject {
-    func navigateToMovieDetail()
+    func navigateToMovieDetail(model: Movie)
 }
 
 protocol MoviesViewProtocol: UIViewController {
@@ -22,11 +22,15 @@ protocol MoviesPresenterProtocol: AnyObject {
     func updateMovieList()
     func updateMovieListBySort(sortBy: SortByType)
     func saveMovie(model: Movie)
-    func navigateToMovieDetail()
+    func navigateToMovieDetail(model: Movie)
+    func refreshStatu()
 }
 
-protocol MoviesInteractorProtocol: AnyObject {
+protocol MoviesNetworkProtocol: AnyObject {
     func getMovieList(queryParams: MoviesQueryParams) async throws -> [Movie]
+}
+
+protocol MoviesDatabaseProtocol: AnyObject {
     func saveMovie(model: Movie) async throws
     func getSavedMovies() async throws -> [Movie]
     func deleteMovie(model: Movie) async throws

@@ -10,8 +10,15 @@ import SwiftUI
 
 enum MovieDetailFactory {
     
-    static func build() -> UIViewController {
-        let host = UIHostingController(rootView: MovieDetailView())
+    static func build(model: Movie) -> UIViewController {
+        let interactor = MovieDetailInteractor(
+            databaseRepository: DatabaseManager(databaseService: DependencyContainer.shared.databaseService)
+        )
+        let presenter = MovieDetailPresenter(
+            viewModel: MovieDetailViewModel(movie: model),
+            movieStorageService: MovieStorageService(interactor: interactor)
+        )
+        let host = UIHostingController(rootView: MovieDetailView(presenter: presenter))
         host.hidesBottomBarWhenPushed = true
         return host
     }
