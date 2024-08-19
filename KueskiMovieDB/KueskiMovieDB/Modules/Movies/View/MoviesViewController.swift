@@ -124,7 +124,7 @@ extension MoviesViewController: MoviesViewProtocol {
     func showAlert() {
         let alertController = UIAlertController(
             title: "Oops!",
-            message: "Something went wrong. Please try again later.\n", preferredStyle: .alert
+            message: "Something went wrong. Please try again later.", preferredStyle: .alert
         )
         
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in }

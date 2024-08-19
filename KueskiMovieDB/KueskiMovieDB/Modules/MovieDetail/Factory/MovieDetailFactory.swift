@@ -14,6 +14,7 @@ enum MovieDetailFactory {
         let interactor = MovieDetailInteractor(
             databaseRepository: DatabaseManager(databaseService: DependencyContainer.shared.databaseService)
         )
+        let viewModel = MovieDetailViewModel(movie: model)
         let presenter = MovieDetailPresenter(
             viewModel: MovieDetailViewModel(movie: model),
             movieStorageService: MovieStorageService(interactor: interactor)

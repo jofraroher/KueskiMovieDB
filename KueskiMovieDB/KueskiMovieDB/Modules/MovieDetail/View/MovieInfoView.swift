@@ -15,29 +15,20 @@ struct MovieInfoView: View {
     let likes: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
             Text(title)
-                .font(.headline)
+                .font(.title2)
                 .fontWeight(.bold)
-                .lineLimit(3)
-                .multilineTextAlignment(.leading)
+                .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
             
-            Text(releaseDate)
+            Text("Release Date: \(releaseDate)")
                 .font(.subheadline)
                 .fontWeight(.medium)
-                .foregroundStyle(.gray)
-                .lineLimit(2)
-                .multilineTextAlignment(.leading)
-                .fixedSize(horizontal: false, vertical: true)
             
             Text(genres)
                 .font(.subheadline)
                 .fontWeight(.medium)
-                .foregroundStyle(.gray)
-                .lineLimit(3)
-                .multilineTextAlignment(.leading)
-                .fixedSize(horizontal: false, vertical: true)
             
             MovieRatingView(rating: rating)
             MovieLikesView(likes: likes)

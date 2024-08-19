@@ -11,10 +11,14 @@ protocol MovieDetailPresenterProtocol: ObservableObject {
     
     var viewModel: MovieDetailViewModel { get set }
     
-    func saveMovie()
+    func saveMovie(completion: @escaping (Error?) -> Void)
 }
 
 protocol MovieDetailInteractorProtocol: AnyObject {
     func saveMovie(model: Movie) async throws
     func deleteMovie(model: Movie) async throws
+}
+
+protocol MovieDetailViewModelUpdatable {
+    @MainActor func updateMovieFavoriteStatus()
 }

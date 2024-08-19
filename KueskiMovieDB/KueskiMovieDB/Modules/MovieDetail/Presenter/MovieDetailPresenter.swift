@@ -7,11 +7,11 @@
 
 import Combine
 
-final class MovieDetailPresenter {
+final class MovieDetailPresenter: ObservableObject {
     
     @Published var viewModel: MovieDetailViewModel
     
-    internal let movieStorageService: MovieStorageServiceProtocol
+    private let movieStorageService: MovieStorageServiceProtocol
     
     init(
         viewModel: MovieDetailViewModel,
@@ -22,26 +22,25 @@ final class MovieDetailPresenter {
     }
 }
 
-extension MovieDetailPresenter: MovieDetailPresenterProtocol { 
+extension MovieDetailPresenter: MovieDetailPresenterProtocol {
     
-    func saveMovie() {
+    func saveMovie(completion: @escaping (Error?) -> Void) {
         Task {
             do {
                 if viewModel.movie.isFavorite {
                     try await movieStorageService.deleteMovie(model: viewModel.movie)
-                    await publishChanges()
                 } else {
                     try await movieStorageService.saveMovie(model: viewModel.movie)
-                    await publishChanges()
                 }
+                await updateMovieFavoriteStatus()
+                completion(nil)
             } catch {
-                // await updateUI(with: items, append: false)
-                // await handleError(error)
+                completion(error)
             }
         }
     }
     
-    @MainActor func publishChanges() {
+    @MainActor private func updateMovieFavoriteStatus() {
         viewModel.movie.isFavorite.toggle()
     }
 }
