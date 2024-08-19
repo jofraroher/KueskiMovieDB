@@ -16,7 +16,16 @@ final class GenericCollectionViewDelegate<Item>: NSObject, UICollectionViewDeleg
         self.didSelectItem = didSelectItem
     }
     
+    func updateItems(with newItems: [Item]) {
+        self.items = newItems
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSelectItem(items[indexPath.row])
+        guard indexPath.row >= 0 && indexPath.row < items.count else {
+            return
+        }
+        
+        let selectedItem = items[indexPath.row]
+        didSelectItem(selectedItem)
     }
 }
