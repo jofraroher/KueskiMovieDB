@@ -32,7 +32,7 @@
 		0B0F8ABD2C71B697004440B7 /* ListCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8ABC2C71B697004440B7 /* ListCollectionViewLayout.swift */; };
 		0B0F8ABF2C71B6BB004440B7 /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8ABE2C71B6BB004440B7 /* GridCollectionViewLayout.swift */; };
 		0B0F8AC32C71C616004440B7 /* APIClientErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AC22C71C616004440B7 /* APIClientErrorWrapper.swift */; };
-		0B0F8AC52C71C63F004440B7 /* KueskiMovieDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AC42C71C63F004440B7 /* KueskiMovieDBError.swift */; };
+		0B0F8AC52C71C63F004440B7 /* KueskiMovieRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AC42C71C63F004440B7 /* KueskiMovieRequestError.swift */; };
 		0B0F8AC82C71C666004440B7 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8AC72C71C666004440B7 /* APIRequest.swift */; };
 		0B0F8ACB2C71C690004440B7 /* HTTPRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8ACA2C71C690004440B7 /* HTTPRequestMethod.swift */; };
 		0B0F8ACE2C71C6B0004440B7 /* HTTPParametersEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8ACD2C71C6B0004440B7 /* HTTPParametersEncoding.swift */; };
@@ -85,6 +85,19 @@
 		0B0F8B762C721944004440B7 /* PaginationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8B752C721944004440B7 /* PaginationService.swift */; };
 		0BB7FA412C7274B8001D14C1 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA402C7274B8001D14C1 /* LayoutManager.swift */; };
 		0BB7FA442C7274F0001D14C1 /* CollectionViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA432C7274F0001D14C1 /* CollectionViewFactory.swift */; };
+		0BB7FA482C728A15001D14C1 /* DatabaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA472C728A15001D14C1 /* DatabaseServiceProtocol.swift */; };
+		0BB7FA4B2C728A8A001D14C1 /* DatabaseManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA4A2C728A8A001D14C1 /* DatabaseManagerProtocol.swift */; };
+		0BB7FA502C728AFB001D14C1 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA4F2C728AFB001D14C1 /* DatabaseManager.swift */; };
+		0BB7FA5F2C7292DC001D14C1 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA5E2C7292DC001D14C1 /* CoreDataService.swift */; };
+		0BB7FA622C72975F001D14C1 /* KueskiMovieDatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA612C72975F001D14C1 /* KueskiMovieDatabaseError.swift */; };
+		0BB7FA652C729AD6001D14C1 /* DependencyContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA642C729AD6001D14C1 /* DependencyContainerProtocol.swift */; };
+		0BB7FA672C729AF1001D14C1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA662C729AF1001D14C1 /* DependencyContainer.swift */; };
+		0BB7FA6A2C729F3D001D14C1 /* GenreIdsTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA692C729F3D001D14C1 /* GenreIdsTransformer.swift */; };
+		0BB7FA6D2C72A1B7001D14C1 /* StorableDomainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA6C2C72A1B7001D14C1 /* StorableDomainProtocol.swift */; };
+		0BB7FA732C72AD25001D14C1 /* StorableEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA722C72AD25001D14C1 /* StorableEntityProtocol.swift */; };
+		0BB7FA762C72B144001D14C1 /* DomainObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA752C72B144001D14C1 /* DomainObjectConvertible.swift */; };
+		0BB7FA7F2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA7D2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift */; };
+		0BB7FA802C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA7E2C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,7 +147,7 @@
 		0B0F8ABC2C71B697004440B7 /* ListCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewLayout.swift; sourceTree = "<group>"; };
 		0B0F8ABE2C71B6BB004440B7 /* GridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayout.swift; sourceTree = "<group>"; };
 		0B0F8AC22C71C616004440B7 /* APIClientErrorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientErrorWrapper.swift; sourceTree = "<group>"; };
-		0B0F8AC42C71C63F004440B7 /* KueskiMovieDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KueskiMovieDBError.swift; sourceTree = "<group>"; };
+		0B0F8AC42C71C63F004440B7 /* KueskiMovieRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KueskiMovieRequestError.swift; sourceTree = "<group>"; };
 		0B0F8AC72C71C666004440B7 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		0B0F8ACA2C71C690004440B7 /* HTTPRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestMethod.swift; sourceTree = "<group>"; };
 		0B0F8ACD2C71C6B0004440B7 /* HTTPParametersEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParametersEncoding.swift; sourceTree = "<group>"; };
@@ -186,6 +199,19 @@
 		0B0F8B752C721944004440B7 /* PaginationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationService.swift; sourceTree = "<group>"; };
 		0BB7FA402C7274B8001D14C1 /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		0BB7FA432C7274F0001D14C1 /* CollectionViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFactory.swift; sourceTree = "<group>"; };
+		0BB7FA472C728A15001D14C1 /* DatabaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceProtocol.swift; sourceTree = "<group>"; };
+		0BB7FA4A2C728A8A001D14C1 /* DatabaseManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerProtocol.swift; sourceTree = "<group>"; };
+		0BB7FA4F2C728AFB001D14C1 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		0BB7FA5E2C7292DC001D14C1 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		0BB7FA612C72975F001D14C1 /* KueskiMovieDatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KueskiMovieDatabaseError.swift; sourceTree = "<group>"; };
+		0BB7FA642C729AD6001D14C1 /* DependencyContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainerProtocol.swift; sourceTree = "<group>"; };
+		0BB7FA662C729AF1001D14C1 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		0BB7FA692C729F3D001D14C1 /* GenreIdsTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreIdsTransformer.swift; sourceTree = "<group>"; };
+		0BB7FA6C2C72A1B7001D14C1 /* StorableDomainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableDomainProtocol.swift; sourceTree = "<group>"; };
+		0BB7FA722C72AD25001D14C1 /* StorableEntityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableEntityProtocol.swift; sourceTree = "<group>"; };
+		0BB7FA752C72B144001D14C1 /* DomainObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainObjectConvertible.swift; sourceTree = "<group>"; };
+		0BB7FA7D2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0BB7FA7E2C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +263,7 @@
 		0B0F8A582C715BB3004440B7 /* KueskiMovieDB */ = {
 			isa = PBXGroup;
 			children = (
+				0BB7FA452C7289E7001D14C1 /* Storage */,
 				0B0F8ADD2C71C817004440B7 /* Core */,
 				0B0F8AC02C71C5FA004440B7 /* Network */,
 				0B0F8A922C71680F004440B7 /* Modules */,
@@ -454,7 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				0B0F8AC22C71C616004440B7 /* APIClientErrorWrapper.swift */,
-				0B0F8AC42C71C63F004440B7 /* KueskiMovieDBError.swift */,
+				0B0F8AC42C71C63F004440B7 /* KueskiMovieRequestError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -523,6 +550,7 @@
 		0B0F8ADD2C71C817004440B7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0BB7FA4D2C728AD7001D14C1 /* Database */,
 				0B0F8B0B2C71CC3F004440B7 /* Configuration */,
 				0B0F8AFB2C71CA72004440B7 /* Common */,
 				0B0F8AED2C71C99B004440B7 /* API */,
@@ -837,6 +865,105 @@
 			path = CollectionViewFactory;
 			sourceTree = "<group>";
 		};
+		0BB7FA452C7289E7001D14C1 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA602C7296BC001D14C1 /* Errors */,
+				0BB7FA492C728A7C001D14C1 /* Manager */,
+				0BB7FA462C7289FA001D14C1 /* ServiceClient */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		0BB7FA462C7289FA001D14C1 /* ServiceClient */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA742C72B132001D14C1 /* DomainConvertible */,
+				0BB7FA6B2C72A1A6001D14C1 /* Storable */,
+				0BB7FA472C728A15001D14C1 /* DatabaseServiceProtocol.swift */,
+				0BB7FA5E2C7292DC001D14C1 /* CoreDataService.swift */,
+			);
+			path = ServiceClient;
+			sourceTree = "<group>";
+		};
+		0BB7FA492C728A7C001D14C1 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA4A2C728A8A001D14C1 /* DatabaseManagerProtocol.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		0BB7FA4D2C728AD7001D14C1 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA682C729F25001D14C1 /* Transformers */,
+				0BB7FA632C729AC3001D14C1 /* DependencyContainer */,
+				0BB7FA572C728F5B001D14C1 /* Models */,
+				0BB7FA4E2C728AE9001D14C1 /* Manager */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		0BB7FA4E2C728AE9001D14C1 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA4F2C728AFB001D14C1 /* DatabaseManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		0BB7FA572C728F5B001D14C1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA7D2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift */,
+				0BB7FA7E2C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0BB7FA602C7296BC001D14C1 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA612C72975F001D14C1 /* KueskiMovieDatabaseError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		0BB7FA632C729AC3001D14C1 /* DependencyContainer */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA642C729AD6001D14C1 /* DependencyContainerProtocol.swift */,
+				0BB7FA662C729AF1001D14C1 /* DependencyContainer.swift */,
+			);
+			path = DependencyContainer;
+			sourceTree = "<group>";
+		};
+		0BB7FA682C729F25001D14C1 /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA692C729F3D001D14C1 /* GenreIdsTransformer.swift */,
+			);
+			path = Transformers;
+			sourceTree = "<group>";
+		};
+		0BB7FA6B2C72A1A6001D14C1 /* Storable */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA6C2C72A1B7001D14C1 /* StorableDomainProtocol.swift */,
+				0BB7FA722C72AD25001D14C1 /* StorableEntityProtocol.swift */,
+			);
+			path = Storable;
+			sourceTree = "<group>";
+		};
+		0BB7FA742C72B132001D14C1 /* DomainConvertible */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FA752C72B144001D14C1 /* DomainObjectConvertible.swift */,
+			);
+			path = DomainConvertible;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -977,7 +1104,10 @@
 			files = (
 				0B0F8AF82C71CA20004440B7 /* SortByType.swift in Sources */,
 				0B0F8A642C715BB3004440B7 /* KueskiMovieDB.xcdatamodeld in Sources */,
+				0BB7FA482C728A15001D14C1 /* DatabaseServiceProtocol.swift in Sources */,
 				0B0F8B102C71CC8E004440B7 /* ConfigurationConstantsKey.swift in Sources */,
+				0BB7FA732C72AD25001D14C1 /* StorableEntityProtocol.swift in Sources */,
+				0BB7FA652C729AD6001D14C1 /* DependencyContainerProtocol.swift in Sources */,
 				0B0F8B082C71CBCE004440B7 /* GetNowPlayingMoviesEndpoint.swift in Sources */,
 				0B0F8AC82C71C666004440B7 /* APIRequest.swift in Sources */,
 				0B0F8A972C7168B1004440B7 /* MoviesViewController.swift in Sources */,
@@ -990,7 +1120,9 @@
 				0B0F8AB22C719001004440B7 /* MovieListCollectionViewCell+Layout.swift in Sources */,
 				0B0F8B0D2C71CC5C004440B7 /* Configuration.swift in Sources */,
 				0B0F8B552C71E613004440B7 /* GridLayoutProvider.swift in Sources */,
+				0BB7FA6D2C72A1B7001D14C1 /* StorableDomainProtocol.swift in Sources */,
 				0B0F8B002C71CB05004440B7 /* Array+Ext.swift in Sources */,
+				0BB7FA762C72B144001D14C1 /* DomainObjectConvertible.swift in Sources */,
 				0B0F8B442C71E332004440B7 /* GenericCollectionViewDelegate.swift in Sources */,
 				0B0F8B762C721944004440B7 /* PaginationService.swift in Sources */,
 				0B0F8B202C71D015004440B7 /* NowPlayingMoviesListUseCase.swift in Sources */,
@@ -1002,10 +1134,13 @@
 				0B0F8ACE2C71C6B0004440B7 /* HTTPParametersEncoding.swift in Sources */,
 				0B0F8ABB2C71AF0F004440B7 /* MovieGridCollectionViewCell+Components.swift in Sources */,
 				0B0F8B5F2C71F683004440B7 /* UIFont+Ext.swift in Sources */,
+				0BB7FA7F2C72DBCD001D14C1 /* MovieEntity+CoreDataClass.swift in Sources */,
+				0BB7FA802C72DBCD001D14C1 /* MovieEntity+CoreDataProperties.swift in Sources */,
 				0B0F8A5A2C715BB3004440B7 /* AppDelegate.swift in Sources */,
-				0B0F8AC52C71C63F004440B7 /* KueskiMovieDBError.swift in Sources */,
+				0B0F8AC52C71C63F004440B7 /* KueskiMovieRequestError.swift in Sources */,
 				0B0F8B502C71E5C7004440B7 /* MovieCellConfigurator.swift in Sources */,
 				0B0F8B5B2C71E9FB004440B7 /* MoviesPresenter.swift in Sources */,
+				0BB7FA5F2C7292DC001D14C1 /* CoreDataService.swift in Sources */,
 				0B0F8A912C7167F2004440B7 /* NavigationFactory.swift in Sources */,
 				0B0F8B472C71E3F6004440B7 /* CollectionViewLayoutAnimator.swift in Sources */,
 				0B0F8AD12C71C6EB004440B7 /* APIClient.swift in Sources */,
@@ -1022,8 +1157,12 @@
 				0B0F8B052C71CB6E004440B7 /* ImageQueryParams.swift in Sources */,
 				0BB7FA442C7274F0001D14C1 /* CollectionViewFactory.swift in Sources */,
 				0B0F8B1C2C71CE5C004440B7 /* Decodable+Ext.swift in Sources */,
+				0BB7FA672C729AF1001D14C1 /* DependencyContainer.swift in Sources */,
 				0B0F8B4D2C71E58E004440B7 /* MoviesProtocols.swift in Sources */,
 				0B0F8AE12C71C840004440B7 /* DefaultAsyncRepository.swift in Sources */,
+				0BB7FA502C728AFB001D14C1 /* DatabaseManager.swift in Sources */,
+				0BB7FA622C72975F001D14C1 /* KueskiMovieDatabaseError.swift in Sources */,
+				0BB7FA4B2C728A8A001D14C1 /* DatabaseManagerProtocol.swift in Sources */,
 				0B0F8AE62C71C893004440B7 /* AuthorizationTokenProvder.swift in Sources */,
 				0B0F8A9A2C7168E6004440B7 /* MoviesFactory.swift in Sources */,
 				0B0F8B412C71E170004440B7 /* GenericCollectionViewDataSource.swift in Sources */,
@@ -1038,6 +1177,7 @@
 				0B0F8ACB2C71C690004440B7 /* HTTPRequestMethod.swift in Sources */,
 				0B0F8B232C71D05E004440B7 /* MovieResponse.swift in Sources */,
 				0B0F8B152C71CDB0004440B7 /* GlobalFunctions.swift in Sources */,
+				0BB7FA6A2C729F3D001D14C1 /* GenreIdsTransformer.swift in Sources */,
 				0B0F8B0A2C71CC2A004440B7 /* String+Ext.swift in Sources */,
 				0B0F8AEC2C71C8F5004440B7 /* DefaultAPIClientErrorMapper.swift in Sources */,
 				0B0F8AA92C716BD8004440B7 /* GenericCollectionView.swift in Sources */,

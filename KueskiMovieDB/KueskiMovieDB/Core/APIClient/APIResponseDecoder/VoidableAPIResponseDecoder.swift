@@ -26,6 +26,6 @@ final class VoidableAPIResponseDecoder: APIResponseDecoder {
                   let decodedObject = try decodableType.init(data: data, decoder: decoder) as? T {
             return decodedObject
         }
-        throw KueskiMovieDBError.undefined
+        throw KueskiMovieRequestError.undefined
     }
 }

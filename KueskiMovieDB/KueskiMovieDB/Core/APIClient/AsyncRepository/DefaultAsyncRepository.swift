@@ -71,7 +71,7 @@ extension DefaultAsyncRepository {
         retries: Int = 0
     ) async throws -> Response {
         guard let tokenProvider = tokenProvider else {
-            throw KueskiMovieDBError.missingAuthorizationToken
+            throw KueskiMovieRequestError.missingAuthorizationToken
         }
         var mutableRequest = request
         let token = try await tokenProvider.authorizationToken()
@@ -96,7 +96,7 @@ extension DefaultAsyncRepository {
     ) async throws -> Response {
         if responseType is Data.Type {
             guard let response = try await processRequestData(request: request, retries: retries) as? Response else {
-                throw KueskiMovieDBError.undefined
+                throw KueskiMovieRequestError.undefined
             }
             return response
         } else {

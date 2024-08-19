@@ -5,6 +5,8 @@
 //  Created by Francisco Rosales on 18/08/24.
 //
 
+import CoreData
+
 struct MovieResponse: Codable, Equatable {
     let results: [Movie]
 }
@@ -63,5 +65,30 @@ extension Movie: Codable, Equatable {
         video = try container.decodeIfPresent(Bool.self, forKey: .video) ?? Bool()
         voteAverage = try container.decodeIfPresent(Double.self, forKey: .voteAverage) ?? Double()
         voteCount = try container.decodeIfPresent(Double.self, forKey: .voteCount) ?? Double()
+    }
+}
+
+extension Movie: StorableDomainProtocol {
+    typealias EntityType = MovieEntity
+    
+    func toEntity(context: NSManagedObjectContext) -> MovieEntity {
+        let genreAnyArray: [Any] = self.genreIds.map { $0.rawValue as Any }
+        let movieEntity = MovieEntity(context: context)
+        movieEntity.adult = self.adult
+        movieEntity.backdropPath = self.backdropPath
+        movieEntity.genreIds = genreAnyArray
+        movieEntity.id = Int64(self.id)
+        movieEntity.originalLanguage = self.originalLanguage
+        movieEntity.originalTitle = self.originalTitle
+        movieEntity.overview = self.overview
+        movieEntity.popularity = self.popularity
+        movieEntity.posterPath = self.posterPath
+        movieEntity.releaseDate = self.releaseDate
+        movieEntity.title = self.title
+        movieEntity.video = self.video
+        movieEntity.voteAverage = self.voteAverage
+        movieEntity.voteCount = self.voteCount
+        
+        return movieEntity
     }
 }

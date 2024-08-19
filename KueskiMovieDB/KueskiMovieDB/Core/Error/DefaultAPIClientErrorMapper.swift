@@ -13,7 +13,7 @@ struct DefaultAPIClientErrorMapper: APIResponseErrorMapper {
             return error.error
         }
         
-        if let movieDBError: KueskiMovieDBError = errorMapper.map(responseData) {
+        if let movieDBError: KueskiMovieRequestError = errorMapper.map(responseData) {
             return movieDBError
         } else if let error: Error = errorMapper.map(responseData) {
             return error
