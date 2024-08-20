@@ -7,12 +7,18 @@
 
 import Foundation
 
+protocol URLSessionProtocol {
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+}
+
+extension URLSession: URLSessionProtocol { }
+
 final class URLSessionAPIClient: APIClient {
     
-    private let session: URLSession
+    private let session: URLSessionProtocol
     
-    init(sessionConfiguration: URLSessionConfiguration = .default) {
-        self.session = URLSession(configuration: sessionConfiguration)
+    init(session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
     }
     
     func processRequest(_ request: APIRequest, retries: Int) async -> Result<Data, APIClientErrorWrapper> {
