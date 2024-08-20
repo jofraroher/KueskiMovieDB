@@ -12,7 +12,7 @@ struct MovieRatingView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "star.fill")
+            Image(systemName: MovieDetailConstants.popularityImageName)
                 .foregroundColor(.yellow)
             Text(rating)
                 .font(.subheadline)

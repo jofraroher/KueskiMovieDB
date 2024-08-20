@@ -22,7 +22,7 @@ struct MoviePosterView: View {
                     .frame(width: 150, height: 220)
                     .cornerRadius(20)
             case .failure:
-                Image("noImageAvailable")
+                Image(MovieDetailConstants.imageNoAvailableName)
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -30,7 +30,7 @@ struct MoviePosterView: View {
                     .cornerRadius(10)
                     .foregroundStyle(.blue)
             @unknown default:
-                Image("noImageAvailable")
+                Image(MovieDetailConstants.imageNoAvailableName)
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

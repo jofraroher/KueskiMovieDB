@@ -12,7 +12,7 @@ struct MovieDetailView<Presenter>: View where Presenter: MovieDetailPresenterPro
     @ObservedObject var presenter: Presenter
     
     @State private var showAlert = false
-    @State private var errorMessage = "Something went wrong. Please try again later."
+    @State private var errorMessage = MovieDetailConstants.errorMessageText
     
     init(presenter: Presenter) {
         self.presenter = presenter
@@ -39,7 +39,11 @@ struct MovieDetailView<Presenter>: View where Presenter: MovieDetailPresenterPro
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 20)
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Oops!"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+            Alert(
+                title: Text(MovieDetailConstants.errorMessageTitleText),
+                message: Text(errorMessage), 
+                dismissButton: .default(Text(MovieDetailConstants.errorMessageDismissButtonTitle))
+            )
         }
     }
 }

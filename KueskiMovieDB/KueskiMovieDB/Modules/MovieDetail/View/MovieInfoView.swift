@@ -20,15 +20,20 @@ struct MovieInfoView: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .lineLimit(2)
+                .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
             
-            Text("Release Date: \(releaseDate)")
+            Text(String(format: MovieDetailConstants.releaseDateTitle, releaseDate))
                 .font(.subheadline)
                 .fontWeight(.medium)
+                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
             
             Text(genres)
                 .font(.subheadline)
                 .fontWeight(.medium)
+                .lineLimit(3)
+                .fixedSize(horizontal: false, vertical: true)
             
             MovieRatingView(rating: rating)
             MovieLikesView(likes: likes)

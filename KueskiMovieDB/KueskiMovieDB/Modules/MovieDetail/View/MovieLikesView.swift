@@ -12,7 +12,7 @@ struct MovieLikesView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "heart.fill")
+            Image(systemName: MovieDetailConstants.movieRateImageName)
                 .foregroundColor(.red)
             Text(likes)
                 .font(.subheadline)

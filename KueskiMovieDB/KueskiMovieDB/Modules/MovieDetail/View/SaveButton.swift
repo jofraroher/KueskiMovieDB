@@ -14,8 +14,8 @@ struct SaveButton: View {
     var body: some View {
         Button(action: action) {
             HStack {
-                Image(systemName: isFavorite ? "star.fill" : "star")
-                Text(isFavorite ? "Saved" : "Save")
+                Image(systemName: isFavorite ? MovieDetailConstants.popularityImageName : MovieDetailConstants.imageMovieNotSavedName)
+                Text(isFavorite ? MovieDetailConstants.savedMovieTitle : MovieDetailConstants.saveMovieTitle)
             }
             .padding()
             .frame(maxWidth: .infinity)

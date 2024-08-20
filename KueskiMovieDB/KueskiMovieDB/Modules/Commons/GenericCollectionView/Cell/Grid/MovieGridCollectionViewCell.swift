@@ -45,15 +45,15 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
     )
     
     let popularityImage = MovieGridCollectionViewCell.makeImageView(
-        systemImageName: "hand.thumbsup.fill",
-        tintColor: .black
+        systemImageName: GenericCellConstants.popularityImage,
+        tintColor: .systemBlue
     )
     let popularityRateLabel = MovieGridCollectionViewCell.makeLabel(
         textAlignment: .right,
         font: UIFont.preferredFont(forTextStyle: .caption1, weight: .light)
     )
     let favoritesImage = MovieGridCollectionViewCell.makeImageView(
-        systemImageName: "heart",
+        systemImageName: GenericCellConstants.favoriteImageUnselected,
         tintColor: .red
     )
     
@@ -82,7 +82,7 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
     }
 
     private func configureFavoritesButton(isFavorite: Bool) {
-        let imageName = isFavorite ? "heart.fill" : "heart"
+        let imageName = isFavorite ? GenericCellConstants.favoriteImageSelected : GenericCellConstants.favoriteImageUnselected
         let image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate)
         favoritesImage.image = image
         favoritesImage.tintColor = .red
@@ -90,7 +90,11 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
 
     private func configureLabels(with model: Movie) {
         movieTitleLabel.text = model.title
-        generalMovieInfoLabel.text = "\(model.releaseDate) • \(model.originalLanguage.uppercased())"
+        generalMovieInfoLabel.text = String(
+            format: GenericCellConstants.stringFormatForMovieInfo, 
+            model.releaseDate,
+            model.originalLanguage.uppercased()
+        )
         movieGenresLabel.text = model.genreIds.toGenreString()
         movieOverviewLabel.text = model.overview
         popularityRateLabel.text = model.voteCount.formatted
@@ -101,7 +105,7 @@ final class MovieGridCollectionViewCell: UICollectionViewCell {
         posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         posterImageView.sd_setImage(with: pathUrl) { [weak self] image, error, _, _ in
             if error != nil {
-                self?.posterImageView.image = UIImage(named: "noImageAvailable")
+                self?.posterImageView.image = GenericCellConstants.notImageAvailable
             } else {
                 self?.posterImageView.image = image
             }
