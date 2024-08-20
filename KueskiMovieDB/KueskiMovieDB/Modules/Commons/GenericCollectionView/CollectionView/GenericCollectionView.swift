@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataSourcePrefetching {
+class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataSourcePrefetching {
     // MARK: - Properties
     private var items: [Item] = []
     private var genericDataSource: GenericCollectionViewDataSource<Item>?

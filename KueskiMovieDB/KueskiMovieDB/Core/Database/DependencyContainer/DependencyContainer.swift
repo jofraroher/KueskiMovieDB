@@ -7,22 +7,26 @@
 
 import CoreData
 
-final class DependencyContainer: DependencyContainerProtocol {
-    static let shared = DependencyContainer()
-
-    private init() { }
-
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "KueskiMovieDB")
-        container.loadPersistentStores { storeDescription, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+final class CoreDataStack {
+    static let shared = CoreDataStack()
+    
+    let persistentContainer: NSPersistentContainer
+    let backgroundContext: NSManagedObjectContext
+    let mainContext: NSManagedObjectContext
+    
+    private init() {
+        persistentContainer = NSPersistentContainer(name: "KueskiMovieDB")
+        let description = persistentContainer.persistentStoreDescriptions.first
+        description?.type = NSSQLiteStoreType
+        persistentContainer.loadPersistentStores { description, error in
+            guard error == nil else {
+                fatalError("Unable to load store \(String(describing: error))")
             }
         }
-        return container
-    }()
-
-    var databaseService: DatabaseServiceProtocol {
-        return CoreDataService(context: persistentContainer.viewContext)
+        mainContext = persistentContainer.viewContext
+        
+        backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        backgroundContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        backgroundContext.parent = mainContext
     }
 }
