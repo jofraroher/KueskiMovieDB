@@ -7,6 +7,8 @@
 
 enum StringTable: String {
     case KueskiMovieDB
+    case KueskiAPI
+    case InvalidBundle
 }
 
 enum ResourceType: String {

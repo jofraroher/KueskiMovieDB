@@ -64,4 +64,25 @@ final class URLSessionAPIClientTests: XCTestCase {
             XCTAssertNotNil(errorWrapper.error)
         }
     }
+    
+    func testProcessRequest_nilURL() async {
+        // Arrange
+        let request = APIRequestStub.getAPIRquest(url: nil, method: .get, headers: nil, parameters: nil)
+        
+        // Act
+        let result = await apiClient.processRequest(request, retries: 1)
+        
+        // Assert
+        switch result {
+        case .success:
+            XCTFail("Expected failure but got success")
+        case .failure(let errorWrapper):
+            XCTAssertNotNil(errorWrapper.error)
+            if let error = errorWrapper.error as? KueskiMovieDB.KueskiMovieRequestError {
+                XCTAssertEqual(error, KueskiMovieDB.KueskiMovieRequestError.invalidURL)
+            } else {
+                XCTFail("Error was not of type KueskiMovieRequestError")
+            }
+        }
+    }
 }
