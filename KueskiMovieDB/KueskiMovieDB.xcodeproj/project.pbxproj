@@ -152,6 +152,10 @@
 		0BB7FB1B2C740D5C001D14C1 /* MovieStorageServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB1A2C740D5C001D14C1 /* MovieStorageServiceTest.swift */; };
 		0BB7FB1D2C740DBB001D14C1 /* MockMoviesDatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB1C2C740DBB001D14C1 /* MockMoviesDatabaseProtocol.swift */; };
 		0BB7FB1F2C740EC3001D14C1 /* MockMoviesFetchingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB1E2C740EC3001D14C1 /* MockMoviesFetchingInteractor.swift */; };
+		0BB7FB232C7410ED001D14C1 /* MovieDetailFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB222C7410ED001D14C1 /* MovieDetailFactoryTests.swift */; };
+		0BB7FB272C74120D001D14C1 /* MovieDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB262C74120D001D14C1 /* MovieDetailInteractorTests.swift */; };
+		0BB7FB2A2C74142A001D14C1 /* MovieDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB292C74142A001D14C1 /* MovieDetailPresenterTests.swift */; };
+		0BB7FB2D2C74146D001D14C1 /* MockMovieStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FB2C2C74146D001D14C1 /* MockMovieStorageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,6 +325,10 @@
 		0BB7FB1A2C740D5C001D14C1 /* MovieStorageServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStorageServiceTest.swift; sourceTree = "<group>"; };
 		0BB7FB1C2C740DBB001D14C1 /* MockMoviesDatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMoviesDatabaseProtocol.swift; sourceTree = "<group>"; };
 		0BB7FB1E2C740EC3001D14C1 /* MockMoviesFetchingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMoviesFetchingInteractor.swift; sourceTree = "<group>"; };
+		0BB7FB222C7410ED001D14C1 /* MovieDetailFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailFactoryTests.swift; sourceTree = "<group>"; };
+		0BB7FB262C74120D001D14C1 /* MovieDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailInteractorTests.swift; sourceTree = "<group>"; };
+		0BB7FB292C74142A001D14C1 /* MovieDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenterTests.swift; sourceTree = "<group>"; };
+		0BB7FB2C2C74146D001D14C1 /* MockMovieStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieStorageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1220,6 +1228,7 @@
 		0BB7FAB52C737917001D14C1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0BB7FB202C740FF3001D14C1 /* MovieDetail */,
 				0BB7FAB62C73791F001D14C1 /* Movies */,
 			);
 			path = Modules;
@@ -1382,6 +1391,49 @@
 				0BB7FB052C73D8C9001D14C1 /* MovieDetailInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		0BB7FB202C740FF3001D14C1 /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FB2B2C741462001D14C1 /* Mocks */,
+				0BB7FB282C7413F5001D14C1 /* Presenter */,
+				0BB7FB242C7411D6001D14C1 /* Interactor */,
+				0BB7FB212C7410B3001D14C1 /* Factory */,
+			);
+			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		0BB7FB212C7410B3001D14C1 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FB222C7410ED001D14C1 /* MovieDetailFactoryTests.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		0BB7FB242C7411D6001D14C1 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FB262C74120D001D14C1 /* MovieDetailInteractorTests.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		0BB7FB282C7413F5001D14C1 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FB292C74142A001D14C1 /* MovieDetailPresenterTests.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0BB7FB2B2C741462001D14C1 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7FB2C2C74146D001D14C1 /* MockMovieStorageService.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1635,6 +1687,7 @@
 			files = (
 				0BB7FAD72C738729001D14C1 /* MockPaginationServiceFactory.swift in Sources */,
 				0BB7FB1F2C740EC3001D14C1 /* MockMoviesFetchingInteractor.swift in Sources */,
+				0BB7FB232C7410ED001D14C1 /* MovieDetailFactoryTests.swift in Sources */,
 				0BB7FAC32C737BDD001D14C1 /* MovieFetchServiceTests.swift in Sources */,
 				0BB7FACB2C738243001D14C1 /* PaginationServiceTests.swift in Sources */,
 				0BB7FABD2C737A7C001D14C1 /* MockViewController.swift in Sources */,
@@ -1648,6 +1701,7 @@
 				0BB7FAA62C736CA2001D14C1 /* GenreTypeTests.swift in Sources */,
 				0BB7FAAE2C73728F001D14C1 /* MockAsyncRepository.swift in Sources */,
 				0BB7FADE2C739633001D14C1 /* MockMoviesRouter.swift in Sources */,
+				0BB7FB272C74120D001D14C1 /* MovieDetailInteractorTests.swift in Sources */,
 				0BB7FAD22C7385C4001D14C1 /* MoviesInteractorTests.swift in Sources */,
 				0BB7FB1D2C740DBB001D14C1 /* MockMoviesDatabaseProtocol.swift in Sources */,
 				0BB7FAD92C738B19001D14C1 /* MockNavigationFactory.swift in Sources */,
@@ -1656,6 +1710,7 @@
 				0BB7FAA82C736DDE001D14C1 /* MovieResponseTests.swift in Sources */,
 				0BB7FAD52C7386C5001D14C1 /* MoviesFactoryTests.swift in Sources */,
 				0BB7FAE02C73965B001D14C1 /* MockMovieFetchService.swift in Sources */,
+				0BB7FB2D2C74146D001D14C1 /* MockMovieStorageService.swift in Sources */,
 				0BB7FAB92C737972001D14C1 /* MockNavigationController.swift in Sources */,
 				0BB7FACE2C73851E001D14C1 /* MockMoviesUseCase.swift in Sources */,
 				0BB7FAE72C739701001D14C1 /* MoviesPresenterTests.swift in Sources */,
@@ -1665,6 +1720,7 @@
 				0BB7FAF62C73A8F2001D14C1 /* APIRequestStub.swift in Sources */,
 				0BB7FAF12C73A827001D14C1 /* MockAPIResponseErrorMapper.swift in Sources */,
 				0BB7FAF32C73A874001D14C1 /* DefaultAsyncRepositoryTests.swift in Sources */,
+				0BB7FB2A2C74142A001D14C1 /* MovieDetailPresenterTests.swift in Sources */,
 				0BB7FB1B2C740D5C001D14C1 /* MovieStorageServiceTest.swift in Sources */,
 				0BB7FAED2C73A6D2001D14C1 /* MockAPIClient.swift in Sources */,
 			);
