@@ -8,7 +8,7 @@
 import UIKit
 
 final class GenericCollectionViewDelegate<Item>: NSObject, UICollectionViewDelegate {
-    private var items: [Item]
+    internal var items: [Item]
     private var didSelectItem: (Item) -> ()
     
     init(items: [Item], didSelectItem: @escaping (Item) -> ()) {

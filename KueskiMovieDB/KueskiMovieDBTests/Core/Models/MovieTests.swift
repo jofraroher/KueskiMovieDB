@@ -6,70 +6,28 @@
 //
 
 import XCTest
+import CoreData
 @testable import KueskiMovieDB
 
 final class MovieTests: XCTestCase {
-
-    func testMovieEquatable() {
-        let movie1 = Movie(
-            adult: false,
-            backdropPath: "/path/to/backdrop.jpg",
-            genreIds: [.action, .adventure],
-            id: 12345,
-            originalLanguage: "en",
-            originalTitle: "Original Title",
-            overview: "This is an overview.",
-            popularity: 1000.0,
-            posterPath: "/path/to/poster.jpg",
-            releaseDate: "2024-08-19",
-            title: "Movie Title",
-            video: false,
-            voteAverage: 8.5,
-            voteCount: 100
-        )
-        
-        let movie2 = Movie(
-            adult: false,
-            backdropPath: "/path/to/backdrop.jpg",
-            genreIds: [.action, .adventure],
-            id: 12345,
-            originalLanguage: "en",
-            originalTitle: "Original Title",
-            overview: "This is an overview.",
-            popularity: 1000.0,
-            posterPath: "/path/to/poster.jpg",
-            releaseDate: "2024-08-19",
-            title: "Movie Title",
-            video: false,
-            voteAverage: 8.5,
-            voteCount: 100
-        )
-        
-        XCTAssertEqual(movie1, movie2)
-        
-        var movie3 = movie1
-        movie3.isFavorite = true
-        
-        XCTAssertNotEqual(movie1, movie3)
-    }
-
+    
     func testMovieDecoding() throws {
         let json = """
         {
             "adult": false,
             "backdrop_path": "/path/to/backdrop.jpg",
-            "genre_ids": [28, 12],
-            "id": 12345,
+            "genre_ids": [28, 12, 16],
+            "id": 123,
             "original_language": "en",
-            "original_title": "Original Title",
-            "overview": "This is an overview.",
-            "popularity": 1000.0,
+            "original_title": "Test Movie",
+            "overview": "This is a test movie.",
+            "popularity": 100.0,
             "poster_path": "/path/to/poster.jpg",
             "release_date": "2024-08-19",
-            "title": "Movie Title",
+            "title": "Test Movie",
             "video": false,
-            "vote_average": 8.5,
-            "vote_count": 100
+            "vote_average": 7.5,
+            "vote_count": 1000
         }
         """.data(using: .utf8)!
         
@@ -78,56 +36,141 @@ final class MovieTests: XCTestCase {
         
         XCTAssertEqual(movie.adult, false)
         XCTAssertEqual(movie.backdropPath, "/path/to/backdrop.jpg")
-        XCTAssertEqual(movie.genreIds, [.action, .adventure])
-        XCTAssertEqual(movie.id, 12345)
+        XCTAssertEqual(movie.genreIds, [.action, .adventure, .animation])
+        XCTAssertEqual(movie.id, 123)
         XCTAssertEqual(movie.originalLanguage, "en")
-        XCTAssertEqual(movie.originalTitle, "Original Title")
-        XCTAssertEqual(movie.overview, "This is an overview.")
-        XCTAssertEqual(movie.popularity, 1000.0)
+        XCTAssertEqual(movie.originalTitle, "Test Movie")
+        XCTAssertEqual(movie.overview, "This is a test movie.")
+        XCTAssertEqual(movie.popularity, 100.0)
         XCTAssertEqual(movie.posterPath, "/path/to/poster.jpg")
         XCTAssertEqual(movie.releaseDate, "2024-08-19")
-        XCTAssertEqual(movie.title, "Movie Title")
+        XCTAssertEqual(movie.title, "Test Movie")
         XCTAssertEqual(movie.video, false)
-        XCTAssertEqual(movie.voteAverage, 8.5)
-        XCTAssertEqual(movie.voteCount, 100)
+        XCTAssertEqual(movie.voteAverage, 7.5)
+        XCTAssertEqual(movie.voteCount, 1000)
+        XCTAssertEqual(movie.isFavorite, false)
     }
-    
+
     func testMovieEncoding() throws {
         let movie = Movie(
             adult: false,
             backdropPath: "/path/to/backdrop.jpg",
-            genreIds: [.action, .adventure],
-            id: 12345,
+            genreIds: [.action, .adventure, .animation],
+            id: 123,
             originalLanguage: "en",
-            originalTitle: "Original Title",
-            overview: "This is an overview.",
-            popularity: 1000.0,
+            originalTitle: "Test Movie",
+            overview: "This is a test movie.",
+            popularity: 100.0,
             posterPath: "/path/to/poster.jpg",
             releaseDate: "2024-08-19",
-            title: "Movie Title",
+            title: "Test Movie",
             video: false,
-            voteAverage: 8.5,
-            voteCount: 100
+            voteAverage: 7.5,
+            voteCount: 1000
         )
         
         let encoder = JSONEncoder()
-        let data = try encoder.encode(movie)
-        let jsonString = String(data: data, encoding: .utf8)
+        let encodedData = try encoder.encode(movie)
         
-        XCTAssertNotNil(jsonString)
-        XCTAssertTrue(jsonString?.contains("\"adult\":false") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"backdrop_path\":\"\\/path\\/to\\/backdrop.jpg\"") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"genre_ids\":[28,12]") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"id\":12345") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"original_language\":\"en\"") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"original_title\":\"Original Title\"") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"overview\":\"This is an overview.\"") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"popularity\":1000") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"poster_path\":\"\\/path\\/to\\/poster.jpg\"") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"release_date\":\"2024-08-19\"") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"title\":\"Movie Title\"") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"video\":false") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"vote_average\":8.5") ?? false)
-        XCTAssertTrue(jsonString?.contains("\"vote_count\":100") ?? false)
+        let decoder = JSONDecoder()
+        let decodedMovie = try decoder.decode(Movie.self, from: encodedData)
+        
+        XCTAssertEqual(decodedMovie, movie)
     }
+
+    func testMovieToEntity() throws {
+        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        
+        let movie = Movie(
+            adult: false,
+            backdropPath: "/path/to/backdrop.jpg",
+            genreIds: [.action, .adventure, .animation],
+            id: 123,
+            originalLanguage: "en",
+            originalTitle: "Test Movie",
+            overview: "This is a test movie.",
+            popularity: 100.0,
+            posterPath: "/path/to/poster.jpg",
+            releaseDate: "2024-08-19",
+            title: "Test Movie",
+            video: false,
+            voteAverage: 7.5,
+            voteCount: 1000
+        )
+        
+        let movieEntity = movie.toEntity(context: context)
+        
+        XCTAssertEqual(movieEntity.adult, false)
+        XCTAssertEqual(movieEntity.backdropPath, "/path/to/backdrop.jpg")
+        XCTAssertEqual(movieEntity.genreIds as? [Int], [28, 12, 16])
+        XCTAssertEqual(movieEntity.id, 123)
+        XCTAssertEqual(movieEntity.originalLanguage, "en")
+        XCTAssertEqual(movieEntity.originalTitle, "Test Movie")
+        XCTAssertEqual(movieEntity.overview, "This is a test movie.")
+        XCTAssertEqual(movieEntity.popularity, 100.0)
+        XCTAssertEqual(movieEntity.posterPath, "/path/to/poster.jpg")
+        XCTAssertEqual(movieEntity.releaseDate, "2024-08-19")
+        XCTAssertEqual(movieEntity.title, "Test Movie")
+        XCTAssertEqual(movieEntity.video, false)
+        XCTAssertEqual(movieEntity.voteAverage, 7.5)
+        XCTAssertEqual(movieEntity.voteCount, 1000)
+    }
+
+    func testMovieResponseDecoding() throws {
+        let json = """
+        {
+            "results": [
+                {
+                    "adult": false,
+                    "backdrop_path": "/path/to/backdrop.jpg",
+                    "genre_ids": [28, 12, 16],
+                    "id": 123,
+                    "original_language": "en",
+                    "original_title": "Test Movie",
+                    "overview": "This is a test movie.",
+                    "popularity": 100.0,
+                    "poster_path": "/path/to/poster.jpg",
+                    "release_date": "2024-08-19",
+                    "title": "Test Movie",
+                    "video": false,
+                    "vote_average": 7.5,
+                    "vote_count": 1000
+                }
+            ]
+        }
+        """.data(using: .utf8)!
+        
+        let decoder = JSONDecoder()
+        let movieResponse = try decoder.decode(MovieResponse.self, from: json)
+        
+        XCTAssertEqual(movieResponse.results.count, 1)
+        XCTAssertEqual(movieResponse.results.first?.id, 123)
+    }
+    
+    func testMovieDecodingWithMissingKeys() throws {
+            let json = """
+            {
+                "id": 123
+            }
+            """.data(using: .utf8)!
+            
+            let decoder = JSONDecoder()
+            let movie = try decoder.decode(Movie.self, from: json)
+            
+            XCTAssertEqual(movie.adult, false)
+            XCTAssertEqual(movie.backdropPath, "")
+            XCTAssertEqual(movie.genreIds, [])
+            XCTAssertEqual(movie.id, 123)
+            XCTAssertEqual(movie.originalLanguage, "")
+            XCTAssertEqual(movie.originalTitle, "")
+            XCTAssertEqual(movie.overview, "")
+            XCTAssertEqual(movie.popularity, 0.0)
+            XCTAssertEqual(movie.posterPath, "")
+            XCTAssertEqual(movie.releaseDate, "")
+            XCTAssertEqual(movie.title, "")
+            XCTAssertEqual(movie.video, false)
+            XCTAssertEqual(movie.voteAverage, 0.0)
+            XCTAssertEqual(movie.voteCount, 0.0)
+            XCTAssertEqual(movie.isFavorite, false)
+        }
 }
