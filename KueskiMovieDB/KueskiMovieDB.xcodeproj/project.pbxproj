@@ -91,6 +91,9 @@
 		0B1DFC732C747434009F8559 /* GenericCollectionViewDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1DFC722C747434009F8559 /* GenericCollectionViewDelegateTests.swift */; };
 		0B4834842C747E4700E51D03 /* MockLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4834832C747E4700E51D03 /* MockLayoutProvider.swift */; };
 		0B4834862C747E6900E51D03 /* LayoutManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4834852C747E6900E51D03 /* LayoutManagerTests.swift */; };
+		0B48348A2C748EC600E51D03 /* TabBarConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4834892C748EC600E51D03 /* TabBarConstants.swift */; };
+		0B48348E2C74914500E51D03 /* MovieConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48348D2C74914500E51D03 /* MovieConstants.swift */; };
+		0B4834902C74950600E51D03 /* GenericCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48348F2C74950600E51D03 /* GenericCellConstants.swift */; };
 		0BB7FA412C7274B8001D14C1 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA402C7274B8001D14C1 /* LayoutManager.swift */; };
 		0BB7FA442C7274F0001D14C1 /* CollectionViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA432C7274F0001D14C1 /* CollectionViewFactory.swift */; };
 		0BB7FA482C728A15001D14C1 /* DatabaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7FA472C728A15001D14C1 /* DatabaseServiceProtocol.swift */; };
@@ -285,6 +288,9 @@
 		0B1DFC722C747434009F8559 /* GenericCollectionViewDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCollectionViewDelegateTests.swift; sourceTree = "<group>"; };
 		0B4834832C747E4700E51D03 /* MockLayoutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLayoutProvider.swift; sourceTree = "<group>"; };
 		0B4834852C747E6900E51D03 /* LayoutManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManagerTests.swift; sourceTree = "<group>"; };
+		0B4834892C748EC600E51D03 /* TabBarConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarConstants.swift; sourceTree = "<group>"; };
+		0B48348D2C74914500E51D03 /* MovieConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieConstants.swift; sourceTree = "<group>"; };
+		0B48348F2C74950600E51D03 /* GenericCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCellConstants.swift; sourceTree = "<group>"; };
 		0BB7FA402C7274B8001D14C1 /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		0BB7FA432C7274F0001D14C1 /* CollectionViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFactory.swift; sourceTree = "<group>"; };
 		0BB7FA472C728A15001D14C1 /* DatabaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceProtocol.swift; sourceTree = "<group>"; };
@@ -551,6 +557,7 @@
 		0B0F8A9B2C71691D004440B7 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				0B4834882C748EA800E51D03 /* Enum */,
 				0B0F8AA22C7169BA004440B7 /* Factory */,
 				0B0F8A9F2C716990004440B7 /* Router */,
 				0B0F8A9C2C71695B004440B7 /* View */,
@@ -617,6 +624,7 @@
 			children = (
 				0B0F8AB52C71AE72004440B7 /* Grid */,
 				0B0F8AB02C718FE3004440B7 /* List */,
+				0B48348F2C74950600E51D03 /* GenericCellConstants.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1031,6 +1039,7 @@
 		0B0F8B742C721937004440B7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0B48348C2C7490D900E51D03 /* Constants */,
 				0BB7FA892C731191001D14C1 /* PaginationService */,
 				0BB7FA852C730572001D14C1 /* MovieFetchingService.swift */,
 				0BB7FA872C730E22001D14C1 /* MovieSyncService.swift */,
@@ -1104,6 +1113,22 @@
 				0B4834832C747E4700E51D03 /* MockLayoutProvider.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		0B4834882C748EA800E51D03 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				0B4834892C748EC600E51D03 /* TabBarConstants.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		0B48348C2C7490D900E51D03 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0B48348D2C74914500E51D03 /* MovieConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		0BB7FA3F2C7274A2001D14C1 /* LayoutManager */ = {
@@ -1857,6 +1882,7 @@
 				0B0F8B582C71E89C004440B7 /* MoviesInteractor.swift in Sources */,
 				0B0F8AB22C719001004440B7 /* MovieListCollectionViewCell+Layout.swift in Sources */,
 				0BB7FB012C73D1BF001D14C1 /* MovieDetailViewModel.swift in Sources */,
+				0B48348A2C748EC600E51D03 /* TabBarConstants.swift in Sources */,
 				0B0F8B0D2C71CC5C004440B7 /* Configuration.swift in Sources */,
 				0B0F8B552C71E613004440B7 /* GridLayoutProvider.swift in Sources */,
 				0BB7FA9F2C735296001D14C1 /* GetPopularMoviesEndpoint.swift in Sources */,
@@ -1870,6 +1896,7 @@
 				0B0F8B762C721944004440B7 /* PaginationService.swift in Sources */,
 				0B0F8B202C71D015004440B7 /* NowPlayingMoviesListUseCase.swift in Sources */,
 				0B0F8AFE2C71CACC004440B7 /* Date+Ext.swift in Sources */,
+				0B48348E2C74914500E51D03 /* MovieConstants.swift in Sources */,
 				0B0F8B4A2C71E4C1004440B7 /* GenericCollectionViewProtocols.swift in Sources */,
 				0B0F8AD32C71C701004440B7 /* URLSessionAPIClient.swift in Sources */,
 				0BB7FA962C734B17001D14C1 /* MovieDetailFactory.swift in Sources */,
@@ -1922,6 +1949,7 @@
 				0B0F8ABD2C71B697004440B7 /* ListCollectionViewLayout.swift in Sources */,
 				0B0F8B182C71CE0D004440B7 /* VoidableAPIResponseDecoder.swift in Sources */,
 				0B0F8ABF2C71B6BB004440B7 /* GridCollectionViewLayout.swift in Sources */,
+				0B4834902C74950600E51D03 /* GenericCellConstants.swift in Sources */,
 				0B0F8AA42C7169C7004440B7 /* TabBarFactory.swift in Sources */,
 				0B0F8B2B2C71D53E004440B7 /* MovieDBTokenProvider.swift in Sources */,
 				0B0F8AFA2C71CA3B004440B7 /* MoviesQueryParams.swift in Sources */,

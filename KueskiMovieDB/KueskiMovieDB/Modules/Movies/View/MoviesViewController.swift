@@ -44,21 +44,21 @@ final class MoviesViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         let frame = adjustedFrame()
         setupMoviesCollectionView(with: frame)
     }
 
     private func setupNavigationComponents() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "line.3.horizontal.decrease.circle"),
+            image: MovieConstants.sortByNavigationItem,
             style: .plain,
             target: self,
             action: #selector(sortTapped)
         )
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(systemName: "square.grid.2x2"), style: .plain, target: self, action: #selector(gridTapped)),
-            UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(listTapped))
+            UIBarButtonItem(image: MovieConstants.gridNavigationItem, style: .plain, target: self, action: #selector(gridTapped)),
+            UIBarButtonItem(image: MovieConstants.listNavigationTitle, style: .plain, target: self, action: #selector(listTapped))
         ]
     }
 
@@ -81,11 +81,11 @@ final class MoviesViewController: UIViewController {
     }
 
     @objc internal func sortTapped() {
-        let actionSheetController = UIAlertController(title: "Sort by", message: "Choose an option", preferredStyle: .actionSheet)
+        let actionSheetController = UIAlertController(title: MovieConstants.sortByAlertTitle, message: MovieConstants.sortByMessageTitle, preferredStyle: .actionSheet)
         let sortOptions: [(title: String, sortBy: SortByType)] = [
-            ("Date", .releaseDateDesc),
-            ("Name", .originalTitleDesc),
-            ("Default", .popularityDesc)
+            (MovieConstants.sortByDateTitle, .releaseDateDesc),
+            (MovieConstants.sortByNameTitle, .originalTitleDesc),
+            (MovieConstants.resetSortTitle, .popularityDesc)
         ]
         
         sortOptions.forEach { option in
@@ -95,7 +95,7 @@ final class MoviesViewController: UIViewController {
             actionSheetController.addAction(action)
         }
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: MovieConstants.cancelAlertTitle, style: .cancel, handler: nil)
         actionSheetController.addAction(cancelAction)
         
         present(actionSheetController, animated: true, completion: nil)
@@ -122,11 +122,11 @@ extension MoviesViewController: MoviesViewProtocol {
     
     func showAlert() {
         let alertController = UIAlertController(
-            title: "Oops!",
-            message: "Something went wrong. Please try again later.", preferredStyle: .alert
+            title: MovieConstants.errorAlertTitle,
+            message: MovieConstants.errorAlertMessage, preferredStyle: .alert
         )
         
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in }
+        let okAction = UIAlertAction(title: MovieConstants.dismissAlertTitle, style: .default) { _ in }
         alertController.addAction(okAction)
         
         self.present(alertController, animated: true, completion: nil)
