@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         ValueTransformer.setValueTransformer(GenreIdsTransformer(), forName: NSValueTransformerName("GenreIdsTransformer"))
-        _ = DependencyContainer.shared
+        let _ = CoreDataStack.shared
         return true
     }
 

@@ -17,7 +17,7 @@ enum MoviesFactory {
         let router = MoviesRouter()
         let interactor = MoviesInteractor(
             repository: repository,
-            databaseRepository: DatabaseManager(databaseService: DependencyContainer.shared.databaseService)
+            databaseRepository: DatabaseManager(databaseService: CoreDataService())
         )
         let presenter = MoviesPresenter(
             interactor: interactor,

@@ -12,7 +12,7 @@ enum MovieDetailFactory {
     
     static func build(model: Movie) -> UIViewController {
         let interactor = MovieDetailInteractor(
-            databaseRepository: DatabaseManager(databaseService: DependencyContainer.shared.databaseService)
+            databaseRepository: DatabaseManager(databaseService: CoreDataService())
         )
         let presenter = MovieDetailPresenter(
             viewModel: MovieDetailViewModel(movie: model),

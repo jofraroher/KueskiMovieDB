@@ -13,7 +13,7 @@ final class MoviesViewController: UIViewController {
     internal let layoutManager: LayoutManagerProtocol
     internal let collectionViewFactory: CollectionViewFactoryProtocol
 
-    private var reusableCollectionView: GenericCollectionView<Movie>!
+    internal var reusableCollectionView: GenericCollectionView<Movie>!
 
     init(
         presenter: MoviesPresenterProtocol,
@@ -101,11 +101,11 @@ final class MoviesViewController: UIViewController {
         present(actionSheetController, animated: true, completion: nil)
     }
 
-    @objc private func listTapped() {
+    @objc internal func listTapped() {
         toggleLayout(to: .list)
     }
 
-    @objc private func gridTapped() {
+    @objc internal func gridTapped() {
         toggleLayout(to: .grid)
     }
 

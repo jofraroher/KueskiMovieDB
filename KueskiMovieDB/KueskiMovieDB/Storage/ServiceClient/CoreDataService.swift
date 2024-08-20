@@ -9,22 +9,18 @@ import CoreData
 
 final class CoreDataService: DatabaseServiceProtocol {
     
-    private let context: NSManagedObjectContext?
+    let context: NSManagedObjectContext
     
-    init(context: NSManagedObjectContext?) {
-        self.context = context
+    init() {
+        context = CoreDataStack.shared.mainContext
     }
     
     func saveData<T: StorableDomainProtocol>(_ data: T, for request: String) async throws {
-        guard let context = self.context else {
-            throw KueskiMovieDatabaseError.contextNotFound
-        }
-        
         let _ = data.toEntity(context: context)
         
         do {
             try await context.perform {
-                try context.save()
+                try self.context.save()
             }
         } catch {
             throw KueskiMovieDatabaseError.saveFailed(error)
@@ -32,15 +28,11 @@ final class CoreDataService: DatabaseServiceProtocol {
     }
     
     func fetchData<T: DomainObjectConvertible>(for request: String, type: T.Type) async throws -> [T.DomainType] {
-        guard let context = self.context else {
-            throw KueskiMovieDatabaseError.contextNotFound
-        }
-        
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
         
         do {
             let results = try await context.perform {
-                try context.fetch(fetchRequest)
+                try self.context.fetch(fetchRequest)
             }
             
             let domainObjects: [T.DomainType] = results.compactMap {
@@ -56,11 +48,7 @@ final class CoreDataService: DatabaseServiceProtocol {
         }
     }
     
-    func deleteData(for request: String) async throws {
-        guard let context = self.context else {
-            throw KueskiMovieDatabaseError.contextNotFound
-        }
-        
+    func deleteData(for request: String) async throws {        
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: MovieEntity.description())
         fetchRequest.predicate = NSPredicate(format: "id == %@", request)
         
@@ -68,7 +56,7 @@ final class CoreDataService: DatabaseServiceProtocol {
         
         do {
             let _ = try await context.perform {
-                try context.execute(batchDeleteRequest) as? NSBatchDeleteResult
+                try self.context.execute(batchDeleteRequest) as? NSBatchDeleteResult
             }
         } catch {
             throw KueskiMovieDatabaseError.deleteFailed(error)
