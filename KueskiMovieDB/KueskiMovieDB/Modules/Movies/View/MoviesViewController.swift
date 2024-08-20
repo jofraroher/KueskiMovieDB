@@ -80,7 +80,7 @@ final class MoviesViewController: UIViewController {
         return view.bounds.insetBy(dx: 0, dy: tabBarController?.tabBar.frame.height ?? 0)
     }
 
-    @objc private func sortTapped() {
+    @objc internal func sortTapped() {
         let actionSheetController = UIAlertController(title: "Sort by", message: "Choose an option", preferredStyle: .actionSheet)
         let sortOptions: [(title: String, sortBy: SortByType)] = [
             ("Date", .releaseDateDesc),

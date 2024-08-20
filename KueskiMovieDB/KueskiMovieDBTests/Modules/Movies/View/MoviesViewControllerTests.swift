@@ -107,4 +107,20 @@ final class MoviesViewControllerTests: XCTestCase {
         XCTAssertEqual(alertController?.title, "Oops!", "The alert title should be 'Oops!'")
         XCTAssertEqual(alertController?.message, "Something went wrong. Please try again later.", "The alert message should be correct")
     }
+    
+    func testSortTapped() {
+        viewController.sortTapped()
+        
+        let presentedViewController = viewController.presentedViewController as? UIAlertController
+        XCTAssertNotNil(presentedViewController, "Expected UIAlertController to be presented")
+        XCTAssertEqual(presentedViewController?.title, "Sort by", "Expected UIAlertController title to be 'Sort by'")
+        
+        let actionTitles = presentedViewController?.actions.map { $0.title }
+        XCTAssertTrue(actionTitles?.contains("Date") ?? false, "Expected 'Date' action to be present")
+        XCTAssertTrue(actionTitles?.contains("Name") ?? false, "Expected 'Name' action to be present")
+        XCTAssertTrue(actionTitles?.contains("Default") ?? false, "Expected 'Default' action to be present")
+        
+        let dateAction = presentedViewController?.actions.first { $0.title == "Date" }
+        XCTAssertNotNil(dateAction, "Expected 'Date' action to be present")
+    }
 }

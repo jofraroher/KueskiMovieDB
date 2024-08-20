@@ -9,6 +9,9 @@
     }
   ],
   "defaultOptions" : {
+    "commandLineArgumentEntries" : [
+
+    ],
     "targetForVariableExpansion" : {
       "containerPath" : "container:KueskiMovieDB.xcodeproj",
       "identifier" : "0B0F8A552C715BB3004440B7",
