@@ -38,24 +38,19 @@ final class MovieCellConfiguratorTests: XCTestCase {
         let cell = MovieGridCollectionViewCell()
         configurator.configureCell(cell, with: movie)
         
-        // Verifica que la celda esté configurada correctamente
         XCTAssertEqual(cell.movieTitleLabel.text, movie.title)
         XCTAssertEqual(cell.movieOverviewLabel.text, movie.overview)
-        // Agrega más aserciones según las configuraciones esperadas
     }
     
     func testConfigureMovieListCollectionViewCell() {
         let cell = MovieListCollectionViewCell()
         configurator.configureCell(cell, with: movie)
         
-        // Verifica que la celda esté configurada correctamente
         XCTAssertEqual(cell.movieTitleLabel.text, movie.title)
         XCTAssertEqual(cell.movieOverviewLabel.text, movie.overview)
-        // Agrega más aserciones según las configuraciones esperadas
     }
 }
 
-// Extiende las celdas para permitir la inspección en pruebas
 extension MovieGridCollectionViewCell {
     func configureCell(model: Movie) {
         movieTitleLabel.text = model.title
@@ -65,7 +60,5 @@ extension MovieGridCollectionViewCell {
 }
 
 extension MovieListCollectionViewCell {
-    func configureCell(model: Movie) {
-        // Agrega aquí tu lógica de configuración para pruebas
-    }
+    func configureCell(model: Movie) { }
 }

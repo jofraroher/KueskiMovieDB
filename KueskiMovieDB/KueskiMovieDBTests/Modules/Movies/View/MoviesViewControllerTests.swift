@@ -87,7 +87,7 @@ final class MoviesViewControllerTests: XCTestCase {
     
     func testGridTappedSwitchesLayoutToGrid() {
         // Arrange
-        mockLayoutManager.currentLayoutType = .list  // Inicialmente en lista
+        mockLayoutManager.currentLayoutType = .list
         
         // Act
         viewController.gridTapped()

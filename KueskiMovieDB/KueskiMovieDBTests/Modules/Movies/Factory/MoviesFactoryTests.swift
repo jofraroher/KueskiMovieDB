@@ -40,7 +40,6 @@ final class MoviesFactoryTests: XCTestCase {
         XCTAssertTrue(mockNavigationFactory.buildCalled, "The navigation factory's build method should be called.")
         XCTAssertEqual(viewController as? UINavigationController, viewController, "The navigation controller returned should match the expected navigation controller.")
 
-        // Verify that the MoviesViewController is in the UINavigationController
         guard let navigationController = viewController as? UINavigationController else {
             XCTFail("ViewController is not of type UINavigationController")
             return

@@ -96,7 +96,6 @@ class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataSourceP
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             if indexPath.row >= items.count {
-                print("Index out of range: \(indexPath.row) >= \(items.count)")
                 continue
             }
             if indexPath.row >= items.count - 3 && !isFetching {
