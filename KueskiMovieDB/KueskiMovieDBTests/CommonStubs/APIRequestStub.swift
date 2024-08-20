@@ -10,11 +10,16 @@ import Foundation
 
 enum APIRequestStub {
     static func getAPIRquest(
+        url: URL? = nil,
+        method: HTTPRequestMethod = .get,
         authorizationType: APIClientAuthorizationType = .bearerToken,
-        headers: [String: String]? = nil
+        headers: [String: String]? = nil,
+        parameters: [String : Any]? = nil
     ) -> APIRequest {
         APIRequestMock(
-            method: .get,
+            url: url,
+            method: method,
+            parameters: parameters,
             encoding: .JSONEncoding(),
             headers: headers,
             responseDecoder: VoidableAPIResponseDecoder(),
