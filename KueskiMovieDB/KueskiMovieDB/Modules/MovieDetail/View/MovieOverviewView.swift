@@ -12,7 +12,7 @@ struct MovieOverviewView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("OVERVIEW")
+            Text(MovieDetailConstants.movieOverviewTitle.uppercased())
                 .fontWeight(.medium)
                 .lineLimit(1)
                 .multilineTextAlignment(.leading)

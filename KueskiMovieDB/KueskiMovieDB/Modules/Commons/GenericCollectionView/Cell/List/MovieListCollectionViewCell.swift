@@ -52,7 +52,7 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
     
     let popularityImage = MovieListCollectionViewCell.makeImageView(
         systemImageName: GenericCellConstants.popularityImage,
-        tintColor: .black
+        tintColor: .systemBlue
     )
     let popularityRateLabel = MovieListCollectionViewCell.makeLabel(
         textAlignment: .right,
@@ -93,7 +93,11 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
     
     private func configureLabels(with model: Movie) {
         movieTitleLabel.text = model.title
-        generalMovieInfoLabel.text = "\(model.releaseDate) • \(model.originalLanguage.uppercased())"
+        generalMovieInfoLabel.text = String(
+            format: GenericCellConstants.stringFormatForMovieInfo, 
+            model.releaseDate,
+            model.originalLanguage.uppercased()
+        )
         movieGenresLabel.text = model.genreIds.toGenreString()
         movieOverviewLabel.text = model.overview
         popularityRateLabel.text = model.voteCount.formatted
@@ -108,7 +112,7 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
         posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         posterImageView.sd_setImage(with: pathUrl) { [weak self] image, error, _, _ in
             if error != nil {
-                self?.posterImageView.image = UIImage(named: "noImageAvailable")
+                self?.posterImageView.image = GenericCellConstants.notImageAvailable
             } else {
                 self?.posterImageView.image = image
             }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B03E52F2C74FA3F007B1746 /* MovieDetailConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B03E52E2C74FA3F007B1746 /* MovieDetailConstants.swift */; };
 		0B0E9EC92C7479170016F5BA /* MovieCellConfiguratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0E9EC82C7479170016F5BA /* MovieCellConfiguratorTests.swift */; };
 		0B0E9ECC2C747BB30016F5BA /* GridCollectionViewLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0E9ECB2C747BB30016F5BA /* GridCollectionViewLayoutTests.swift */; };
 		0B0F8A5A2C715BB3004440B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F8A592C715BB3004440B7 /* AppDelegate.swift */; };
@@ -202,6 +203,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B03E52E2C74FA3F007B1746 /* MovieDetailConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailConstants.swift; sourceTree = "<group>"; };
 		0B0E9EC82C7479170016F5BA /* MovieCellConfiguratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellConfiguratorTests.swift; sourceTree = "<group>"; };
 		0B0E9ECB2C747BB30016F5BA /* GridCollectionViewLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayoutTests.swift; sourceTree = "<group>"; };
 		0B0F8A562C715BB3004440B7 /* KueskiMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KueskiMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -408,6 +410,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B03E52C2C74FA15007B1746 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0B03E52D2C74FA20007B1746 /* Constants */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0B03E52D2C74FA20007B1746 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0B03E52E2C74FA3F007B1746 /* MovieDetailConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		0B0E9EC32C7478060016F5BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1258,6 +1276,7 @@
 		0BB7FA8C2C7332F5001D14C1 /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
+				0B03E52C2C74FA15007B1746 /* Utils */,
 				0BB7FB042C73D8A7001D14C1 /* Interactor */,
 				0BB7FAFF2C73D1A4001D14C1 /* ViewModel */,
 				0BB7FAFC2C73D0AD001D14C1 /* Protocols */,
@@ -1889,6 +1908,7 @@
 				0BB7FB0C2C73F617001D14C1 /* MovieRatingView.swift in Sources */,
 				0BB7FB102C73F644001D14C1 /* MovieOverviewView.swift in Sources */,
 				0BB7FAFE2C73D0C4001D14C1 /* MovieDetailProtocols.swift in Sources */,
+				0B03E52F2C74FA3F007B1746 /* MovieDetailConstants.swift in Sources */,
 				0BB7FA6D2C72A1B7001D14C1 /* StorableDomainProtocol.swift in Sources */,
 				0B0F8B002C71CB05004440B7 /* Array+Ext.swift in Sources */,
 				0BB7FA762C72B144001D14C1 /* DomainObjectConvertible.swift in Sources */,
