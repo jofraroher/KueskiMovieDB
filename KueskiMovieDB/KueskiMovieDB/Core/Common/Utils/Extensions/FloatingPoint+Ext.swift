@@ -13,23 +13,28 @@ extension BinaryFloatingPoint {
         numberFormatter.numberStyle = .decimal
         numberFormatter.maximumFractionDigits = 1
         numberFormatter.minimumFractionDigits = 0
-        
+
         // Convert the value to Double
-        let value = Double(exactly: self) ?? 0.0
+        let value = Double(self)
+        let isNegative = value < 0
+        let absValue = abs(value)
         
         // Format the number
-        if value >= 1_000_000_000 {
+        let formattedValue: String
+        if absValue >= 1_000_000_000 {
             numberFormatter.positiveFormat = "0.0B"
-            return numberFormatter.string(from: NSNumber(value: value / 1_000_000_000)) ?? "\(value)"
-        } else if value >= 1_000_000 {
+            formattedValue = numberFormatter.string(from: NSNumber(value: absValue / 1_000_000_000)) ?? "\(absValue)"
+        } else if absValue >= 1_000_000 {
             numberFormatter.positiveFormat = "0.0M"
-            return numberFormatter.string(from: NSNumber(value: value / 1_000_000)) ?? "\(value)"
-        } else if value >= 1_000 {
+            formattedValue = numberFormatter.string(from: NSNumber(value: absValue / 1_000_000)) ?? "\(absValue)"
+        } else if absValue >= 1_000 {
             numberFormatter.positiveFormat = "0.0K"
-            return numberFormatter.string(from: NSNumber(value: value / 1_000)) ?? "\(value)"
+            formattedValue = numberFormatter.string(from: NSNumber(value: absValue / 1_000)) ?? "\(absValue)"
         } else {
             numberFormatter.maximumFractionDigits = 2
-            return numberFormatter.string(from: NSNumber(value: value)) ?? "\(value)"
+            formattedValue = numberFormatter.string(from: NSNumber(value: absValue)) ?? "\(absValue)"
         }
+
+        return isNegative ? "-\(formattedValue)" : formattedValue
     }
 }
