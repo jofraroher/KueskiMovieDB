@@ -25,13 +25,6 @@
         "identifier" : "0B0F8A6E2C715BB7004440B7",
         "name" : "KueskiMovieDBTests"
       }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:KueskiMovieDB.xcodeproj",
-        "identifier" : "0B0F8A782C715BB7004440B7",
-        "name" : "KueskiMovieDBUITests"
-      }
     }
   ],
   "version" : 1

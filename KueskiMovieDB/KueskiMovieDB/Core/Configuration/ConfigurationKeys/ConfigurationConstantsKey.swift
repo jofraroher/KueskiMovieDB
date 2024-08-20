@@ -13,6 +13,8 @@ enum MoviesBaseConfiguration: String, ConfigurationConstantsKeyProtocol {
     
     case baseMovieDBPath = "BASE_KUESKI_MOVIEDB_PATH"
     case baseMovieImagePath = "BASE_MOVIE_IMAGE_PATH"
+    case baseAuthenticationKey = "BASE_AUTHENTICATION_KEY"
+    case invalidKey
     
     var constantKey: String {
         self.rawValue
