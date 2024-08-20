@@ -27,7 +27,7 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
         font: UIFont.preferredFont(forTextStyle: .body, weight: .bold)
     )
     let favoritesImage = MovieListCollectionViewCell.makeImageView(
-        systemImageName: "heart",
+        systemImageName: GenericCellConstants.favoriteImageUnselected,
         tintColor: .red
     )
     
@@ -51,7 +51,7 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
     )
     
     let popularityImage = MovieListCollectionViewCell.makeImageView(
-        systemImageName: "hand.thumbsup.fill",
+        systemImageName: GenericCellConstants.popularityImage,
         tintColor: .black
     )
     let popularityRateLabel = MovieListCollectionViewCell.makeLabel(
@@ -85,7 +85,7 @@ final class MovieListCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureFavoriteButton(isFavorite: Bool) {
-        let imageName = isFavorite ? "heart.fill" : "heart"
+        let imageName = isFavorite ? GenericCellConstants.favoriteImageSelected : GenericCellConstants.favoriteImageUnselected
         let image = UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate)
         favoritesImage.image = image
         favoritesImage.tintColor = .red

@@ -72,7 +72,7 @@ class GenericCollectionView<Item>: UICollectionView, UICollectionViewDataSourceP
     private func setupUI(configureCell: @escaping (Item, UICollectionViewCell) -> (), didSelectItem: @escaping (Item) -> ()) {
         genericDataSource = GenericCollectionViewDataSource(items: items, configureCell: configureCell)
         genericDelegate = GenericCollectionViewDelegate(items: items, didSelectItem: didSelectItem)
-        backgroundColor = .white
+        backgroundColor = .clear
         delegate = genericDelegate
         dataSource = genericDataSource
         prefetchDataSource = self

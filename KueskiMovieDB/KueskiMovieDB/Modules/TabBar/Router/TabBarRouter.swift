@@ -25,14 +25,14 @@ extension TabBarRouter {
     
     static func tabs(usingSubmodules submodules: Submodules) -> MovieTabs {
         let nowPlayingTabBarItem = UITabBarItem(
-            title: "Now Playing",
-            image: UIImage(systemName: "play"),
-            selectedImage: UIImage(systemName: "play.fill")
+            title: TabBarConstants.nowPlayingTabBarTitle,
+            image: TabBarConstants.nowPlayingUnselectedTabBarItem,
+            selectedImage: TabBarConstants.nowPlayingSelectedTabBarItem
         )
         let popularTabBarItem = UITabBarItem(
-            title: "Popular",
-            image: UIImage(systemName: "star"),
-            selectedImage: UIImage(systemName: "star.fill")
+            title: TabBarConstants.popularTabBarTitle,
+            image: TabBarConstants.popularUnselectedTabBarItem,
+            selectedImage: TabBarConstants.popularSelectedTabBarItem
         )
         
         submodules.nowPlaying.tabBarItem = nowPlayingTabBarItem
